@@ -1,78 +1,38 @@
-# eleventy-base-blog
+<h1 align="center">Welcome to my website!</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-0.0.2-blue.svg?cacheSeconds=2592000" />
+  <a href="#" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+  </a>
+  <a href="https://twitter.com/elcharitas" target="_blank">
+    <img alt="Twitter: elcharitas" src="https://img.shields.io/twitter/follow/elcharitas.svg?style=social" />
+  </a>
+</p>
 
-A starter repository showing how to build a blog with the [Eleventy](https://github.com/11ty/eleventy) static site generator.
+> A repo to hold my activity on the world-wide-web(www) plus a whole lot more like my interests in music, philosophy and environment.
 
-[![Build Status](https://travis-ci.org/11ty/eleventy-base-blog.svg?branch=master)](https://travis-ci.org/11ty/eleventy-base-blog)
+### [Homepage](https://elcharitas.com.ng)
 
-## Demos
+## Author
 
-* [Netlify](https://eleventy-base-blog.netlify.com/)
-* [GitHub Pages](https://11ty.github.io/eleventy-base-blog/)
-* [Remix on Glitch](https://glitch.com/~11ty-eleventy-base-blog)
+👤 **Jonathan Irhodia**
 
-## Deploy this to your own site
+* Website: https://elcharitas.com.ng
+* Twitter: [@elcharitas](https://twitter.com/elcharitas)
+* Github: [@elcharitas](https://github.com/elcharitas)
+* LinkedIn: [@elcharitas](https://linkedin.com/in/elcharitas)
 
-These builders are amazing—try them out to get your own Eleventy site in a few clicks!
+## Contributing
 
-* [Get your own Eleventy web site on Netlify](https://app.netlify.com/start/deploy?repository=https://github.com/11ty/eleventy-base-blog)
-* [Get your own Eleventy web site on Vercel](https://vercel.com/import/project?template=11ty%2Feleventy-base-blog)
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](.). You can also take a look at the [contributing guide](.).
 
-## Getting Started
+## Show your support
 
-### 1. Clone this Repository
+Give a ⭐️ if this project helped you!
 
-```
-git clone https://github.com/11ty/eleventy-base-blog.git my-blog-name
-```
+<a href="https://www.patreon.com/elcharitas">
+  <img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
+</a>
 
-
-### 2. Navigate to the directory
-
-```
-cd my-blog-name
-```
-
-Specifically have a look at `.eleventy.js` to see if you want to configure any Eleventy options differently.
-
-### 3. Install dependencies
-
-```
-npm install
-```
-
-### 4. Edit _data/metadata.json
-
-### 5. Run Eleventy
-
-```
-npx eleventy
-```
-
-Or build and host locally for local development
-```
-npx eleventy --serve
-```
-
-Or build automatically when a template changes:
-```
-npx eleventy --watch
-```
-
-Or in debug mode:
-```
-DEBUG=* npx eleventy
-```
-
-### Implementation Notes
-
-* `about/index.md` shows how to add a content page.
-* `blog/` has the blog blog but really they can live in any directory. They need only the `post` tag to be added to this collection.
-* Add the `nav` tag to add a template to the top level site navigation. For example, this is in use on `index.njk` and `about/index.md`.
-* Content can be any template format (blog blog needn’t be markdown, for example). Configure your supported templates in `.eleventy.js` -> `templateFormats`.
-	* Because `css` and `png` are listed in `templateFormats` but are not supported template types, any files with these extensions will be copied without modification to the output (while keeping the same directory structure).
-* The blog post feed template is in `feed/feed.njk`. This is also a good example of using a global data files in that it uses `_data/metadata.json`.
-* This example uses three layouts:
-  * `_includes/layouts/base.njk`: the top level HTML structure
-  * `_includes/layouts/home.njk`: the home page template (wrapped into `base.njk`)
-  * `_includes/layouts/post.njk`: the blog post template (wrapped into `base.njk`)
-* `_includes/postlist.njk` is a Nunjucks include and is a reusable component used to display a list of all the blog. `index.njk` has an example of how to use it.
+***
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
