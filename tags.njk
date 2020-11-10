@@ -13,11 +13,11 @@ pagination:
 layout: layouts/home.njk
 eleventyComputed:
   title: Tagged “{{ tag }}”
-permalink: /tags/{{ tag }}/
+permalink: /labels/{{ tag }}/
 ---
 <h1>Tagged “{{ tag }}”</h1>
 
 {% set postslist = collections[ tag ] %}
 {% include "postslist.njk" %}
 
-<p>See <a href="{{ '/tags/' | url }}">all tags</a>.</p>
+<p>See <a href="{{ '/labels/' | url }}">all tags</a>.</p>
