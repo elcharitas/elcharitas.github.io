@@ -1,20 +1,10 @@
 ---
-pagination:
-  data: collections.blog.all
-  size: 1
-  alias: tag
-  filter:
-    - all
-    - nav
-    - post
-    - blog
-  addAllPagesToCollections: true
 layout: layouts/home.njk
-eleventyComputed:
-  title: Tagged “{{ tag }}”
-permalink: /category/{{ tag }}/
+permalink: /category/{{ category }}
+title: {{ category }}
 ---
-<h1>Tagged “{{ tag }}”</h1>
 
-{% set bloglist = collections.blog[ tag ] %}
+<h1>Category {{ category }}</h1>
+
+{% set bloglist = collections.blog[category] %}
 {% include "bloglist.njk" %}
