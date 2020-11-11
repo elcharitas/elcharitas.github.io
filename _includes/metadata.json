@@ -1,5 +1,5 @@
 {
-  "title": "Jonathan Irhodia's Wearchive",
+  "title": "Jonathan's Weblog",
   "url": "https://elcharitas.com.ng/",
   "description": "I am writing about my experiences as a naval navel-gazer.",
   "feed": {
@@ -10,11 +10,18 @@
   },
   "jsonfeed": {
     "path": "/feed/feed.json",
-    "url": "https://example.com/feed/feed.json"
+    "url": "https://elcharitas.com.ng/feed/feed.json"
   },
   "author": {
     "name": "elcharitas",
     "email": "jonathanirhodia@gmail.com",
     "url": "https://elcharitas.com.ng/about-me/"
+  },
+  "archive": {
+    "title": "Archive",
+    "perpage": 5
+  },
+  "headers": {
+    "generator": "Jonathan Irhodia"
   }
 }
