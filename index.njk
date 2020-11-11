@@ -5,11 +5,11 @@ eleventyNavigation:
   order: 1
 ---
 
-{% set maxPosts = collections.blog.length | min(3) %}
+{% set maxPosts = collections.archive.length | min(3) %}
 <h1>Latest {% if maxPosts == 1 %}Post{% else %}{{ maxPosts }} Posts{% endif %}</h1>
 
-{% set bloglist = collections.blog | head(-3) %}
-{% set bloglistCounter = collections.blog | length %}
-{% include "bloglist.njk" %}
+{% set archivelist = collections.archive | head(-3) %}
+{% set archivelistCounter = collections.archive | length %}
+{% include "archivelist.njk" %}
 
-<p>More blog can be found in <a href="{{ '/blog/' | url }}">the archive</a>.</p>
+<p>More archive can be found in <a href="{{ '/archive/' | url }}">the archive</a>.</p>

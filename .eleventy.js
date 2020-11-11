@@ -49,7 +49,7 @@ module.exports = function(eleventyConfig) {
             case "all":
             case "nav":
             case "post":
-            case "blog":
+            case "archive":
               return false;
           }
 
