@@ -12,10 +12,10 @@ pagination:
   addAllPagesToCollections: true
 layout: layouts/home.njk
 eleventyComputed:
-  title: Tagged “{{ tag }}”
+  title: Filter By “{{ tag | title }}”
 permalink: /tags/{{ tag }}/
 ---
-<h1>Tagged “{{ tag }}”</h1>
+<h1>Tag: “{{ tag | title }}”</h1>
 
 {% set archivelist = collections[ tag ] %}
 {% include "archivelist.njk" %}
