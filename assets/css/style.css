@@ -1,5 +1,17 @@
+/*
+Theme Name: ZMinimal 
+Theme URI: https://zthemes.net/zminimal
+Description: ZMinimal - A Blog & Shop theme.
+Author: ZThemes.net
+Author URI: https://zthemes.net
+Version: 1.0.1
+Text Domain: zminimal
+License: GNU General Public License version 3.0
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+*/
+
 /*--------------------------------------------------------------------------------
-BASED ON ZMINIMAL FOR WORDPRESS
+
 [Table of contents]
 
 1. RESET CSS
@@ -48,7 +60,7 @@ BASED ON ZMINIMAL FOR WORDPRESS
 /*-----------------------------------------------------------------------------------*/
 
 *, html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, label, fieldset, input, p, blockquote, th, td { margin:0; padding:0 }
-dl, dt, dd{margin-bottom: 15px;}
+dl, dt, dd{margin-bottom: .94rem;}
 table { border-collapse:collapse; border-spacing:0 }
 fieldset, img { border:0 }
 address, caption, cite, code, dfn, em, strong, th, var { font-style:normal; font-weight:normal }
@@ -70,11 +82,11 @@ body {
 }
 
 h1,h2,h3,h4,h5,h6 {
-	font-family:'Raleway', sans-serif;
+	font-family:'Raleway', 'Tahoma';
 }
 
 p {
-	font-size:16px;
+	font-size:.98rem;
 	line-height:26px;
 }
 
@@ -133,13 +145,13 @@ img {
 	clip: auto !important;
 	color: #21759b;
 	display: block;
-	font-size: 14px;
+	font-size: .92rem;
 	font-size: 0.875rem;
 	font-weight: bold;
 	height: auto;
 	left: 5px;
 	line-height: normal;
-	padding: 15px 23px 14px;
+	padding: .94rem 23px .92rem;
 	text-decoration: none;
 	top: 5px;
 	width: auto;
@@ -152,7 +164,7 @@ img {
 
 #navigation {
 	height: 67px;
-	background: #222;
+	background: #011;
 	position:fixed;
 	z-index:9999;
 	box-shadow: 0px 1px 5px rgba(190, 190, 190, 0.46);
@@ -200,15 +212,15 @@ img {
 #logo h1 a{
 	color: #fff;
     line-height: 67px;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Raleway', 'Tahoma';
     letter-spacing: 2.75px;
     text-transform: uppercase;
-    font-size: 18px;
+    font-size: 0.96rem;
     font-weight: 600;
 }
 .menu li a {
-	font-family:'Raleway', sans-serif;
-	font-size: 11px;
+	font-family:'Raleway', 'Tahoma';
+	font-size: .86rem;
 	font-weight: 500;
 	letter-spacing: 1.5px;
 	color: #000;
@@ -293,7 +305,7 @@ img {
 	}
 
 	#top-social a i {
-		font-size: 14px;
+		font-size: .92rem;
 		line-height: 35px;
 		color: #000;
 		display: block;
@@ -336,12 +348,12 @@ img {
 }
 
 #owl-demo .item .feat-overlay .feat-text {
-	padding: 30px 15px;
+	padding: 30px .94rem;
 	min-height: 70px;
 }
 
 #owl-demo .item .feat-overlay h3 a {
-	font-size: 16px;
+	font-size: .98rem;
 	text-transform: uppercase;
 	color: #000;
 	font-weight: 600;
@@ -349,7 +361,7 @@ img {
 }
 
 #owl-demo .item .feat-overlay .feat-cat a{
-	font-size: 14px;
+	font-size: .92rem;
     margin-left: 2px;
 	color: #888888;
 	display: inline-block;
@@ -385,10 +397,10 @@ img {
 .promo-item:before {
     content: '';
     position: absolute;
-    top: 15px;
-    bottom: 15px;
-    left: 15px;
-    right: 15px;
+    top: .94rem;
+    bottom: .94rem;
+    left: .94rem;
+    right: .94rem;
     border: 1px solid rgba(255,255,255,.6);
     z-index: 1;
     transition: all .3s ease-in-out;
@@ -420,7 +432,7 @@ img {
 
 .promo-overlay h4 {
     line-height: 1.5em;
-    font-size: 16px;
+    font-size: .98rem;
     font-weight: 600;
     letter-spacing: 2.75px;
     display: inline-block;
@@ -479,7 +491,7 @@ img {
 }
 
 .zt-grid-title .sub-title {
-	font-size: 18px;
+	font-size: 1.2rem;
 	font-style: italic;
 	color: #999;
 }
@@ -488,16 +500,16 @@ img {
 	display: inline-block;
 	vertical-align: top;
 	width: 300px;
-	margin-right: 16px;
+	margin-right: .98rem;
 	margin-bottom: 45px;
 }
 
 .container.zminimal_sidebar .zt-grid li {
-	width:315px;
+	width:3.94rem;
 }
 
 .container.zminimal_sidebar .zt-grid li:nth-child(3n+3) {
-	margin-right:16px;
+	margin-right:1rem;
 }
 
 .container.zminimal_sidebar .zt-grid li:nth-child(2n+2) {
@@ -515,10 +527,10 @@ img {
 }
 
 .zt-grid li .item .cat {
-	font-size: 11px;
+	font-size: .86rem;
 	letter-spacing: 1px;
 	text-transform: uppercase;
-	font-family:'Raleway', sans-serif;
+	font-family:'Raleway', 'Tahoma';
 	margin-bottom:7px;
 	display:block;
 	text-align: center;
@@ -534,7 +546,7 @@ img {
 }
 
 .zt-grid li .item h2 a {
-	font-size: 15px;
+	font-size: .94rem;
 	color: #000000;
 	text-transform: uppercase;
 	letter-spacing: 1px;
@@ -554,7 +566,7 @@ img {
 }
 
 .grid-meta span.post-likes {
-    font-size: 14px;
+    font-size: .92rem;
 }
 
 .grid-meta span.post-likes .zt-like-post-count{
@@ -572,7 +584,7 @@ img {
     font-size: 10px;
     color: #CACACA;
     letter-spacing: 1px;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Raleway', 'Tahoma';
 }
 
 
@@ -600,7 +612,7 @@ img {
 
 	.post-header .cat a {
 		display: inline-block;
-		font-family: 'Raleway', sans-serif;
+		font-family: 'Raleway', 'Tahoma';
 		font-size: 10px;
 		font-weight: 600;
 		letter-spacing: 2px;
@@ -634,7 +646,7 @@ img {
 	    color: #777777;
 	    text-transform: uppercase;
 	    letter-spacing: 1px;
-	    font-family: 'Raleway', sans-serif;
+	    font-family: 'Raleway', 'Tahoma';
 	    font-weight: 600;
 	}
 	
@@ -706,7 +718,7 @@ img {
 	    transition: all 0.2s linear;
 	    text-transform: uppercase;
 	    color: #424242;
-	    font-family: 'Raleway', sans-serif;
+	    font-family: 'Raleway', 'Tahoma';
 	}
 
 	.post-entry a.more-link:hover {
@@ -741,11 +753,11 @@ img {
 	}
 
 	.post-entry h5 {
-		font-size:18px;
+		font-size:1.2rem;
 	}
 
 	.post-entry h6 {
-		font-size:16px;
+		font-size:.98rem;
 	}
 
 	.post-entry hr {
@@ -766,9 +778,9 @@ img {
 	.post-entry blockquote p {
 		border-left:3px solid #000;
 		color:#999;
-		padding:0 18px;
+		padding:0 1.2rem;
 		font-family:"Georgia";
-		font-size:15px;
+		font-size:.94rem;
 		line-height:28px;
 		font-style:italic;
 	}
@@ -803,7 +815,7 @@ img {
 
 	.post-entry th {
 		font-weight:bold;
-		font-size:14px;
+		font-size:.92rem;
 		background:#f5f5f5;
 	}
 
@@ -812,8 +824,8 @@ img {
 	}
 
 	.post-entry pre{
-		margin-bottom: 15px;
-		margin-bottom: 15px;
+		margin-bottom: .94rem;
+		margin-bottom: .94rem;
 	    overflow: auto;
 	    white-space: pre-wrap;
 	    word-wrap: break-word;
@@ -872,8 +884,8 @@ img {
 	    float: left;
 	    line-height: 30px;
 	    margin-left: 5px;
-	    font-size: 14px;
-	    font-family: 'Raleway', sans-serif;
+	    font-size: .92rem;
+	    font-family: 'Raleway', 'Tahoma';
 	}
 
 	.zt-like-post.liked i{
@@ -905,7 +917,7 @@ img {
 	}
 
 	.share-box i {
-		font-size: 14px;
+		font-size: .92rem;
 	}
 	
 	.share-box:hover {
@@ -936,7 +948,7 @@ img {
 	}
 	
 	.author-content h5 a {
-		font-size:14px;
+		font-size:.92rem;
 		letter-spacing:2px;
 		text-transform:uppercase;
 		margin-bottom:8px;
@@ -950,7 +962,7 @@ img {
 	}
 	
 	.author-content .author-social {
-		font-size:14px;
+		font-size:.92rem;
 		color:#bbb;
 		margin-right:8px;
 	}
@@ -970,7 +982,7 @@ img {
 	}
 
 	.post-box-title {
-	    font-size: 14px;
+	    font-size: .92rem;
 	    letter-spacing: 1.75px;
 	    text-transform: uppercase;
 	    margin-bottom: 42px;
@@ -1023,7 +1035,7 @@ img {
 	}
 
 	.entry-title a {
-		font-size: 14px;
+		font-size: .92rem;
 	    position: absolute;
 	    color: #fff;
 	    text-transform: uppercase;
@@ -1048,7 +1060,7 @@ img {
 	}
 
 	.post-tags a {
-	    font-family: 'Raleway', sans-serif;
+	    font-family: 'Raleway', 'Tahoma';
 	    font-size: 10px;
 	    letter-spacing: 1px;
 	    text-transform: uppercase;
@@ -1095,19 +1107,19 @@ img {
 	
 	.post-pagination span {
 		color: #CCC;
-		font-size: 14px;
+		font-size: .92rem;
 		font-style:italic;
 		letter-spacing:1px;
 	}
 
 	.pagi-text {
-		margin-top:11px;
+		margin-top:.86rem;
 	}
 
 	.post-pagination h5 {
 		text-transform:uppercase;
 		letter-spacing:2px;
-		font-size: 14px;
+		font-size: .92rem;
 		color: #000;
 		font-weight: 600;
 		padding-top: 8px;
@@ -1132,7 +1144,7 @@ img {
 
 .pagination a {
 	color: #969696;
-	font-family:'Raleway', sans-serif;
+	font-family:'Raleway', 'Tahoma';
 	letter-spacing: 2px;
 	text-transform:uppercase;
 	font-size: 12px;
@@ -1161,7 +1173,7 @@ img {
 /*--------------------------------------------------------------*/
 
 #footer-logo {
-	background:#222;
+	background:#011;
 	padding:30px 0;
 	text-align:center;
 	border-top: 4px double #ECECEC;
@@ -1169,7 +1181,7 @@ img {
 }
 
 #footer-logo img {
-	margin-bottom:15px;
+	margin-bottom:.94rem;
 }
 
 #footer-logo p {
@@ -1186,27 +1198,27 @@ img {
 #footer-copyright {
 	padding: 10px 0;
 	overflow:hidden;
-	font-family:'Raleway', sans-serif;
+	font-family:'Raleway', 'Tahoma';
 	clear: both;
 	border-top: 1px solid #ededed;
 }
 
 #footer-copyright p {
-	font-size:11px;
+	font-size:.86rem;
 	color:#888;
 	float:left;
 }
 
 #footer-copyright p i {
 	color:#d55;
-	font-size:14px;
+	font-size:.92rem;
 	margin:0 5px 0 7px;
 }
 
 #footer-copyright .to-top {
 	float:right;
 	margin-top:6px;
-	font-size:11px;
+	font-size:.86rem;
 	text-transform:uppercase;
 	font-weight:700;
 	letter-spacing:1px;
@@ -1214,7 +1226,7 @@ img {
 }
 
 #footer-copyright .to-top i {
-	font-size:14px;
+	font-size:.92rem;
 	margin-left:3px;
 }
 
@@ -1235,7 +1247,7 @@ img {
 }
 
 .widget {
-	margin-bottom: 15px;
+	margin-bottom: .94rem;
 	width: 292px;
 	margin-right: 32px;
 	float: left;
@@ -1310,7 +1322,7 @@ img {
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 3.75px;
-    padding: 12px 14px;
+    padding: 12px .92rem;
     color: orangered;
     margin-bottom: 20px;
     font-weight: 600;
@@ -1363,8 +1375,8 @@ img {
 	#searchform input#s {
 		border: 1px solid #e5e5e5;
 		background:#fff url(img/searchsubmit.png) no-repeat 96% 13px;
-		padding:14px 14px;
-		font-size:11px;
+		padding:.92rem .92rem;
+		font-size:.86rem;
 		color:#999;
 		letter-spacing:1px;
 	}
@@ -1404,7 +1416,7 @@ img {
 
 	.about-widget p{
 		color: #666;
-		font-size: 15px;
+		font-size: .94rem;
 	}
 	
 /*----------------------------------------------------------*/
@@ -1436,7 +1448,7 @@ img {
 /*----------------------------------------------------------*/
 	
 	.widget .tagcloud a {
-		font-family:'Raleway', sans-serif;
+		font-family:'Raleway', 'Tahoma';
 		font-size: 10px !important;
 		letter-spacing:1px;
 		text-transform:uppercase;
@@ -1469,7 +1481,7 @@ img {
 		color: #777;
 		font-size: 12px;
 		margin-top: 10px;
-		margin-bottom: 15px;
+		margin-bottom: .94rem;
 	}
 
 	#wp-calendar thead {
@@ -1545,7 +1557,7 @@ img {
 
 	.widget ul.latest-post li .post-image {
 		float:left;
-		margin-right:14px;
+		margin-right:.92rem;
 	}
 	
 	.widget ul.latest-post li .post-image img {
@@ -1562,15 +1574,16 @@ img {
 		margin-top: 4px;
 		color: #6b6b6b;
 		display:block;
-		font-size: 11px;
+		font-size: .86rem;
 		text-transform: uppercase;
 		letter-spacing: 1px;
 		font-weight: 600;
 	}
 
 	.post-item-text .post-meta {
-		font-size: 12px;
+		font-size: .80rem;
 		letter-spacing:1px;
+	    font-family: 'Raleway', 'Tahoma';
 		color: #ADADAD;
 	}
 
@@ -1578,7 +1591,7 @@ img {
 	    font-size: 8px!important;
 	    font-weight: 600;
 	    letter-spacing: 1px;
-	    font-family: 'Raleway', sans-serif;
+	    font-family: 'Raleway', 'Tahoma';
 	    text-transform: uppercase;
 	    color: white;
 	    background: orange;
@@ -1611,7 +1624,7 @@ img {
 		text-align:center;
 		color:#000;
 		margin:0 5px;
-		font-size:16px;
+		font-size:.98rem;
 	}
 
 	.social-widget a:hover{
@@ -1692,7 +1705,7 @@ img {
     font-weight: 600;
     margin-bottom: 6px;
     color: #333;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Raleway', 'Tahoma';
 }
 
 .thecomment .comment-text span.author a:hover {
@@ -1709,20 +1722,20 @@ img {
 
 .thecomment .comment-text em {
 	font-size:13px;
-	margin-bottom:-14px;
+	margin-bottom:-.92rem;
 	display:block;
 	color:orange;
 	letter-spacing:1px;
 }
 
 .thecomment .comment-text em i {
-	font-size:14px;
+	font-size:.92rem;
 	color:#f3bd00;
 }
 
 .post-comments span.reply a {
 	float:right;
-	font-size:11px;
+	font-size:.86rem;
 	background-color:#aaa;
 	color:#FFF;
 	padding:3px 6px 5px 6px;
@@ -1799,11 +1812,11 @@ li.comment{
 }
 
 .comment-text h5 {
-	font-size:18px;
+	font-size:1.2rem;
 }
 
 .comment-text h6 {
-	font-size:16px;
+	font-size:.98rem;
 }
 
 .comment-text hr {
@@ -1825,7 +1838,7 @@ li.comment{
 
 .comment-text th {
 	font-weight:bold;
-	font-size:14px;
+	font-size:.92rem;
 	background:#f5f5f5;
 }
 
@@ -1834,7 +1847,7 @@ li.comment{
 }
 
 .comment-text pre{
-	margin-bottom: 15px;
+	margin-bottom: .94rem;
 }
 /** Reply **/
 
@@ -1844,7 +1857,7 @@ li.comment{
 }
 
 #respond  h3 {
-	font-size:14px;
+	font-size:.92rem;
 	color: #424243;
 	font-weight:400;
 	margin-bottom:30px;
@@ -1860,7 +1873,7 @@ li.comment{
 
 #respond h3 small a {
 	text-transform:uppercase;
-	font-size:11px;
+	font-size:.86rem;
 	background:#333;
 	color:#FFF;
 	padding:4px 6px 5px;
@@ -1881,7 +1894,7 @@ li.comment{
 #respond label {
 	color: #636363;
 	width:80px;
-	font-size:14px;
+	font-size:.92rem;
 	display:inline-block;
 	font-weight:300;
 }
@@ -1892,7 +1905,7 @@ li.comment{
 	margin-right:10px;
 	color: #808080;
 	margin-bottom: 20px;
-	font-size:11px;
+	font-size:.86rem;
 	width: 60%;
 	font-family:"Georgia";
 }
@@ -1902,11 +1915,11 @@ li.comment{
 }
 
 #respond .comment-form-url {
-	margin-bottom: 15px;
+	margin-bottom: .94rem;
 }
 
 #respond textarea {
-	padding:14px;
+	padding:.92rem;
 	border: 1px solid #ECECEC;
 	width:95%;
 	height:120px;
@@ -1926,7 +1939,7 @@ li.comment{
 	text-transform:uppercase;
 	letter-spacing:2px;
 	border-radius:0;
-	font-size:11px;
+	font-size:.86rem;
 	color:#666;
 	padding: 10px 20px 10px;
 	margin-top:6px;
@@ -1974,7 +1987,7 @@ div#comments_pagination {
 }
 
 .archive-box span {
-	font-size:14px;
+	font-size:.92rem;
 	font-style:italic;
 	letter-spacing:1px;
 	color: #BBB;
@@ -2052,7 +2065,7 @@ a img.aligncenter {
     max-width: 96%;
     padding: 5px 3px 10px;
     text-align: center;
-	font-family:'Raleway', sans-serif;
+	font-family:'Raleway', 'Tahoma';
 }
 
 .wp-caption.alignnone {
@@ -2077,7 +2090,7 @@ a img.aligncenter {
 }
 
 .wp-caption p.wp-caption-text {
-    font-size: 11px;
+    font-size: .86rem;
     line-height: 17px;
     margin: 0;
     padding: 0 4px 5px;
@@ -2086,7 +2099,7 @@ a img.aligncenter {
 .gallery .gallery-caption{  
     font-size:12px;
 	color:#888;
-	font-family:'Raleway', sans-serif;
+	font-family:'Raleway', 'Tahoma';
 }  
   
 .gallery .gallery-icon img{  
@@ -2146,7 +2159,7 @@ div.wpcf7 {
 	padding:12px 24px;
 	color:#FFF;
 	letter-spacing:3px;
-	font-size:11px;
+	font-size:.86rem;
 	text-transform:uppercase;
 	cursor:pointer;
 	-o-transition:.3s;
@@ -2180,7 +2193,7 @@ div.wpcf7 {
 }
 .error-404 p {
 	color:#999;
-	font-size:18px;
+	font-size:1.2rem;
 	font-style:italic;
 	padding-bottom: 10px;
 }
@@ -2193,7 +2206,7 @@ div.wpcf7 {
 
 .woocommerce h2, .woocommerce h3 {
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: .92rem;
     letter-spacing: 2px;
 }
 #container{
@@ -2241,7 +2254,7 @@ div.wpcf7 {
     margin-top: 10px;
 }
 .widget_product_categories .count {
-	font-size:14px;
+	font-size:.92rem;
 	color:#999;
 }
 .woocommerce ul.products li.product .onsale {
@@ -2252,7 +2265,7 @@ div.wpcf7 {
     border-radius: 50%;
     color: #fff;
     background-color: #424243;
-    top: -18px;
+    top: -1.2rem;
 }
 .woocommerce .widget_price_filter .price_slider_wrapper .ui-widget-content {
 	background-color:#eee;
@@ -2264,7 +2277,7 @@ div.wpcf7 {
 	background-color:#d8d8d8;
 }
 .woocommerce .woocommerce-ordering {
-    margin-top: -15px;
+    margin-top: -.94rem;
     margin-bottom: 40px;
 }
 .woocommerce .woocommerce-ordering select {
@@ -2324,7 +2337,7 @@ div.wpcf7 {
 	margin-bottom: 5px;
 }
 .woocommerce .star-rating {
-	font-size:11px;
+	font-size:.86rem;
 	color:#CAAE57;
 }
 .woocommerce .woocommerce-product-rating .star-rating {
@@ -2342,7 +2355,7 @@ a.woocommerce-review-link {
 .woocommerce div.product .entry-summary p.price, .woocommerce div.product .entry-summary span.price {
 	font-size:21px;
 	color:#000;
-	margin-top:15px;
+	margin-top:.94rem;
 }
 .woocommerce #content div.product div.summary p {
 	margin-bottom:20px;
@@ -2359,7 +2372,7 @@ a.woocommerce-review-link {
 	font-size:10px;
 	text-transform:uppercase;
 	letter-spacing:2px;
-	padding:12px 18px 14px;
+	padding:12px 1.2rem .92rem;
 	font-weight:700;
 	border-radius:2px;
 }
@@ -2386,11 +2399,11 @@ a.woocommerce-review-link {
 	min-height:28px;
 	min-width:50px;
 	line-height:28px;
-	top:15px;
-	left:15px;
+	top:.94rem;
+	left:.94rem;
 	background-color:#fff;
 	color:#000;
-	font-size:11px;
+	font-size:.86rem;
 	text-transform:uppercase;
 	letter-spacing:2px;
 	padding:0;
@@ -2405,16 +2418,16 @@ a.woocommerce-review-link {
 }
 .woocommerce div.product .woocommerce-tabs ul.tabs li a {
 	padding: 10px;
-    font-size: 11px;
+    font-size: .86rem;
     text-transform: uppercase;
     letter-spacing: 2px;
 	font-weight:400;
 }
 .woocommerce div.product .woocommerce-tabs .panel h2 {
-	margin-bottom:15px;
+	margin-bottom:.94rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-size: 14px;
+    font-size: .92rem;
     font-weight: 700;
 }
 .woocommerce div.product .woocommerce-tabs ul.tabs li {
@@ -2424,7 +2437,7 @@ a.woocommerce-review-link {
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-size: 14px;
+    font-size: .92rem;
     font-weight: 700;
 }
 .woocommerce-tabs.wc-tabs-wrapper {
@@ -2442,7 +2455,7 @@ a.woocommerce-review-link {
 	font-weight:400;
 }
 .woocommerce table.shop_attributes td {
-	padding-left:15px;
+	padding-left:.94rem;
 }
 
 /* Comments / Reviews  */
@@ -2497,9 +2510,9 @@ a.woocommerce-review-link {
     letter-spacing: 2px;
     background: #fff;
     border-radius: 0;
-    font-size: 11px;
+    font-size: .86rem;
     color: #6B6B6B;
-    padding: 11px 21px 13px;
+    padding: .86rem 21px 13px;
     display: inline-block;
     border: 1px solid #DCDCDC;
     -o-transition: .3s;
@@ -2519,11 +2532,11 @@ a.woocommerce-review-link {
 /** My account **/
 .woocommerce-account .addresses .title h3, .woocommerce-account h2 {
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: .92rem;
     letter-spacing: 2px;
 }
 .woocommerce table.my_account_orders th {
-	font-size:11px;
+	font-size:.86rem;
 	text-transform:uppercase;
 	letter-spacing:2px;
 	font-weight:400;
@@ -2533,7 +2546,7 @@ a.woocommerce-review-link {
 	border:none;
 }
 .woocommerce table.my_account_orders .order-actions .button {
-	padding:7px 14px 8px 16px;
+	padding:7px .92rem 8px .98rem;
 	font-size:10px;
 }
 .woocommerce table.my_account_orders td, .woocommerce table.my_account_orders th {
@@ -2555,7 +2568,7 @@ address {
 	line-height:24px;
 }
 .woocommerce-account .addresses .title .edit {
-	font-size:11px;
+	font-size:.86rem;
 	text-decoration:underline;
 }
 
@@ -2595,7 +2608,7 @@ a.showcoupon {
 }
 .woocommerce-checkout h3 {
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: .92rem;
     letter-spacing: 2px;
 }
 input#ship-to-different-address-checkbox {
@@ -2655,7 +2668,7 @@ input#ship-to-different-address-checkbox {
 	padding-left:0;
 }
 .woocommerce .woocommerce-error:before, .woocommerce .woocommerce-info:before, .woocommerce .woocommerce-message:before {
-	top:11px;
+	top:.86rem;
 }
 .woocommerce .woocommerce-error, .woocommerce .woocommerce-info, .woocommerce .woocommerce-message {
 	border: 1px solid #ECECEC;
@@ -2671,14 +2684,14 @@ input#ship-to-different-address-checkbox {
 	width:100%;
 }
 .woocommerce-cart .cart-collaterals .cart_totals table td, .woocommerce-cart .cart-collaterals .cart_totals table th {
-	padding-left:15px;
+	padding-left:.94rem;
 }
 .woocommerce-cart .cart-collaterals .cart_totals tr td, .woocommerce-cart .cart-collaterals .cart_totals tr th {
 	border-top:none;
 }
 .woocommerce .cart .button, .woocommerce .cart input.button {
 	font-size:10px;
-	padding:8px 14px 9px;
+	padding:8px .92rem 9px;
 }
 .woocommerce-cart table.cart td.actions .coupon .input-text {
 	padding:5px 6px;
@@ -2692,7 +2705,7 @@ input#ship-to-different-address-checkbox {
 	background:#f7f7f7;
 }
 .woocommerce #content table.cart td.actions, .woocommerce table.cart td.actions, .woocommerce-page #content table.cart td.actions, .woocommerce-page table.cart td.actions {
-	padding:15px;
+	padding:.94rem;
 	border-top:1px solid #e5e5e5;
 }
 .woocommerce a.remove {
@@ -2730,8 +2743,8 @@ input#rememberme {
 
 /** cart widget **/
 .woocommerce .widget_shopping_cart .cart_list li a.remove, .woocommerce.widget_shopping_cart .cart_list li a.remove {
-	font-size:16px;
-	line-height:18px;
+	font-size:.98rem;
+	line-height:1.2rem;
 	font-weight:700;
 }
 .woocommerce ul.cart_list li a, .woocommerce ul.product_list_widget li a {
@@ -2747,16 +2760,16 @@ input#rememberme {
 	color:#999;
 }
 .woocommerce ul.cart_list, .woocommerce ul.product_list_widget {
-	margin-bottom:15px;
+	margin-bottom:.94rem;
 }
 .woocommerce .widget_shopping_cart .total, .woocommerce.widget_shopping_cart .total {
 	border-top:1px solid #eee;
 	padding-top:10px;
-	margin-bottom:15px;
+	margin-bottom:.94rem;
 }
 .widget_shopping_cart a.button, .woocommerce .widget_price_filter .price_slider_amount .button {
 	font-size:10px;
-	padding:10px 16px 11px;
+	padding:10px .98rem .86rem;
 	margin:0 5px 0 0;
 }
 
@@ -2765,7 +2778,7 @@ input#rememberme {
 .woocommerce.widget_recent_reviews ul.product_list_widget li img, .woocommerce.widget_top_rated_products  ul.product_list_widget li img {
 	float:left;
 	margin-left:0;
-	margin-right:14px;
+	margin-right:.92rem;
 	width:80px;
 }
 .woocommerce.widget_products ul.product_list_widget li, .woocommerce.widget_recently_viewed_products ul.product_list_widget li,

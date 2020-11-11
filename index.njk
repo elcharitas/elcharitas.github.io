@@ -5,6 +5,7 @@ eleventyNavigation:
   order: 1
 ---
 
+{% set maxPosts = metadata.archive.perpage %}
 {% set archivelist = collections.archive | head(-3) %}
 {% set archivelistCounter = collections.archive | length %}
 
