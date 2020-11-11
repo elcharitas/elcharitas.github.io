@@ -1,14 +1,48 @@
-<ol reversed class="postlist" style="counter-reset: start-from {{ (archivelistCounter or archivelist.length) + 1 }}">
+        <div class="container ">
+        	<div id="main">
 {% for post in archivelist | reverse %}
-  <li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
-    <a href="{{ post.url | url }}" class="postlist-link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
-    <time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
-    {% for tag in post.data.tags %}
-      {%- if collections.tagList.indexOf(tag) != -1 -%}
-      {% set tagUrl %}/tags/{{ tag }}/{% endset %}
-      <a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
-      {%- endif -%}
-    {% endfor %}
-  </li>
+        		<article id="post-65" class="post">
+        		    <div class="post-image">
+        			    <a href="{{ post.url | url }}">
+        			        <img width="940" height="207" src="wp-content/uploads/sites/25/2016/01/m1-21-940x627.jpg" class="attachment-zminimal-full-thumb size-zminimal-full-thumb wp-post-image image-rounded" alt="" loading="lazy"/>
+        			    </a>
+        		    </div>
+        	        <div class="post-header">
+        				<h2><a href="{{ post.url | url }}">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a></h2>
+                
+                    {% for tag in post.data.tags %}
+                      {%- if collections.tagList.indexOf(tag) != -1 -%}
+                      {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+                      <span class="cat"><a href="{{ tagUrl | url }}" rel="category tag"> {{ tag }} </a></span>
+                      {%- endif -%}
+                    {% endfor %}
+        				<span class="date">{{ post.date | readableDate }}</span>
+        			</div>
+                	<div class="post-entry">
+                		<p>{{ post.data.content | truncate(20) }} <a href="{{ post.url | url }}" class="more-lin">Continue?</a></p>
+                	</div>
+                	<div class="post-metas">
+                    	<div class="post-likes">
+                            <span class="zthemes-love"><a href="void(0)" title="Like this"><i class="fa fa-heart-o"></i> <span class="zt-like-post-count"></span></a></span>
+                        </div>
+                    	<div class="post-share">
+                    		
+                    		<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ post.url | url }}"><span class="share-box"><i class="fa fa-facebook-square"></i></span></a>
+                    		<a target="_blank" href="https://twitter.com/home?status=Check%20out%20this%20article:%20%20-%20{{ post.url | url }}"><span class="share-box"><i class="fa fa-twitter-square"></i></span></a>
+                    		<a target="_blank" href="https://pinterest.com/pin/create/button/?url={{ post.url | url }}&media=wp-content/uploads/sites/25/2016/01/m1-21.jpg"><span class="share-box"><i class="fa fa-pinterest-square"></i></span></a>
+                    		<a target="_blank" href="https://plus.google.com/share?url={{ post.url | url }}"><span class="share-box"><i class="fa fa-whatsapp"></i></span></a>
+                    		<a href="{{ post.url | url }}#respond"><span class="share-box"><i class="fa fa-comment"></i></span></a>		
+                    	</div>
+                	</div>
+                </article>
 {% endfor %}
-</ol>
+            	<div class="pagination">
+            						
+            		<div class="older">
+            		    <a href="page/2" >Older Posts &rarr;</a>
+            		</div>
+            		<div class="newer"><a href="">&larr; Newer Posts</a></div>
+            		
+            	</div>
+            </div>
+        </div>
