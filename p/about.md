@@ -1,10 +1,7 @@
 ---
 layout: layouts/page.njk
-title: About Me
-templateClass: tmpl-post
-eleventyNavigation:
-  key: About Me
-  order: 3
+title: About Elcharitas
+templateClass: page
 ---
 
 I am a person that writes stuff.

@@ -1,0 +1,14 @@
+---
+permalink: /authors/
+layout: layouts/home.njk
+---
+<h1>Authors</h1>
+
+{% for author in collections.tagList %}
+    {% if '@' == author | first %}
+        {% set authorUrl %}/authors/{{ author }}/{% endset %}
+        <div class="author">
+            <a href="{{ authorUrl | url }}" class="post-author">{{ author }}</a>
+        </div>
+    {% endif %}
+{% endfor %}
