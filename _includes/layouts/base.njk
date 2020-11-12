@@ -14,20 +14,31 @@
         <script type="text/javascript" src="{{ '/assets/js/app.js' | url }}"></script>
     </head>
     <body class="{% if templateClass %}{{ templateClass }} {% endif %}blog theme-zminimal">
+
     	<nav id="navigation">
     		<div class="container">
     			<div id="logo">
-    				<h1><a href=""> <i class="fa fa-user-secret"></i> elcharitas </a></h1>
+    				<h1><a href=""> <i class="fa fa-user-secret link"></i> elcharitas </a></h1>
     			</div>
-    			<div id="navigation-wrapper">
-    			    <ul id="menu-menu-1" class="menu">
-    			        <li id="menu-item-346" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-346"><a href="/minimal/about-me">About</a></li>
-    			    </ul>
+    			<div class="mobile-pack">
+    			    <span class="search-icon"></span>
+    			    <span class="menu-icon"></span>
     			</div>
-    			<div class="menu-mobile"></div>
     		</div>
     	</nav>
-    	
+        <header>
+    		<div class="promo-area">
+        		<div class="promo-item" style="background-image:url(wp-content/uploads/sites/25/2020/02/promobox1.jpg)">
+            		<a href="#" class="promo-link"></a>
+            		<div class="promo-overlay">
+            			<h4>
+            			    I'm elcharitas!
+            		    </h4>
+            		</div>
+        	    </div>
+            </div>
+        </header>
+    
     	{{ content | safe }}
     	
     	<div id="widget-area">
