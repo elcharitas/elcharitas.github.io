@@ -372,6 +372,36 @@ img {
 /*-------------------------------------------------------------------*/
 /*  4b. Promo Area
 /*-------------------------------------------------------------------*/
+#wave {
+  position: relative;
+  height: 70px;
+  width: 600px;
+  background: #e0efe3;
+}
+
+#wave:before {
+        content: "";
+        display: block;
+        position: absolute;
+        border-radius: 100% 50%;
+        width: 340px;
+    height: 80px;
+    background-color: white;
+    right: -5px;
+    top: 40px;
+}
+
+#wave:after {
+        content: "";
+        display: block;
+        position: absolute;
+        border-radius: 100% 50%;
+        width: 300px;
+    height: 70px;
+    background-color: #e0efe3;
+    left: 0;
+    top: 27px;
+}
 
 .promo-area {
 	overflow:hidden;
@@ -1861,12 +1891,12 @@ li.comment{
 }
 /** Reply **/
 
-#respond {
+#HCB_comment_box {
 	margin-bottom:20px;
 	overflow:hidden;
 }
 
-#respond  h3 {
+#HCB_comment_box  h3 {
 	font-size:.86rem;
 	color: #424243;
 	font-weight:400;
@@ -1876,12 +1906,12 @@ li.comment{
 	text-transform:uppercase;
 }
 
-#respond h3 a {
+#HCB_comment_box h3 a {
 	color:#000;
 	display:inline-block;
 }
 
-#respond h3 small a {
+#HCB_comment_box h3 small a {
 	text-transform:uppercase;
 	font-size:.82rem;
 	background:#333;
@@ -1897,11 +1927,11 @@ li.comment{
 	transition:.3s;
 }
 
-#respond h3 small a:hover {
+#HCB_comment_box h3 small a:hover {
 	opacity:.8;
 }
 
-#respond label {
+#HCB_comment_box label {
 	color: #636363;
 	width:80px;
 	font-size:.86rem;
@@ -1909,7 +1939,7 @@ li.comment{
 	font-weight:300;
 }
 
-#respond input {
+#HCB_comment_box input {
 	padding: 8px 10px;
 	border: 1px solid #ECECEC;
 	margin-right:10px;
@@ -1920,15 +1950,15 @@ li.comment{
 	font-family:"Georgia";
 }
 
-#respond input:focus {
+#HCB_comment_box input:focus {
 	outline:none;
 }
 
-#respond .comment-form-url {
+#HCB_comment_box .comment-form-url {
 	margin-bottom: .88rem;
 }
 
-#respond textarea {
+#HCB_comment_box textarea {
 	padding:.86rem;
 	border: 1px solid #ECECEC;
 	width:95%;
@@ -1940,11 +1970,11 @@ li.comment{
 	font-family:"Georgia";
 }
 
-#respond textarea:focus {
+#HCB_comment_box textarea:focus {
 	outline:none;
 }
 
-#respond #submit {
+#HCB_comment_box input.submit {
 	font-family:"Lato";
 	text-transform:uppercase;
 	letter-spacing:2px;
@@ -1966,7 +1996,7 @@ li.comment{
 	border: 1px solid #cacaca;
 }
 
-#respond #submit:hover {
+#HCB_comment_box imput.submit:hover {
 	background:#333;
 	color:#FFF;
 	border: 1px solid #333;
@@ -2377,7 +2407,7 @@ a.woocommerce-review-link {
 .woocommerce div.product form.cart, .woocommerce div.product p.cart {
 	margin-top:30px;
 }
-.woocommerce #respond input#submit.alt, .woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt {
+.woocommerce #HCB_comment_box input#submit.alt, .woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt {
 	background-color:#000;
 	font-size:10px;
 	text-transform:uppercase;
@@ -2386,7 +2416,7 @@ a.woocommerce-review-link {
 	font-weight:700;
 	border-radius:2px;
 }
-.woocommerce #respond input#submit.alt:hover, .woocommerce a.button.alt:hover, .woocommerce button.button.alt:hover, .woocommerce input.button.alt:hover {
+.woocommerce #HCB_comment_box input#submit.alt:hover, .woocommerce a.button.alt:hover, .woocommerce button.button.alt:hover, .woocommerce input.button.alt:hover {
 	background-color:#333;
 }
 .woocommerce .quantity .qty {
@@ -2506,16 +2536,16 @@ a.woocommerce-review-link {
 .woocommerce #reviews h3 {
 	margin-bottom:10px;
 }
-.woocommerce #review_form #respond p {
+.woocommerce #review_form #HCB_comment_box p {
 	margin-bottom:10px;
 }
 .woocommerce p.stars a.star-1, .woocommerce p.stars a.star-2, .woocommerce p.stars a.star-3, .woocommerce p.stars a.star-4, .woocommerce p.stars a.star-5 {
 	border-right:1px solid #eee;
 }
-.woocommerce #review_form #respond textarea {
+.woocommerce #review_form #HCB_comment_box textarea {
 	margin-bottom:0;
 }
-.woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button {
+.woocommerce #HCB_comment_box input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button {
     text-transform: uppercase;
     letter-spacing: 2px;
     background: #fff;
@@ -2534,7 +2564,7 @@ a.woocommerce-review-link {
     width: auto;
     font-weight: 400;
 }
-.woocommerce #respond input#submit:hover, .woocommerce a.button:hover, .woocommerce button.button:hover, .woocommerce input.button:hover { 
+.woocommerce #HCB_comment_box input#submit:hover, .woocommerce a.button:hover, .woocommerce button.button:hover, .woocommerce input.button:hover { 
 	background:#333;
 	color:#FFF;
 }
