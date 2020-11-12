@@ -7,7 +7,8 @@
     "watch": "eleventy --watch",
     "serve": "eleventy --serve",
     "start": "eleventy --serve",
-    "debug": "DEBUG=* eleventy"
+    "debug": "DEBUG=* eleventy",
+    "styles": "lessc --verbose _src/less/app.less | uglifycss > assets/css/style.css"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,7 @@
     "markdown-it": "^8.4.2",
     "markdown-it-anchor": "^5.2.5",
     "less": "^3.12.2",
-    "uglify-js": "^3.11.0"
+    "uglify-js": "^3.11.0",
+    "uglifycss": "^0.0.29"
   }
 }
