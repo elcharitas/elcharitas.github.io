@@ -1,7 +1,7 @@
 {
-  "name": "eleventy-base-blog",
-  "version": "5.0.2",
-  "description": "A starter repository for a blog web site using the Eleventy static site generator.",
+  "name": "elcharitas-blog",
+  "version": "1.0.2",
+  "description": "A static blog built on 11ty",
   "scripts": {
     "build": "eleventy",
     "watch": "eleventy --watch",
@@ -11,18 +11,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/11ty/eleventy-base-blog.git"
+    "url": "git://github.com/elcharitas/elcharitas.github.io.git"
   },
   "author": {
-    "name": "Zach Leatherman",
-    "email": "zachleatherman@gmail.com",
-    "url": "https://zachleat.com/"
+    "name": "Jonathan Irhodia",
+    "email": "jonathanirhodia@gmail.com",
+    "url": "https://elcharitas.com.ng"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/11ty/eleventy-base-blog/issues"
+    "url": "https://github.com/elcharitas/elcharitas.github.io/issues"
   },
-  "homepage": "https://github.com/11ty/eleventy-base-blog#readme",
+  "homepage": "https://github.com/elcharitas/elcharitas/elcharitas.github.io#readme",
   "devDependencies": {
     "@11ty/eleventy": "^0.11.0",
     "@11ty/eleventy-navigation": "^0.1.6",
@@ -30,6 +30,9 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.1",
     "luxon": "^1.21.3",
     "markdown-it": "^8.4.2",
-    "markdown-it-anchor": "^5.2.5"
+    "markdown-it-anchor": "^5.2.5",
+    "typescript": "^4.0.3",
+    "less": "^3.12.2",
+    "uglify-js": "^3.11.0"
   }
 }
