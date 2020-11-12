@@ -19,13 +19,13 @@
             					
             					<div class="post-item-text">
 
-                    {% for tag in post.data.tags %}
+                    {% for tag in ((post.data.tags or [1]) | slice(1)) %}
                       {%- if collections.tagList.indexOf(tag) != -1 -%}
                       {% set tagUrl %}/tags/{{ tag }}/{% endset %}
                       <span class="post-cate tag-{{ tag | lower }}"><a href="{{ tagUrl | url }}" rel="category tag"> {{ tag }} </a></span>
                       {%- endif -%}
                     {% endfor %}
-            						<h4><a href="{{ post.url | url }}" rel="bookmark">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a></h4>
+            						<h4><a href="{{ post.url | url }}" rel="bookmark">{% if post.data.title %}{{ post.data.title | truncate(50) }}{% else %}<code>{{ post.url }}</code>{% endif %}</a></h4>
             						<div class="post-meta">
             						    By {{ post.data.author or metadata.author.name }} &middot; {{ post.date | readableDate }}
             						</div>

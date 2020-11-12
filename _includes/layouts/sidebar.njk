@@ -1,0 +1,4 @@
+{% set archivelist = collections.archive | head(-3) %}
+{% set archivelistCounter = collections.archive | length %}
+
+{% include "archivelist.njk" %}

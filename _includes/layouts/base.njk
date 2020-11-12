@@ -27,54 +27,11 @@
     			</div>
     		</div>
     	</nav>
-        <header>
-    		<div class="promo-area">
-        		<div class="promo-item" style="background-image:url(wp-content/uploads/sites/25/2020/02/promobox1.jpg)">
-            		<a href="#" class="promo-link"></a>
-            		<div class="promo-overlay">
-            			<h4>
-            			    I'm elcharitas!
-            		    </h4>
-            		</div>
-        	    </div>
-            </div>
-        </header>
-    
+
     	{{ content | safe }}
     	
-    	<div id="widget-area">
-    		<div class="container">
-    			<div class="footer-widget-wrapper">
-    				<div id="zminimal_latest_posts_widget-2" class="widget zminimal_latest_posts_widget">
-    				    <h4 class="widget-title">Latest Posts</h4>
-            			<ul class="latest-post">
-            				<li>
-            					<div class="post-image">
-            
-            						<a href="keep-it-simple.html" rel="bookmark">
-            						
-            							<img src="wp-content/uploads/sites/25/2016/01/m1-21-440x294.jpg" class="side-item-thumb wp-post-image" width="150" height="80" alt="" loading="lazy" />
-                                    </a>
-            
-            					</div>
-            
-            					
-            					<div class="post-item-text">
-            
-            						<span class="post-cate"><a href="category/music" rel="category tag">Music</a></span>
-            						
-            						<h4><a href="keep-it-simple.html" rel="bookmark">Keep it simple</a></h4>
-            
-            					</div>
-            
-            				</li>
-            
-                        </ul>
-                    </div>
-                </div>
-    		</div>
-    	</div>
-    		
+    	{% include "layouts/sidebar.njk" %}
+    	
     	<footer id="footer-logo">
     		<div class="container">
     		    <p class="footer-menu">
