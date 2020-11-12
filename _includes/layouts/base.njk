@@ -65,8 +65,8 @@
     		
     	<footer id="footer-logo">
     		<div class="container">
-    		    <p>
-    		        {% for entry in collections.all | eleventyNavigation %}<a href="{{ entry.url }}">{{ entry.title }}</a>  {% endfor %} <a href="#">Website Credits</a>
+    		    <p class="footer-menu">
+    		        {% for entry in collections.all | eleventyNavigation %}<a href="{{ entry.url }}">{{ entry.title }}</a> &middot; {% endfor %} <a href="#">Website Credits</a>
     		    </p>
     			<p>
     			    Designed by <a href="{{ '/p/about' | url }}"><i class="fa fa-user-secret"></i> elcharitas</a> &copy; 2020

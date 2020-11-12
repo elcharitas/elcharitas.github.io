@@ -19,6 +19,7 @@
   },
   "archive": {
     "title": "Latest Updates",
+    "image": "noimage.jpg",
     "perpage": 5
   },
   "headers": {

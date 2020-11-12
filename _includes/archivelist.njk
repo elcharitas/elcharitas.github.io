@@ -11,7 +11,7 @@
             
             						<a href="{{ post.url | url }}" rel="bookmark">
             						
-            							<img src="wp-content/uploads/sites/25/2016/01/m1-21-440x294.jpg" class="side-item-thumb wp-post-image" width="150" height="80" alt="" loading="lazy" />
+            							<img src="{{ ['/assets/img/', post.data.image or metadata.archive.image ] | join | url }}" class="side-item-thumb wp-post-image" width="150" height="80" alt="" loading="lazy" />
                                     </a>
             
             					</div>
@@ -37,7 +37,7 @@
                         </ul>
                     </div>
                 </div>
-{% if maxPosts and maxPosts > 0 %}
+{% if maxPosts > 0 %}
             	<div class="pagination">
             						
             		<div class="older">
