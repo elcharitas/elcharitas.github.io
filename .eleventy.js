@@ -32,6 +32,11 @@ module.exports = function(eleventyConfig) {
 
     return array.slice(0, n);
   });
+  
+  // Get the first `n` elements of a collection.
+  eleventyConfig.addFilter("slide", (array, n) => {
+      return array.slice(n);
+  });
 
   eleventyConfig.addFilter("min", (...numbers) => {
     return Math.min.apply(null, numbers);
