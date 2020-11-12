@@ -534,7 +534,7 @@ header {
 
 .promo-overlay h4 {
     line-height: 1.5em;
-    font-size: .98rem;
+    font-size: .75rem;
     font-weight: 600;
     letter-spacing: 2.75px;
     display: inline-block;
@@ -547,6 +547,8 @@ header {
     position: relative;
 	text-transform: uppercase;
 	top: 40%;
+	border: 1px #fff dotted;
+	padding: .5em 1.2rem;
 	animation: pulse 1s infinite;
 }
 
@@ -556,16 +558,6 @@ header {
     border-radius: 50%;
     border: 2px double #fff;
     margin-bottom: 30px;
-}
-
-.promo-overlay h4:after{
-	content: '';
-    position: absolute;
-    bottom: -15px;
-    width: 70%;
-    border-bottom: 2px double #FFF;
-    left: 48%;
-    transform: translateX(-50%);
 }
 
 .promo-link {
@@ -767,7 +759,6 @@ header {
 	.post-image img {
 		max-width:100%;
 		height: auto;
-		max-height: 160px!important;
 		background-position: center;
 	}
 	
@@ -1279,7 +1270,7 @@ header {
 
 #footer-logo {
 	background:#011;
-	padding:30px 0;
+	padding:40px 0;
 	text-align:center;
 	border-top: 4px double #ECECEC;
 	clear: both;
@@ -1694,6 +1685,7 @@ header {
 	.widget ul.latest-post li .post-image img {
 		width:80px;
 		height: auto;
+		max-height: 60px!important;
 	}
 	
 	.widget ul.latest-post li .post-item-text {
