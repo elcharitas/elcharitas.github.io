@@ -11,15 +11,16 @@
             
             						<a href="{{ post.url | url }}" rel="bookmark">
             						
-            							<img src="{{ ['/assets/img/', post.data.image or metadata.archive.image ] | join | url }}" class="side-item-thumb wp-post-image" width="150" height="80" alt="" loading="lazy" />
+            							<img src="{{ ['/assets/img/', post.data.image or metadata.archive.image ] | join | url }}" class="side-item-thumb wp-post-image" width="150" height="60" alt="" loading="lazy" />
                                     </a>
             
             					</div>
             
             					
             					<div class="post-item-text">
-
-                    {% for tag in ((post.data.tags or [1]) | slice(1)) %}
+                    {% set tags = post.data.tags or ['@Bot'] %}
+                    {% set author = tags | first %}
+                    {% for tag in tags | head(1) %}
                       {%- if collections.tagList.indexOf(tag) != -1 -%}
                       {% set tagUrl %}/tags/{{ tag }}/{% endset %}
                       <span class="post-cate tag-{{ tag | lower }}"><a href="{{ tagUrl | url }}" rel="category tag"> {{ tag }} </a></span>
@@ -27,7 +28,7 @@
                     {% endfor %}
             						<h4><a href="{{ post.url | url }}" rel="bookmark">{% if post.data.title %}{{ post.data.title | truncate(50) }}{% else %}<code>{{ post.url }}</code>{% endif %}</a></h4>
             						<div class="post-meta">
-            						    By {{ post.data.author or metadata.author.name }} &middot; {{ post.date | readableDate }}
+            						    By <a href="{{ ['/tags/', author] | join | url }}">{{ author }}</a> &middot; {{ post.date | readableDate }}
             						</div>
             
             					</div>
