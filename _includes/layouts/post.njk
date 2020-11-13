@@ -14,3 +14,4 @@ templateClass: tmpl-post
   {%- if previousPost %}<li>Previous: <a href="{{ previousPost.url | url }}">{{ previousPost.data.title }}</a></li>{% endif %}
 </ul>
 {% include "layouts/comments.njk" %}
+{% include "layouts/sidebar.njk" %}

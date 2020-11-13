@@ -4,11 +4,8 @@ eleventyNavigation:
   key: Home
   order: 1
 ---
-
 {% set maxPosts = metadata.archive.perpage %}
-{% set archivelist = collections.archive | head(-3) %}
-{% set archivelistCounter = collections.archive | length %}
-    <header>
+        <header>
     		<div class="promo-area">
         		<div class="promo-item" style="background-image:url(wp-content/uploads/sites/25/2020/02/promobox1.jpg)">
             		<a href="#" class="promo-link"></a>
@@ -20,4 +17,6 @@ eleventyNavigation:
         	    </div>
             </div>
         </header>
+{% set archivelist = collections.archive | head(-3) %}
+{% set archivelistCounter = collections.archive | length %}
 {% include "archivelist.njk" %}

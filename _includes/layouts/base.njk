@@ -13,11 +13,10 @@
         <script type="text/javascript" src="{{ '/assets/js/app.js' | url }}"></script>
     </head>
     <body class="{% if templateClass %}{{ templateClass }} {% endif %}blog theme-zminimal">
-
     	<nav id="navigation">
     		<div class="container">
     			<div id="logo">
-    				<h1><a href=""> <i class="fa fa-user-secret link"></i> elcharitas </a></h1>
+    				<h1><a href="{{ '/' | url }}"> <i class="fa fa-cogs link"></i> elcharitas </a></h1>
     			</div>
     			<div class="mobile-pack">
     			    <span class="search-icon"></span>
@@ -25,18 +24,14 @@
     			</div>
     		</div>
     	</nav>
-
     	{{ content | safe }}
-    	
-    	{% include "layouts/sidebar.njk" %}
-    	
     	<footer id="footer-logo">
     		<div class="container">
     		    <p class="footer-menu">
-    		        {% for entry in collections.all | eleventyNavigation %}<a href="{{ entry.url }}">{{ entry.title }}</a> &middot; {% endfor %} <a href="#">Website Credits</a>
+    		        {% for entry in collections.all | eleventyNavigation %}<a href="{{ entry.url }}">{{ entry.title }}</a> &middot; {% endfor %} <a href="{{ '/p/credits' | url }}">Website Credits</a>
     		    </p>
     			<p>
-    			    Designed by <a href="{{ '/p/about' | url }}"><i class="fa fa-user-secret"></i> elcharitas</a> &copy; 2020
+    			    Designed by <a href="{{ '/p/about' | url }}"><i class="fa fa-cogs"></i> elcharitas</a> &copy; 2020
     		    </p>
     			<p class="to-top">
     			    <a href="#">Back to Top <i class="fa fa-chevron-up"></i></a> 
