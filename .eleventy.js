@@ -8,7 +8,6 @@ const markdownItAnchor = require("markdown-it-anchor");
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
-  eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(pluginNavigation);
 
   eleventyConfig.setDataDeepMerge(true);
@@ -79,11 +78,8 @@ module.exports = function(eleventyConfig) {
     html: true,
     breaks: true,
     linkify: true
-  }).use(markdownItAnchor, {
-    permalink: true,
-    permalinkClass: "direct-link",
-    permalinkSymbol: "#"
   });
+  
   eleventyConfig.setLibrary("md", markdownLibrary);
 
   // Browsersync Overrides
