@@ -78,7 +78,7 @@ textarea:focus, input:focus{ outline: none; }
 body {
 	font-family:"Crimson Text", serif;
 	color:#333;
-	background-color:#FFF;
+	background-color:#f2f2f2;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -1029,32 +1029,17 @@ header {
 
 	.post-author {
 		margin-bottom:80px;
-		margin-top:70px;
+		margin-top:30px;
 		overflow:hidden;
-		border: 1px solid #F1F1F1;
-		padding: 25px 20px;
+		border: 1px solid #ddd;
+		padding: 20px 0;
 		border-radius: 5px;
 	}	
-	
-	.author-img {
-		float:left;
-		margin-right:30px;
-	}
 	
 	.author-img img {
 		border-radius:50%;
 	}
-	
-	.author-content h5 a {
-		font-size:.86rem;
-		letter-spacing:2px;
-		text-transform:uppercase;
-		margin-bottom:8px;
-		color:#000;
-		display:block;
-		font-weight: 600;
-	}
-	
+
 	.author-content p {
 		margin-bottom:8px;
 	}
@@ -1278,7 +1263,6 @@ header {
 	clear: both;
 	font-family:'Raleway', 'Tahoma';
     display: block;
-    margin-top: 55px;
     position: relative;
     width: 100%;
     animation: bounce 7s;
@@ -1486,11 +1470,6 @@ header {
 	    text-align: center;
 	}
 
-	.about-widget img {
-		width: 100%;
-		height:auto;
-	}
-
 	.about-title{
 		padding: 12px 0;
 		color: #000;
@@ -1502,6 +1481,7 @@ header {
 	.about-widget p{
 		color: #666;
 		font-size: .88rem;
+		padding: 1em 2em;
 	}
 
 /*----------------------------------------------------------*/
@@ -1665,35 +1645,40 @@ header {
 /*  10. COMMENT - REPLY
 /*--------------------------------------------------------------------------------*/
 	
-.post-comments {
-	margin-bottom:70px;
-	margin-top:70px;
+#HCB_comment_box {
+	margin-bottom:40px;
+	margin-top:40px;
+	padding: 2em;
 }
 
-.comments {
+.comments_list {
 	margin-bottom:40px;
 }
 
-.thecomment {
+.comment {
 	border-bottom:1px dotted #eee;
-	padding-bottom:34px;
-	margin-bottom:34px;
+	padding-bottom:14px;
+	margin-bottom:14px;
+	border: 1px solid #ddd;
+	padding: 1em 2em;
+	border-radius: 8px;
 }
 
-.thecomment .author-img {
+.comment blockquote img {
 	float:left;
 	margin-right:25px;
 }
 
-.thecomment .author-img img {
+.comment blockquote img {
 	border-radius:50%;
 }
 
-.thecomment .comment-text {
+.comment blockquote {
 	overflow:hidden;
+	background: transparent;
 }
 
-.thecomment .comment-text span.author, .thecomment .comment-text span.author a {
+.comment span.author, .comment span.author a {
 	display: block;
     font-size: 12px;
     text-transform: uppercase;
@@ -1704,11 +1689,11 @@ header {
     font-family: 'Raleway', 'Tahoma';
 }
 
-.thecomment .comment-text span.author a:hover {
+.comment .comment-text span.author a:hover {
 	text-decoration:underline;
 }
 
-.thecomment .comment-text span.date {
+.comment span.date {
 	font-size:12px;
 	color:#999;
 	font-style:italic;
@@ -1716,7 +1701,7 @@ header {
 	margin-bottom:10px;
 }
 
-.thecomment .comment-text em {
+.comment .comment-text em {
 	font-size:13px;
 	margin-bottom:-.86rem;
 	display:block;
@@ -1724,19 +1709,24 @@ header {
 	letter-spacing:1px;
 }
 
-.thecomment .comment-text em i {
+.comment .comment-text em i {
 	font-size:.86rem;
 	color:#f3bd00;
 }
 
-.post-comments span.reply a {
-	float:right;
+p.hcb-comment-tb {
+    position: absolute;
+    top: .8em;
+    right: 1em;
+}
+
+.hcb-comment-tb a {
 	font-size:.82rem;
-	background-color:#aaa;
+	background-color: #333;
 	color:#FFF;
 	padding:3px 6px 5px 6px;
 	border-radius:2px;
-	margin-left:7px;
+	margin-right: 7px;
 	font-family:"Lato";
 	-o-transition:.3s;
 	-ms-transition:.3s;
@@ -1749,7 +1739,7 @@ header {
 	background:#c5c5c5;
 }
 
-.post-comments span.reply a:hover {
+.hcb-comment-tb a:hover {
 	opacity:.8;
 }
 
@@ -1757,7 +1747,7 @@ ul.children {
 	margin: 0 0 0 55px;
 }
 
-ul.children li.thecomment {
+ul.children li.comment {
 	margin:0 0 8px 0;
 }
 
@@ -1782,7 +1772,7 @@ li.comment{
 	list-style:decimal;
 }
 
-.comment-text p, .comment-text h1, .comment-text h2, .comment-text h3, .comment-text h4, .comment-text h5, .comment-text h6, .comment-text hr {
+.comment blockquote p, .comment-text h1, .comment-text h2, .comment-text h3, .comment-text h4, .comment-text h5, .comment-text h6, .comment-text hr {
 	margin-bottom:20px;
 }
 
@@ -1854,8 +1844,8 @@ li.comment{
 
 #HCB_comment_box  h3 {
 	font-size:.86rem;
-	color: #424243;
-	font-weight:400;
+	color: orangered;
+	font-weight:600;
 	margin-bottom:30px;
 	font-family:"Lato";
 	letter-spacing:2px;
@@ -1936,7 +1926,7 @@ li.comment{
 	letter-spacing:2px;
 	border-radius:0;
 	font-size:.82rem;
-	color:#666;
+	color:#fff;
 	padding: 10px 20px 10px;
 	margin-top:6px;
 	display:inline-block;
@@ -1948,12 +1938,12 @@ li.comment{
 	transition:.3s;
 	cursor:pointer;
 	width:auto;
-	background-color: transparent;
+	background-color: orangered;
 	border: 1px solid #cacaca;
 }
 
 #HCB_comment_box imput.submit:hover {
-	background:#333;
+	background: #333;
 	color:#FFF;
 	border: 1px solid #333;
 }
