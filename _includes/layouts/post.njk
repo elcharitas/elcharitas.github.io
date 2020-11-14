@@ -2,71 +2,95 @@
 layout: layouts/base.njk
 templateClass: single single-post
 ---
-<div class="container ">
-    <div id="main">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-        		
-        	<div class="post-header">
-        		<h1>{{ title }}</h1>
-        		<span class="date">{{ page.date | readableDate }}</span>
-        	</div>
-        	
-        	<div class="post-entry">
-        		{{ content | urlize | safe }}
-        		<div class="post-tags">
-        			<a href="{{ page.url | url }}" rel="tag">lifestyle</a>
-        			<a href="{{ page.url | url }}" rel="tag">Love</a>
-        		</div>
-        	</div>
-        	
-        	<div class="post-metas">
-        	<div class="post-share">
-        		<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | url }}"><span class="share-box"><i class="fa fa-facebook"></i></span></a>
-        		<a target="_blank" href="https://twitter.com/home?status={{ ['Check this article out: ', page.url | url] | join | urlencode }}"><span class="share-box"><i class="fa fa-twitter"></i></span></a>
-        		<a target="_blank" href="https://pinterest.com/pin/create/button/?url={{ page.url | url }}&media="><span class="share-box"><i class="fa fa-pinterest"></i></span></a>
-        		<a href="#HCB_comment_box"><span class="share-box"><i class="fa fa-comment-o"></i></span></a>		
-        	</div>
-        	</div>
-        	
-        	<div class="post-pagination">
-        	  {%- set nextPost = collections.archive | getNextCollectionItem(page) %}
-        	  {%- set previousPost = collections.archive | getPreviousCollectionItem(page) %}
-        	  {% if previousPost %}
-        		<div class="prev-post">
-        		    <a href="{{ previousPost.url | url }}">
-                		<div class="pagi-text">
-                			<span>&larr; Previous Post</span>
-                			<h5>{{ previousPost.data.title }}</h5>
-                		</div>
-                	</a>
+{% set tags = page.data.tags | slide(1) %}
+{% set author = tags | first %}
+{% set category = tags | slide(1) | first %}
+        <header>
+    		<div class="promo-area">
+        		<div class="promo-item">
+	                <div class="post-header promo-link">
+		
+					    <span class="cat"><a href="{{ ['/tags/', category] | join | url }}" rel="category tag"> {{ category }} </a></span>
+				
+					    <h1>{{ title }}</h1>
+				
+					    <span class="date">By <a href="{{ ['/tags/', author] | join | url }}"> {{ author }}</a> {{ page.date | readableDate }}</span>
+				    </div>
+            		<div class="promo-overlay"{% if page.data.image %} style="background-image:url({{ ['/assets/img/', page.data.image] | join | url }});"{% endif %}>
+            		</div>
         	    </div>
-        	    {% endif %} {% if nextPost %}
-        		<div class="next-post">
-        		    <a href="{{ nextPost.url | url }}">
-                		<div class="pagi-text">
-                			<span> Next Post &rarr;</span>
-                			<h5>{{ nextPost.data.title }}</h5>
-                		</div>
-                	</a>
-        	    </div>
-        	    {% endif %}
-            </div>			
-        	<div class="post-author">
-                <div class="author-content">
-        
-        			<div class="author-widget first widget_about_me">
-                        <div class="about-widget widget-content">
-                            <div class="about-img">
-                                <img src="" alt="About " class="image-circle" width="140" height="80"/>
-                            </div>
-                            <h3 class="about-title">Web Developer</h3>
-                            <p> </p>
-                        </div>
-                    </div>
-        		</div>
             </div>
-        </article>
-{% include "layouts/comments.njk" %}
-    </div>
-</div>
+        </header>
+        <div class="container ">
+            <div id="main">
+                <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+                		
+                	<div class="post-header">
+        			    <span class="cat"><a href="{{ ['/tags/', category] | join | url }}" rel="category tag"> {{ category }} </a></span>
+                		<h1>{{ title }}</h1>
+                		<span class="date">By <a href="{{ ['/tags/', author] | join | url }}"> {{ author }}</a> {{ page.date | readableDate }}</span>
+                	</div>
+                	
+                	<div class="post-entry">
+                		{{ content | urlize | safe }}
+                		<div class="post-tags">
+                		{% for tag in tags | slide(2) %}
+                			<a href="{{ ['/tags/', tag] | join | url }}" rel="tag"> <i class="fa fa-tag"></i> {{ tag }} </a>
+                		{% endfor %}
+                		</div>
+                	</div>
+                	
+                	<div class="post-metas">
+                    	<div class="post-share">
+                    		<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | url }}"><span class="share-box"><i class="fa fa-facebook"></i></span></a>
+                    		<a target="_blank" href="https://twitter.com/home?status={{ ['Check this article out: ', page.url | url] | join | urlencode }}"><span class="share-box"><i class="fa fa-twitter"></i></span></a>
+                    		<a target="_blank" href="https://pinterest.com/pin/create/button/?url={{ page.url | url }}&media="><span class="share-box"><i class="fa fa-pinterest"></i></span></a>
+                    		<a href="#HCB_comment_box"><span class="share-box"><i class="fa fa-comment-o"></i></span></a>		
+                    	</div>
+                	</div>
+                	
+                	<div class="post-pagination">
+                	  {%- set nextPost = collections.archive | getNextCollectionItem(page) %}
+                	  {%- set previousPost = collections.archive | getPreviousCollectionItem(page) %}
+                	  {% if previousPost %}
+                		<div class="prev-post">
+                		    <a href="{{ previousPost.url | url }}">
+                        		<div class="pagi-text">
+                        			<span>&larr; Previous Post</span>
+                        			<h5>{{ previousPost.data.title }}</h5>
+                        		</div>
+                        	</a>
+                	    </div>
+                	    {% endif %} {% if nextPost %}
+                		<div class="next-post">
+                		    <a href="{{ nextPost.url | url }}">
+                        		<div class="pagi-text">
+                        			<span> Next Post &rarr;</span>
+                        			<h5>{{ nextPost.data.title }}</h5>
+                        		</div>
+                        	</a>
+                	    </div>
+                	    {% endif %}
+                    </div>			
+                	<div class="post-author">
+                        <div class="author-content">
+                
+                			<div class="author-widget first widget_about_me">
+                                <div class="about-widget widget-content">
+                                    <div class="about-img">
+                                        <img src="" alt="About {{ author }}" class="image-circle" width="140" height="80"/>
+                                    </div>
+                                    <h3 class="about-title">
+                                        {{ author }}
+                                        <div>Web Developer</div>
+                                    </h3>
+                                    <p> </p>
+                                </div>
+                            </div>
+                		</div>
+                    </div>
+                </article>
+                {% include "layouts/comments.njk" %}
+            </div>
+        </div>
 {% include "layouts/sidebar.njk" %}

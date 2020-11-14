@@ -22,7 +22,7 @@
     "image": "noimage.jpg",
     "perpage": 5
   },
-  "headers": {
+  "metagen": {
     "generator": "Jonathan Irhodia"
   }
 }

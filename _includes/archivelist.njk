@@ -16,7 +16,7 @@
             					<div class="post-item-text">
                                 {% set tags = post.data.tags | slide(1) %}
                                 {% set author = tags | first %}
-                                {% for tag in tags | slide(1) %}
+                                {% for tag in tags | slide(1) | head(-1) %}
                                   {%- if collections.tagList.indexOf(tag) != -1 -%}
                                   {% set tagUrl %}/tags/{{ tag }}/{% endset %}
                                     <span class="post-cate tag-{{ tag | lower }}"><a href="{{ tagUrl | url }}" rel="category tag"> {{ tag }} </a></span>

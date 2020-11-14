@@ -7,10 +7,9 @@
     	<title>{{ ([title, " ~ ", metadata.title] | join if title else metadata.title) | title }}</title>
         <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}" type="text/css" media="all" />
         <link rel="stylesheet" href="{{ '/assets/css/animate.min.css' | url }}" type="text/css" media="all" />
+        <link rel='stylesheet' id='zthemes-googlefonts-css'  href='https://fonts.googleapis.com/css?family=Raleway%3A400%2C300%2C500%2C600%2C700%7CCrimson+Text%3A400%2C700&#038;subset=latin%2Clatin-ext' type='text/css' media='all' />
         <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
         <link rel="alternate" href="{{ metadata.jsonfeed.path | url }}" type="application/json" title="{{ metadata.title }}">
-        <script type="text/javascript" src="{{ '/assets/js/jquery.js' | url }}"></script>
-        <script type="text/javascript" src="{{ '/assets/js/app.js' | url }}"></script>
     </head>
     <body class="{% if templateClass %}{{ templateClass }} {% endif %}blog theme-zminimal">
     	<nav id="navigation">
@@ -38,5 +37,7 @@
     			</p>
     		</div>
     	</footer>
+        <script type="text/javascript" src="{{ '/assets/js/jquery.js' | url }}"></script>
+        <script type="text/javascript" src="{{ '/assets/js/app.js' | url }}"></script>
     </body>
 </html>
