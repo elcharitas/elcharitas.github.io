@@ -34,7 +34,7 @@ module.exports = function(eleventyConfig) {
   
   // Get the first `n` elements of a collection.
   eleventyConfig.addFilter("slide", (array, n) => {
-      return array.slice(n);
+      return array && array.constructor === Array ? array.slice(n): [];
   });
 
   eleventyConfig.addFilter("min", (...numbers) => {
