@@ -1,3 +1,61 @@
+/**
+ * Inject required scripts into head
+ *
+ * @param string src
+ * @returns void
+ */
+function loadScript(src)
+{
+    var el = document.createElement("script");
+    var head = document.getElementsByTagName("head")[0];
+    el.src = src;
+    el.async = true;
+    //detach the loaded script
+    el.onload = function()
+    {
+        head.removeChild(el);
+    }
+    head.appendChild(el);
+}
+
+/**
+ * Simple function to save or retrieve user details
+ * Uses localStorage | cookies | object
+ *
+ * @param string key
+ * @param any|undefined item
+ * @returns string
+ */
+function Store(key, item)
+{
+    var handle = localStorage ||
+    {
+        getItem: function(key)
+        {
+            return Storex[key];
+        },
+        setItem: function(key, item)
+        {
+            document.cookie = key + '=' + item;
+            return Storex[key] = item;
+        }
+    };
+    
+    if(key && typeof item === "undefined")
+    {
+        return handle.getItem(key);
+    } else if(key){
+        return handle.setItem(key, item);
+    }
+}
+
+//optimal data storage
+var Storex = {};
+
+//current location without hash or query
+var currentLocation = location.href.split('#')[0].split('?')[0];
+
+//htmlcommentbox variables
 var hcb_user = {
     comments_header: 'Leave a Reply.',
     name_label: 'Your Name:',
@@ -18,7 +76,7 @@ var hcb_user = {
     email_label: 'Email Address',
     anonymous: 'Stay Anonymous?',
     mod_label: 'Super User',
-    subscribe: 'Email Notifications?',
+    subscribe: 'Notifications?',
     add_image: '+',
     are_you_sure: 'Thanks for helping. Are you sure this is Spammy?',
     reply: 'Comment',
@@ -31,7 +89,7 @@ var hcb_user = {
     msg_thankyou: 'Thank you for replying!',
     err_bad_html: 'Your reply contained bad html.',
     err_bad_email: 'Please enter a valid email address.',
-    err_too_frequent: 'You must wait a few seconds between posting replies.',
+    err_too_frequent: 'You must wait a few seconds before new replies.',
     err_comment_empty: 'Your reply was not posted because it was empty!',
     err_denied: 'Your reply was not accepted.',
     err_unknown: 'Your reply was blocked for unknown reasons, please report this.',
@@ -46,11 +104,10 @@ var hcb_user = {
 
     },
     onload: function() {
-
+        alert(typeof $);
     },
     RELATIVE_DATES: true
 };
 
-var src = document.createElement("script");
-src.src = "https://www.htmlcommentbox.com/jread?opts=2045&page=" + hcb_user.PAGE;
-document.getElementsByTagName("head")[0].appendChild(src);
+//offload htmlcommentbox
+loadScript("https://www.htmlcommentbox.com/jread?opts=2045&page=" + hcb_user.PAGE);
