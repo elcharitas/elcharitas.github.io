@@ -8,7 +8,7 @@
     "serve": "eleventy --serve",
     "start": "eleventy --serve",
     "debug": "DEBUG=* eleventy",
-    "styles": "lessc --verbose _src/less/app.less | uglifycss > assets/css/style.css"
+    "package": "uglifyjs _src/js/app.js -c -m -o assets/js/app.min.js && lessc _src/less/app.less | uglifycss > assets/css/style.css"
   },
   "repository": {
     "type": "git",

@@ -7,7 +7,6 @@
 function loadScript(src)
 {
     var el = document.createElement("script");
-    var head = document.getElementsByTagName("head")[0];
     el.src = src;
     el.async = true;
     //detach the loaded script
@@ -15,6 +14,15 @@ function loadScript(src)
     {
         head.removeChild(el);
     }
+    head.appendChild(el);
+}
+
+function loadStyle(href)
+{
+    var el = document.createElement('link');
+    el.type = "text/css";
+    el.rel = "stylesheet";
+    el.media = "all";
     head.appendChild(el);
 }
 
@@ -52,6 +60,9 @@ function Store(key, item)
 //optimal data storage
 var Storex = {};
 
+//the head tag
+var head = document.getElementsByTagName("head")[0];
+
 //current location without hash or query
 var currentLocation = location.href.split('#')[0].split('?')[0];
 
@@ -79,9 +90,9 @@ var hcb_user = {
     subscribe: 'Notifications?',
     add_image: '+',
     are_you_sure: 'Thanks for helping. Are you sure this is Spammy?',
-    reply: 'Comment',
-    flag: 'Flag',
-    like: 'Like',
+    reply: '<i class="fa fa-comment-o"></i>',
+    flag: '<i class="fa fa-flag"></i>',
+    like: '<i class="fa fa-thumbs-up"></i>',
     days_ago: 'days ago',
     hours_ago: 'hrs ago',
     minutes_ago: 'mins ago',
@@ -108,6 +119,9 @@ var hcb_user = {
     },
     RELATIVE_DATES: true
 };
+
+//load site fonts...
+loadStyle('https://fonts.googleapis.com/css?family=Raleway%3A400%2C300%2C500%2C600%2C700%7CCrimson+Text%3A400%2C700&#038;subset=latin%2Clatin-ext');
 
 //offload htmlcommentbox
 loadScript("https://www.htmlcommentbox.com/jread?opts=2045&page=" + hcb_user.PAGE);
