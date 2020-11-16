@@ -2,9 +2,9 @@
 layout: layouts/base.njk
 templateClass: single single-post
 ---
-{% set tags = page.data.tags | slide(1) %}
-{% set author = tags | first %}
-{% set category = tags | slide(1) | first %}
+{% set tagList = tags | slide(1) %}
+{% set author = tagList | first %}
+{% set category = tagList | slide(1) | first %}
         <header>
     		<div class="promo-area">
         		<div class="promo-item">
@@ -34,7 +34,7 @@ templateClass: single single-post
                 	<div class="post-entry">
                 		{{ content | urlize | safe }}
                 		<div class="post-tags">
-                		{% for tag in tags | slide(2) %}
+                		{% for tag in tagList | slide(2) %}
                 			<a href="{{ ['/tags/', tag] | join | url }}" rel="tag"> <i class="fa fa-tag"></i> {{ tag }} </a>
                 		{% endfor %}
                 		</div>
