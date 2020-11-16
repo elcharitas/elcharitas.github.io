@@ -69,6 +69,7 @@ var currentLocation = location.href.split('#')[0].split('?')[0];
 
 //htmlcommentbox variables
 var hcb_user = {
+    dom: '#HCB_comment_box',
     comments_header: 'Leave a Reply.',
     name_label: 'Your Name:',
     content_label: 'Your reply...',
@@ -118,8 +119,10 @@ var hcb_user = {
 
     },
     onload: function() {
-        alert(typeof $);
-        alert(currentLocation);
+        $(hcb_user.dom).find('img').each(function(){
+            var src = $(this).attr('src');
+            $(this).attr('src', src.replace(/&d.+$/, ''));
+        });
     },
     RELATIVE_DATES: true
 };
@@ -133,5 +136,3 @@ loadScript('https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js');
 //offload htmlcommentbox
 loadScript("https://www.htmlcommentbox.com/jread?opts=2045&page=" + hcb_user.PAGE);
 
-//offload social counter
-loadScript("/assets/js/socialcount.js");
