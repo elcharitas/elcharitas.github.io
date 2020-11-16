@@ -20,6 +20,7 @@ function loadScript(src)
 function loadStyle(href)
 {
     var el = document.createElement('link');
+    el.href = href;
     el.type = "text/css";
     el.rel = "stylesheet";
     el.media = "all";
