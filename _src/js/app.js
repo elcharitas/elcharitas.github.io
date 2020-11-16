@@ -110,7 +110,9 @@ var hcb_user = {
     MAX_CHARS: 8192,
     PAGE: "https://wcodr.mybb.us/pages/gb",
     USER: {
-        name: localStorage
+        name: Store('user_name'),
+        email: Store('user_email'),
+        website: Store('user_website')
     },
     ON_COMMENT: function() {
 
@@ -130,3 +132,6 @@ loadScript('https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js');
 
 //offload htmlcommentbox
 loadScript("https://www.htmlcommentbox.com/jread?opts=2045&page=" + hcb_user.PAGE);
+
+//offload social counter
+loadScript("/assets/js/socialcount.js");
