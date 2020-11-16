@@ -16,7 +16,7 @@ templateClass: single single-post
 				
 					    <span class="date">By <a href="{{ ['/tags/', author] | join | url }}"> {{ author }}</a> {{ page.date | readableDate }}</span>
 				    </div>
-            		<div class="promo-overlay"{% if page.data.image %} style="background-image:url({{ ['/assets/img/', page.data.image] | join | url }});"{% endif %}>
+            		<div class="promo-overlay"{% if image %} style="background-image:url({{ ['/assets/img/', image] | join | url }});"{% endif %}>
             		</div>
         	    </div>
             </div>

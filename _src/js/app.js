@@ -117,12 +117,16 @@ var hcb_user = {
     },
     onload: function() {
         alert(typeof $);
+        alert(currentLocation);
     },
     RELATIVE_DATES: true
 };
 
-//load site fonts...
+//offload site fonts...
 loadStyle('https://fonts.googleapis.com/css?family=Raleway%3A400%2C300%2C500%2C600%2C700%7CCrimson+Text%3A400%2C700&#038;subset=latin%2Clatin-ext');
+
+//offload jquery
+loadScript('https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js');
 
 //offload htmlcommentbox
 loadScript("https://www.htmlcommentbox.com/jread?opts=2045&page=" + hcb_user.PAGE);
