@@ -433,12 +433,14 @@ $(function() {
     })
     var introbun = $('#introbun').ready(function () {
         var start = 0;
-        var group = 2;
         var tag = "";
         var words = [
             "Hello There!",
-            "I'm elcharitas"
+            "I'm elcharitas...",
+            "I love to code!",
+            "It's a thrill..."
         ]
+        var group = words.length;
         setInterval(function () {
             var word = words[group] || "", curWord, span;
             if (typeof (curWord = word[start++]) !== "undefined") {
@@ -447,7 +449,7 @@ $(function() {
                 if (curWord == " ") tag = "span"
             } else group++, introbun.html('<i class="invisible">.</i>'), start = 0, tag = "";
             if (group > words.length) group = 0;
-        }, 250)
+        }, 450)
     })
 
 })(jQuery)

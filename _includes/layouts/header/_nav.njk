@@ -1,0 +1,16 @@
+
+                    <nav class="mainmenunav d-lg-block ml--50">
+                        <div class="navbar-example2">
+                            <!-- Start Mainmanu Nav -->
+                            <ul class="mainmenu nav nav-pills">
+							    {% for entry in collections.all | eleventyNavigation %}
+								<li class="nav-item">
+                                    <a class="nav-link smoth-anim{% if entry.url == page.url %} active{% endif %}" href="{{ entry.url }}">
+                                        <i class="fa fa-{{ entry.icon or entry.title | lower }}"></i> &nbsp; {{ entry.title }}
+                                    </a>
+                                </li>
+								{% endfor %}
+                            </ul>
+                            <!-- End Mainmanu Nav -->
+                        </div>
+                    </nav>

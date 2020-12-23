@@ -9,11 +9,11 @@ templateClass: single single-post
     		<div class="promo-area">
         		<div class="promo-item">
 	                <div class="post-header promo-link">
-		
+
 					    <span class="cat"><a href="{{ ['/tags/', category] | join | url }}" rel="category tag"> {{ category }} </a></span>
-				
+
 					    <h1>{{ title }}</h1>
-				
+
 					    <span class="date">By <a href="{{ ['/tags/', author] | join | url }}"> {{ author }}</a> {{ page.date | readableDate }}</span>
 				    </div>
             		<div class="promo-overlay"{% if image %} style="background-image:url({{ ['/assets/img/', image] | join | url }});"{% endif %}>
@@ -24,13 +24,13 @@ templateClass: single single-post
         <div class="container ">
             <div id="main">
                 <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-                		
+
                 	<div class="post-header">
         			    <span class="cat"><a href="{{ ['/tags/', category] | join | url }}" rel="category tag"> {{ category }} </a></span>
                 		<h1>{{ title }}</h1>
                 		<span class="date">By <a href="{{ ['/tags/', author] | join | url }}"> {{ author }}</a> {{ page.date | readableDate }}</span>
                 	</div>
-                	
+
                 	<div class="post-entry">
                 		{{ content | urlize | safe }}
                 		<div class="post-tags">
@@ -39,16 +39,16 @@ templateClass: single single-post
                 		{% endfor %}
                 		</div>
                 	</div>
-                	
+
                 	<div class="post-metas">
                     	<div class="post-share">
                     		<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | url }}"><span class="share-box"><i class="fa fa-facebook"></i></span></a>
                     		<a target="_blank" href="https://twitter.com/home?status={{ ['Check this article out: ', page.url | url] | join | urlencode }}"><span class="share-box"><i class="fa fa-twitter"></i></span></a>
                     		<a target="_blank" href="https://pinterest.com/pin/create/button/?url={{ page.url | url }}&media="><span class="share-box"><i class="fa fa-pinterest"></i></span></a>
-                    		<a href="#HCB_comment_box"><span class="share-box"><i class="fa fa-comment-o"></i></span></a>		
+                    		<a href="#HCB_comment_box"><span class="share-box"><i class="fa fa-comment-o"></i></span></a>
                     	</div>
                 	</div>
-                	
+
                 	<div class="post-pagination">
                 	  {%- set nextPost = collections.archive | getNextCollectionItem(page) %}
                 	  {%- set previousPost = collections.archive | getPreviousCollectionItem(page) %}
@@ -71,10 +71,10 @@ templateClass: single single-post
                         	</a>
                 	    </div>
                 	    {% endif %}
-                    </div>			
+                    </div>
                 	<div class="post-author">
                         <div class="author-content">
-                
+
                 			<div class="author-widget first widget_about_me">
                                 <div class="about-widget widget-content">
                                     <div class="about-img">
@@ -90,7 +90,7 @@ templateClass: single single-post
                 		</div>
                     </div>
                 </article>
-                {% include "layouts/comments.njk" %}
+                {% include "./comments.njk" %}
             </div>
         </div>
-{% include "layouts/sidebar.njk" %}
+{% include "./compact/sidebar.njk" %}

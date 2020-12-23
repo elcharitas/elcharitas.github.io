@@ -73,12 +73,15 @@
     Color Variation
 =================================*/
 @baseColor: #009ef9;
+@layerColor: #07a5ee;
+@overlayColor: #e05f13;
+@maskColor: #00acfc;
 /* container 450px*/
 /* container 300px*/
 /**
  * Reset Styels
  */
-//@import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,600,700,800,900|Poppins:300,400,500,600,700,700i&display=swap");
+//@import url("https://fonts.googleapis.com/css?family=Langar:400,400i,500,600,700,800,900|Poppins:300,400,500,600,700,700i&display=swap");
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -701,7 +704,7 @@ Common Css
 }
 
 .color-3 {
-  color: #f4769a;
+  color: @layerColor;
 }
 
 .color-4 {
@@ -793,25 +796,25 @@ p:last-child {
 }
 
 .text-default-gradient {
-  background: -webkit-gradient(linear, left top, right top, color-stop(50%, #f81f01), color-stop(50%, #ee076e));
-  background: -webkit-linear-gradient(left, #f81f01 50%, #ee076e 50%);
-  background: -o-linear-gradient(left, #f81f01 50%, #ee076e 50%);
-  background: linear-gradient(to right, #f81f01 50%, #ee076e 50%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(50%, @overlayColor), color-stop(50%, @layerColor));
+  background: -webkit-linear-gradient(left, @overlayColor 50%, @layerColor 50%);
+  background: -o-linear-gradient(left, @overlayColor 50%, @layerColor 50%);
+  background: linear-gradient(to right, @overlayColor 50%, @layerColor 50%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .theme-gradient {
-  background: -webkit-linear-gradient(349deg, #f81f01 0, #ee076e 100%);
-  background: -o-linear-gradient(349deg, #f81f01 0, #ee076e 100%);
-  background: linear-gradient(-259deg, #f81f01 0, #ee076e 100%);
+  background: -webkit-linear-gradient(349deg, @overlayColor 0, @layerColor 100%);
+  background: -o-linear-gradient(349deg, @overlayColor 0, @layerColor 100%);
+  background: linear-gradient(-259deg, @overlayColor 0, @layerColor 100%);
 }
 
 .rn-pagination ul.page-list li a::before {
-  background: -webkit-linear-gradient(349deg, #f81f01 0, #ee076e 100%);
-  background: -o-linear-gradient(349deg, #f81f01 0, #ee076e 100%);
-  background: linear-gradient(-259deg, #f81f01 0, #ee076e 100%);
+  background: -webkit-linear-gradient(349deg, @overlayColor 0, @layerColor 100%);
+  background: -o-linear-gradient(349deg, @overlayColor 0, @layerColor 100%);
+  background: linear-gradient(-259deg, @overlayColor 0, @layerColor 100%);
 }
 
 /*!
@@ -3844,7 +3847,7 @@ Copyright (c) 2015 Daniel Eden
     Google Font
 ===================================*/
 /*----------------------------------------
-font-family: 'Montserrat', sans-serif;
+font-family: 'Langar', sans-serif;
 font-family: 'Poppins', sans-serif;
 
 -------------------------------------*/
@@ -3909,12 +3912,12 @@ font-family: 'Poppins', sans-serif;
 }
 
 .theme-gradient {
-  background: #f81f01;
-  background: -webkit-linear-gradient(145deg, #f81f01 0%, #ee076e 100%);
-  background: -webkit-linear-gradient(305deg, #f81f01 0%, #ee076e 100%);
-  background: -o-linear-gradient(305deg, #f81f01 0%, #ee076e 100%);
-  background: linear-gradient(145deg, #f81f01 0%, #ee076e 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f81f01', endColorstr='#ee076e',GradientType=1 );
+  background: @overlayColor;
+  background: -webkit-linear-gradient(145deg, @overlayColor 0%, @layerColor 100%);
+  background: -webkit-linear-gradient(305deg, @overlayColor 0%, @layerColor 100%);
+  background: -o-linear-gradient(305deg, @overlayColor 0%, @layerColor 100%);
+  background: linear-gradient(145deg, @overlayColor 0%, @layerColor 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@overlayColor', endColorstr='@layerColor',GradientType=1 );
 }
 
 .rn-text-white {
@@ -10246,10 +10249,10 @@ Mainmenu Area
 }
 
 .breadcrumb-inner h2.title {
-  background: #f81f01;
-  background: -webkit-linear-gradient(305deg, #f81f01 0%, #ee076e 100%);
-  background: -o-linear-gradient(305deg, #f81f01 0%, #ee076e 100%);
-  background: linear-gradient(145deg, #f81f01 0%, #ee076e 100%);
+  background: @overlayColor;
+  background: -webkit-linear-gradient(305deg, @overlayColor 0%, @layerColor 100%);
+  background: -o-linear-gradient(305deg, @overlayColor 0%, @layerColor 100%);
+  background: linear-gradient(145deg, @overlayColor 0%, @layerColor 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -10926,9 +10929,9 @@ Footer Styles
 }
 
 .footer-default .footer-left {
-  background: -webkit-linear-gradient(305deg, #f81f01 0%, #ee076e 100%);
-  background: -o-linear-gradient(305deg, #f81f01 0%, #ee076e 100%);
-  background: linear-gradient(145deg, #f81f01 0%, #ee076e 100%);
+  background: -webkit-linear-gradient(305deg, @overlayColor 0%, @layerColor 100%);
+  background: -o-linear-gradient(305deg, @overlayColor 0%, @layerColor 100%);
+  background: linear-gradient(145deg, @overlayColor 0%, @layerColor 100%);
   padding: 120px 120px;
   position: relative;
   z-index: 2;
@@ -11008,7 +11011,7 @@ Footer Styles
   color: #ffffff;
   font-size: 75px;
   font-weight: 900;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Langar', sans-serif;
   line-height: 90px;
 }
 
@@ -12039,10 +12042,10 @@ Portfolio Style Three
 }
 
 .portfolio-style--3 .thumbnail a::after {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fc004d), to(#000000));
-  background: -webkit-linear-gradient(top, #fc004d 0, #000000 100%);
-  background: -o-linear-gradient(top, #fc004d 0, #000000 100%);
-  background: linear-gradient(to bottom, #fc004d 0, #000000 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, @maskColor), to(#000000));
+  background: -webkit-linear-gradient(top, @maskColor 0, #000000 100%);
+  background: -o-linear-gradient(top, @maskColor 0, #000000 100%);
+  background: linear-gradient(to bottom, @maskColor 0, #000000 100%);
   position: absolute;
   left: 0;
   right: 0;
@@ -13114,7 +13117,7 @@ Slider Styles
   font-size: 125px;
   font-weight: 900;
   text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Langar', sans-serif;
   font-weight: 900;
   line-height: 130px;
 }
@@ -13419,7 +13422,7 @@ Slider Styles
   color: #1f1f25;
   font-size: 75px;
   font-weight: 900;
-  font-family: 'Montserrat', sans-serif;
+  font-family: Langar, sans-serif;
   line-height: 90px;
   text-transform: inherit;
   width: 100%;
@@ -13860,14 +13863,14 @@ Slider Default
   left: 0;
   bottom: -30px;
   content: "";
-  background-color: #f81f01;
+  background-color: @overlayColor;
   z-index: -1;
   margin: auto;
   right: 0;
   border-radius: 20%;
-  background-image: -webkit-linear-gradient(305deg, #f81f01 0%, #ee076e 100%);
-  background-image: -o-linear-gradient(305deg, #f81f01 0%, #ee076e 100%);
-  background-image: linear-gradient(145deg, #f81f01 0%, #ee076e 100%);
+  background-image: -webkit-linear-gradient(305deg, @overlayColor 0%, @layerColor 100%);
+  background-image: -o-linear-gradient(305deg, @overlayColor 0%, @layerColor 100%);
+  background-image: linear-gradient(145deg, @overlayColor 0%, @layerColor 100%);
   -webkit-filter: blur(30px);
           filter: blur(30px);
 }
@@ -14513,10 +14516,10 @@ ul.brand-style-2 img:hover {
 }
 
 .team .thumbnail::after {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fc004d), to(#000000));
-  background: -webkit-linear-gradient(top, #fc004d 0, #000000 100%);
-  background: -o-linear-gradient(top, #fc004d 0, #000000 100%);
-  background: linear-gradient(to bottom, #fc004d 0, #000000 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, @maskColor), to(#000000));
+  background: -webkit-linear-gradient(top, @maskColor 0, #000000 100%);
+  background: -o-linear-gradient(top, @maskColor 0, #000000 100%);
+  background: linear-gradient(to bottom, @maskColor 0, #000000 100%);
   position: absolute;
   left: 0;
   right: 0;
@@ -14722,9 +14725,9 @@ ul.brand-style-2 img:hover {
 Call To Action Wrapper
 -----------------------------*/
 .call-to-action {
-  background: -webkit-linear-gradient(305deg, #f81f01 0%, #ee076e 100%);
-  background: -o-linear-gradient(305deg, #f81f01 0%, #ee076e 100%);
-  background: linear-gradient(145deg, #f81f01 0%, #ee076e 100%);
+  background: -webkit-linear-gradient(305deg, @overlayColor 0%, @layerColor 100%);
+  background: -o-linear-gradient(305deg, @overlayColor 0%, @layerColor 100%);
+  background: linear-gradient(145deg, @overlayColor 0%, @layerColor 100%);
   position: relative;
   z-index: 2;
 }
@@ -14754,7 +14757,7 @@ Call To Action Wrapper
   color: #ffffff;
   font-size: 75px;
   font-weight: 900;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Langar', sans-serif;
   line-height: 90px;
 }
 
@@ -15424,10 +15427,10 @@ ul.social-transparent li a:hover {
 .rn-progress-charts .progress .progress-bar {
   overflow: visible;
   position: relative;
-  background-color: #f81f01;
-  background-image: -webkit-linear-gradient(314deg, #f81f01, #ee076e);
-  background-image: -o-linear-gradient(314deg, #f81f01, #ee076e);
-  background-image: linear-gradient(-224deg, #f81f01, #ee076e);
+  background-color: @overlayColor;
+  background-image: -webkit-linear-gradient(314deg, @overlayColor, @layerColor);
+  background-image: -o-linear-gradient(314deg, @overlayColor, @layerColor);
+  background-image: linear-gradient(-224deg, @overlayColor, @layerColor);
 }
 
 .rn-progress-charts .progress .progress-bar.custom-color--4 {
@@ -15541,10 +15544,10 @@ Gallery Styles
   transition: all 0.6s cubic-bezier(0.33, 0.84, 0.31, 0.98);
   opacity: 0;
   border-radius: 5px;
-  background-color: #f81f01;
-  background-image: -webkit-linear-gradient(305deg, #f81f01 0%, #ee076e 100%);
-  background-image: -o-linear-gradient(305deg, #f81f01 0%, #ee076e 100%);
-  background-image: linear-gradient(145deg, #f81f01 0%, #ee076e 100%);
+  background-color: @overlayColor;
+  background-image: -webkit-linear-gradient(305deg, @overlayColor 0%, @layerColor 100%);
+  background-image: -o-linear-gradient(305deg, @overlayColor 0%, @layerColor 100%);
+  background-image: linear-gradient(145deg, @overlayColor 0%, @layerColor 100%);
   position: absolute;
   top: -2px;
   right: -2px;
@@ -15573,7 +15576,7 @@ Gallery Styles
 
 .rn-pricing .pricing-table-inner .pricing-header .pricing span.price {
   font-size: 100px;
-  color: #f81f01;
+  color: @overlayColor;
   line-height: 1;
 }
 
@@ -15725,10 +15728,10 @@ Blog Styles
 }
 
 .blog.blog-style--1 .thumbnail a::after {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fc004d), to(#000000));
-  background: -webkit-linear-gradient(top, #fc004d 0, #000000 100%);
-  background: -o-linear-gradient(top, #fc004d 0, #000000 100%);
-  background: linear-gradient(to bottom, #fc004d 0, #000000 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, @maskColor), to(#000000));
+  background: -webkit-linear-gradient(top, @maskColor 0, #000000 100%);
+  background: -o-linear-gradient(top, @maskColor 0, #000000 100%);
+  background: linear-gradient(to bottom, @maskColor 0, #000000 100%);
   position: absolute;
   left: 0;
   right: 0;
@@ -17331,11 +17334,11 @@ BLog Details Styles
 .single-demo a .label-new {
   position: absolute;
   top: 5px;
-  background: #f81f01;
-  background: -webkit-linear-gradient(305deg, #f81f01 0%, #ee076e 100%);
-  background: -o-linear-gradient(305deg, #f81f01 0%, #ee076e 100%);
-  background: linear-gradient(145deg, #f81f01 0%, #ee076e 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f81f01', endColorstr='#ee076e',GradientType=1 );
+  background: @overlayColor;
+  background: -webkit-linear-gradient(305deg, @overlayColor 0%, @layerColor 100%);
+  background: -o-linear-gradient(305deg, @overlayColor 0%, @layerColor 100%);
+  background: linear-gradient(145deg, @overlayColor 0%, @layerColor 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@overlayColor', endColorstr='@layerColor',GradientType=1 );
   padding: 9px 14px;
   color: #fff;
   border-radius: 4px;
