@@ -8,7 +8,7 @@
     "serve": "eleventy --serve",
     "start": "eleventy --serve",
     "debug": "DEBUG=* eleventy",
-    "build:first": "rm -r _site",
+    "build:first": "rm -rf _site",
     "build:less": "lessc assets/less/style.less assets/less/style.css",
     "build:ts": "tsc -b assets/ts",
     "build:last": "echo \"Build Finished!\"",
