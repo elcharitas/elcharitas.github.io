@@ -74,8 +74,10 @@
 =================================*/
 @baseColor: #009ef9;
 @layerColor: #07a5ee;
-@overlayColor: #e05f13;
+@overlayColor: #1365e0;
 @maskColor: #00acfc;
+@stdColor: #000000;
+@stdwColor: #302e2e;
 /* container 450px*/
 /* container 300px*/
 /**
@@ -684,7 +686,7 @@ ul.liststyle.bullet li + li {
 Common Css
 =======================*/
 .textBlack {
-  color: #000000;
+  color: @stdColor;
 }
 
 .bodyColor {
@@ -3952,7 +3954,7 @@ font-family: 'Poppins', sans-serif;
 }
 
 .bg_color--6 {
-  background: #000000;
+  background: @stdColor;
 }
 
 .bg_color--7 {
@@ -6496,14 +6498,14 @@ img.react-parallax-bgimage {
 @media only screen and (max-width: 767px) {
   .ptb--120,
   .ptb--80 {
-    padding: 60px 0 !important;
+    padding: 120px 0 !important;
   }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .ptb--120,
   .ptb--80 {
-    padding: 80px 0 !important;
+    padding: 150px 0 !important;
   }
 }
 
@@ -6511,7 +6513,7 @@ img.react-parallax-bgimage {
   .pt--120,
   .pt--140,
   .pt--110 {
-    padding-top: 60px !important;
+    padding-top: 120px !important;
   }
 }
 
@@ -10004,7 +10006,7 @@ img.react-parallax-bgimage {
 }
 
 .header-area .header-wrapper.menu-open .close-menu span {
-  color: #000000;
+  color: @stdColor;
   font-size: 30px;
   cursor: pointer;
 }
@@ -10093,11 +10095,11 @@ img.react-parallax-bgimage {
 }
 
 .header-not-transparent .humberger-menu span.text-white {
-  color: #000000 !important;
+  color: @stdColor !important;
 }
 
 .color-black .humberger-menu span.text-white {
-  color: #000000 !important;
+  color: @stdColor !important;
 }
 
 /*====================
@@ -10283,7 +10285,7 @@ Mainmenu Area
 }
 
 .breadcrumb-inner .page-list li.current-page {
-  color: #f10;
+  color: @baseColor;
 }
 
 .breadcrumb-inner .page-list li + li::before {
@@ -10742,8 +10744,8 @@ a.rn-button-style--2:hover {
   width: 35px;
   line-height: 35px;
   text-align: center;
-  background: #f10 !important;
-  background-color: #f10 !important;
+  background: @baseColor !important;
+  background-color: @baseColor !important;
   color: #ffffff;
   border: 0;
   background: none;
@@ -10791,9 +10793,9 @@ a.rn-button-style--2:hover {
   line-height: 38px;
   min-width: 42px;
   height: 42px;
-  border: 2px solid #0000004d;
+  border: 1px solid @stdColor;
   background: #fff;
-  color: #000000;
+  color: @stdColor;
   position: relative;
   z-index: 2;
   font-weight: 600;
@@ -11263,10 +11265,10 @@ Footer Style Two
 
 .portfolio .thumbnail-inner::before {
   background-color: #f6004c;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #f6004c), to(#000000));
-  background-image: -webkit-linear-gradient(#f6004c 10%, #000000 100%);
-  background-image: -o-linear-gradient(#f6004c 10%, #000000 100%);
-  background-image: linear-gradient(#f6004c 10%, #000000 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #f6004c), to(@stdColor));
+  background-image: -webkit-linear-gradient(#f6004c 10%, @stdColor 100%);
+  background-image: -o-linear-gradient(#f6004c 10%, @stdColor 100%);
+  background-image: linear-gradient(#f6004c 10%, @stdColor 100%);
   position: absolute;
   content: "";
   top: 0;
@@ -11910,7 +11912,7 @@ Footer Style Two
   background: -webkit-gradient(linear, left top, right top, from(black), to(rgba(0, 0, 0, 0)));
   background: -o-linear-gradient(left, black 0%, rgba(0, 0, 0, 0) 100%);
   background: linear-gradient(to right, black 0%, rgba(0, 0, 0, 0) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#00000000', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@stdColor', endColorstr='@stdColor00', GradientType=1);
 }
 
 .portfolio-slick-activation button.slick-arrow.slick-prev::before {
@@ -11941,7 +11943,7 @@ Footer Style Two
   background: -webkit-gradient(linear, right top, left top, from(black), to(rgba(0, 0, 0, 0)));
   background: -o-linear-gradient(right, black 0%, rgba(0, 0, 0, 0) 100%);
   background: linear-gradient(to left, black 0%, rgba(0, 0, 0, 0) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#00000000', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@stdColor', endColorstr='@stdColor00', GradientType=1);
 }
 
 .portfolio-slick-activation button.slick-arrow.slick-next::before {
@@ -12042,10 +12044,10 @@ Portfolio Style Three
 }
 
 .portfolio-style--3 .thumbnail a::after {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, @maskColor), to(#000000));
-  background: -webkit-linear-gradient(top, @maskColor 0, #000000 100%);
-  background: -o-linear-gradient(top, @maskColor 0, #000000 100%);
-  background: linear-gradient(to bottom, @maskColor 0, #000000 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, @maskColor), to(@stdColor));
+  background: -webkit-linear-gradient(top, @maskColor 0, @stdColor 100%);
+  background: -o-linear-gradient(top, @maskColor 0, @stdColor 100%);
+  background: linear-gradient(to bottom, @maskColor 0, @stdColor 100%);
   position: absolute;
   left: 0;
   right: 0;
@@ -12086,10 +12088,10 @@ Portfolio Style Three
 .portfolio-style--3 .content::before {
   position: absolute;
   content: "";
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(0, 0, 0, 0)), color-stop(70%, #000000));
-  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0, #000000 70%);
-  background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0, #000000 70%);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, #000000 70%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(0, 0, 0, 0)), color-stop(70%, @stdColor));
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0, @stdColor 70%);
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0, @stdColor 70%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, @stdColor 70%);
   left: 0;
   top: 0;
   width: 100%;
@@ -14516,10 +14518,10 @@ ul.brand-style-2 img:hover {
 }
 
 .team .thumbnail::after {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, @maskColor), to(#000000));
-  background: -webkit-linear-gradient(top, @maskColor 0, #000000 100%);
-  background: -o-linear-gradient(top, @maskColor 0, #000000 100%);
-  background: linear-gradient(to bottom, @maskColor 0, #000000 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, @maskColor), to(@stdColor));
+  background: -webkit-linear-gradient(top, @maskColor 0, @stdColor 100%);
+  background: -o-linear-gradient(top, @maskColor 0, @stdColor 100%);
+  background: linear-gradient(to bottom, @maskColor 0, @stdColor 100%);
   position: absolute;
   left: 0;
   right: 0;
@@ -15230,7 +15232,7 @@ p.form-messege-active.form-messege {
 }
 
 p.form-messege-active.form-messege.error {
-  color: #f10;
+  color: @baseColor;
 }
 
 p.form-messege-active.form-messege.success {
@@ -15327,8 +15329,8 @@ a.video-popup.theme-color::before {
 
 button.video-popup.black-color,
 a.video-popup.black-color {
-  background: #000000;
-  border-color: #000000;
+  background: @stdColor;
+  border-color: @stdColor;
 }
 
 button.video-popup.black-color::before,
@@ -15728,10 +15730,10 @@ Blog Styles
 }
 
 .blog.blog-style--1 .thumbnail a::after {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, @maskColor), to(#000000));
-  background: -webkit-linear-gradient(top, @maskColor 0, #000000 100%);
-  background: -o-linear-gradient(top, @maskColor 0, #000000 100%);
-  background: linear-gradient(to bottom, @maskColor 0, #000000 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, @maskColor), to(@stdColor));
+  background: -webkit-linear-gradient(top, @maskColor 0, @stdColor 100%);
+  background: -o-linear-gradient(top, @maskColor 0, @stdColor 100%);
+  background: linear-gradient(to bottom, @maskColor 0, @stdColor 100%);
   position: absolute;
   left: 0;
   right: 0;
@@ -15778,10 +15780,10 @@ Blog Styles
 .blog.blog-style--1 .content::before {
   position: absolute;
   content: "";
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(0, 0, 0, 0)), color-stop(70%, #000000));
-  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0, #000000 70%);
-  background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0, #000000 70%);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, #000000 70%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(0, 0, 0, 0)), color-stop(70%, @stdColor));
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0, @stdColor 70%);
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0, @stdColor 70%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, @stdColor 70%);
   left: 0;
   top: 0;
   width: 100%;
@@ -17009,7 +17011,7 @@ BLog Details Styles
   top: 0;
   position: absolute;
   content: "";
-  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+7,000000+100&0+50,0.5+100 */
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/@stdColor+7,000000+100&0+50,0.5+100 */
   /* FF3.6-15 */
   background: -webkit-linear-gradient(-45deg, rgba(0, 0, 0, 0) 7%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.5) 100%);
   /* Chrome10-25,Safari5.1-6 */
@@ -17017,7 +17019,7 @@ BLog Details Styles
   background: -o-linear-gradient(315deg, rgba(0, 0, 0, 0) 7%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.5) 100%);
   background: linear-gradient(135deg, rgba(0, 0, 0, 0) 7%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.5) 100%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#80000000',GradientType=1 );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@stdColor00', endColorstr='#80000000',GradientType=1 );
   /* IE6-9 fallback on horizontal gradient */
 }
 

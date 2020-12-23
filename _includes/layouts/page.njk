@@ -1,6 +1,6 @@
 ---
-layout: layouts/base.njk
-templateClass: tmpl-post
+layout: base
+templateClass: page
 ---
-<h1>{{ title }}</h1>
+{% include "./header/_crumbs.njk" %}
 {{ content | urlize | safe }}

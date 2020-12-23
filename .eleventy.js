@@ -16,15 +16,23 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addLayoutAlias("page", "layouts/page.njk");
   eleventyConfig.addLayoutAlias("base", "layouts/base.njk");
 
-  eleventyConfig.addFilter("page", url => {
-    return "/p/" + url;
+  eleventyConfig.addFilter("page", path => {
+    return "/p/" + path.replace('.', '/');
+  });
+
+  eleventyConfig.addFilter("image", path => {
+    return "/assets/img/" + path;
+  });
+
+  eleventyConfig.addFilter("tagUrl", path => {
+    return "/tag/" + path;
   });
 
   eleventyConfig.addFilter("readableDate", dateObj => {
     return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat("dd LLL yyyy");
   });
 
-  eleventyConfig.addFilter("date", (dateObj = new Date, format) => {
+  eleventyConfig.addFilter("date", (dateObj = new Date, format = 'f J, Y') => {
     return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat(typeof format == "string" ? format.toLowerCase(): "dd LLL yyyy");
   });
 

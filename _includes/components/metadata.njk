@@ -2,15 +2,15 @@
     	<meta name="description" content="{{ description or title or meta.title }}"/>
     	<meta itemprop="name" content="{{ title or meta.title }}">
     	<meta itemprop="description" content="{{ description or title or meta.title }}">
-    	<meta itemprop="image" content="{{ ['/assets/img/', image or meta.author.image] | join | url }}">
+    	<meta itemprop="image" content="{{ ['/assets/img/', image or meta.archive.image] | join | url }}">
     	<link rel="dns-prefetch" href="https://ajax.googleapis.com"/>
     	<link rel="preload" href="{{ '/assets/fonts/fontawesome-webfont.ttf' | url }}" crossorigin as="font"/>
     	<meta property="og:url" content="{{ page.url | url }}">
     	<meta property="og:type" content="website">
     	<meta property="og:title" content="{{ title or meta.title }}">
     	<meta property="og:description" content="{{ description or title or meta.title }}">
-    	<meta property="og:image" content="{{ ['/assets/img/', image or meta.author.image] | join | url }}">
+    	<meta property="og:image" content="{{ ['/assets/img/', image or meta.archive.image] | join | url }}">
     	<meta name="twitter:card" content="summary_large_image">
     	<meta name="twitter:title" content="{{ title or meta.title }}">
     	<meta name="twitter:description" content="{{ description or title or meta.title }}">
-    	<meta name="twitter:image" content="{{ ['/assets/img/', image or meta.author.image] | join | url }}">
+    	<meta name="twitter:image" content="{{ ['/assets/img/', image or meta.archive.image] | join | url }}">

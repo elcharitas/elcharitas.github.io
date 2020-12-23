@@ -1,35 +1,21 @@
 {
-  "title": "Jonathan's Weblog",
-  "url": "https://elcharitas.com.ng/",
-  "description": "I am writing about my experiences as a naval navel-gazer.",
-  "feed": {
-    "subtitle": "I am writing about my experiences as a naval navel-gazer.",
-    "filename": "feed.xml",
-    "path": "/feed/feed.xml",
-    "id": "https://elcharitas.com.ng/"
-  },
-  "jsonfeed": {
-    "path": "/feed/feed.json",
-    "url": "https://elcharitas.com.ng/feed/feed.json"
-  },
-  "author": {
-    "name": "elcharitas",
-    "email": "jonathanirhodia@gmail.com",
-    "url": "https://elcharitas.com.ng/about-me/",
-    "image": "noimage.jpg",
-    "links": {
-      "facebook-square": "//fb.me/irhodia.jonathan",
-      "twitter": "//t.me/elcharitas",
-      "linkedin": "//lnkd.in/elcharitas",
-      "github": "//github.com/elcharitas"
-    }
-  },
-  "archive": {
-    "title": "Latest Updates",
-    "image": "noimage.jpg",
-    "perpage": 5
-  },
-  "metagen": {
-    "generator": "Jonathan Irhodia"
-  }
+	"title": "Jonathan Irhodia's Personal Blog",
+	"url": "https://elcharitas.com.ng/",
+	"description": "I am writing about my experiences as a naval navel-gazer.",
+	"feed": {
+		"filename": "feed.xml",
+		"path": "/feed/feed.xml"
+	},
+	"jsonfeed": {
+		"path": "/feed/feed.json"
+	},
+	"archive": {
+		"title": "Latest Updates",
+		"image": "noimage.jpg",
+		"category": "Fun and Games",
+		"perpage": 12
+	},
+	"metagen": {
+		"generator": "Jonathan Irhodia"
+	}
 }

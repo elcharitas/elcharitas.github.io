@@ -309,7 +309,7 @@ $(function() {
 
   });
 
-    $('#particles-js').ready(function () {
+    $(document).find('#particles-js').each(function () {
 
         particlesJS('particles-js',
             {
@@ -431,6 +431,7 @@ $(function() {
 
         );
     })
+
     var introbun = $('#introbun').ready(function () {
         var start = 0;
         var tag = "";

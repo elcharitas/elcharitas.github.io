@@ -1,0 +1,18 @@
+
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                            <div class="blog blog-style--1">
+                                <div class="thumbnail">
+                                    <a href="{{ post.url | url }}">
+                                        <img class="w-100" src="{{ (post.data.image or meta.archive.image) | image }}" alt="{{ postTitle }}" />
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <p class="blogtype">{{ category or meta.archive.category }}</p>
+                                    <h4 class="title"><a href="{{ post.url | url }}">{{ postTitle }}</a>
+                                    </h4>
+                                    <div class="blog-btn">
+                                        <a class="rn-btn text-white" href="{{ post.url | url }}">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
