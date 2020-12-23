@@ -35,7 +35,7 @@ function loadStyle(href)
  * @param any|undefined item
  * @returns string
  */
-function Store(key, item)
+function Store(key, item = null)
 {
     var handle = localStorage ||
     {
@@ -119,10 +119,10 @@ var hcb_user = {
 
     },
     onload: function() {
-        $(hcb_user.dom).find('img').each(function(){
-            var src = $(this).attr('src');
-            $(this).attr('src', src.replace(/&d.+$/, ''));
-        });
+        // $(hcb_user.dom).find('img').each(function(){
+        //     var src = $(this).attr('src');
+        //     $(this).attr('src', src.replace(/&d.+$/, ''));
+        // });
     },
     RELATIVE_DATES: true
 };

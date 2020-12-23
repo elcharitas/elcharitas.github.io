@@ -8,7 +8,13 @@
     "serve": "eleventy --serve",
     "start": "eleventy --serve",
     "debug": "DEBUG=* eleventy",
-    "package": "uglifyjs _src/js/app.js -c -m -o assets/js/app.js && lessc _src/less/app.less | uglifycss > assets/css/style.css"
+    "build:first": "rm -r _site",
+    "build:less": "lessc assets/less/style.less assets/less/style.css",
+    "build:ts": "tsc -b assets/ts",
+    "build:last": "echo \"Build Finished!\"",
+    "minify:css": "uglifycss assets/less/style.css > assets/css/style.min.css",
+    "minify:js": "uglifyjs -c -m -o assets/js/app.min.js assets/ts/app.js",
+    "all": "run-s -c -s build:** minify:** build"
   },
   "repository": {
     "type": "git",
@@ -34,6 +40,7 @@
     "markdown-it-anchor": "^5.2.5",
     "less": "^3.12.2",
     "uglify-js": "^3.11.0",
-    "uglifycss": "^0.0.29"
+    "uglifycss": "^0.0.29",
+    "npm-run-all": "^4.1.0"
   }
 }

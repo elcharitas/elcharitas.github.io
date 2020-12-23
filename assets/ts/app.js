@@ -1,0 +1,119 @@
+"use strict";
+/**
+ * Inject required scripts into head
+ *
+ * @param string src
+ * @returns void
+ */
+function loadScript(src) {
+    var el = document.createElement("script");
+    el.src = src;
+    el.async = true;
+    //detach the loaded script
+    el.onload = function () {
+        head.removeChild(el);
+    };
+    head.appendChild(el);
+}
+function loadStyle(href) {
+    var el = document.createElement('link');
+    el.href = href;
+    el.type = "text/css";
+    el.rel = "stylesheet";
+    el.media = "all";
+    head.appendChild(el);
+}
+/**
+ * Simple function to save or retrieve user details
+ * Uses localStorage | cookies | object
+ *
+ * @param string key
+ * @param any|undefined item
+ * @returns string
+ */
+function Store(key, item) {
+    if (item === void 0) { item = null; }
+    var handle = localStorage ||
+        {
+            getItem: function (key) {
+                return Storex[key];
+            },
+            setItem: function (key, item) {
+                document.cookie = key + '=' + item;
+                return Storex[key] = item;
+            }
+        };
+    if (key && typeof item === "undefined") {
+        return handle.getItem(key);
+    }
+    else if (key) {
+        return handle.setItem(key, item);
+    }
+}
+//optimal data storage
+var Storex = {};
+//the head tag
+var head = document.getElementsByTagName("head")[0];
+//current location without hash or query
+var currentLocation = location.href.split('#')[0].split('?')[0];
+//htmlcommentbox variables
+var hcb_user = {
+    dom: '#HCB_comment_box',
+    comments_header: 'Leave a Reply.',
+    name_label: 'Your Name:',
+    content_label: 'Your reply...',
+    submit: 'Submit',
+    logout_link: 'Logout',
+    admin_link: '  ',
+    no_comments_msg: 'No replies yet!',
+    add: 'Reply Post',
+    again: 'New Reply',
+    rss: ' ',
+    said: 'said:',
+    prev_page: 'Older',
+    next_page: 'Newer',
+    showing: 'Showing',
+    to: 'to',
+    website_label: 'Your Website (optional)',
+    email_label: 'Email Address',
+    anonymous: 'Stay Anonymous?',
+    mod_label: 'Super User',
+    subscribe: 'Notifications?',
+    add_image: '+',
+    are_you_sure: 'Thanks for helping. Are you sure this is Spammy?',
+    reply: '<i class="fa fa-comment-o"></i>',
+    flag: '<i class="fa fa-flag"></i>',
+    like: '<i class="fa fa-thumbs-up"></i>',
+    days_ago: 'days ago',
+    hours_ago: 'hrs ago',
+    minutes_ago: 'mins ago',
+    within_the_last_minute: 'just now',
+    msg_thankyou: 'Thank you for replying!',
+    err_bad_html: 'Your reply contained bad html.',
+    err_bad_email: 'Please enter a valid email address.',
+    err_too_frequent: 'You must wait a few seconds before new replies.',
+    err_comment_empty: 'Your reply was not posted because it was empty!',
+    err_denied: 'Your reply was not accepted.',
+    err_unknown: 'Your reply was blocked for unknown reasons, please report this.',
+    err_spam: 'Your reply was detected as spam.',
+    err_blocked: 'Your reply was blocked by site policy.',
+    MAX_CHARS: 8192,
+    PAGE: "https://wcodr.mybb.us/pages/gb",
+    USER: {
+        name: Store('user_name'),
+        email: Store('user_email'),
+        website: Store('user_website')
+    },
+    ON_COMMENT: function () {
+    },
+    onload: function () {
+        // $(hcb_user.dom).find('img').each(function(){
+        //     var src = $(this).attr('src');
+        //     $(this).attr('src', src.replace(/&d.+$/, ''));
+        // });
+    },
+    RELATIVE_DATES: true
+};
+
+//offload htmlcommentbox
+loadScript("https://www.htmlcommentbox.com/jread?opts=2045&page=" + hcb_user.PAGE);

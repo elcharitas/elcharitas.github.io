@@ -1,56 +1,112 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html class="no-js" lang="en-US">
     <head>
     	<meta charset="UTF-8">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
-    	<title>{{ ([title, " ~ ", metadata.title] | join if title else metadata.title) | title }}</title>
-    	<meta name="description" content="{{ description or title or metadata.title }}"/>
-    	<meta itemprop="name" content="{{ title or metadata.title }}">
-    	<meta itemprop="description" content="{{ description or title or metadata.title }}">
-    	<meta itemprop="image" content="{{ ['/assets/img/', image or metadata.author.image] | join | url }}">
+    	<title>{{ ([title, " ~ ", meta.title] | join if title else meta.title) | title }}</title>
+    	<meta name="description" content="{{ description or title or meta.title }}"/>
+    	<meta itemprop="name" content="{{ title or meta.title }}">
+    	<meta itemprop="description" content="{{ description or title or meta.title }}">
+    	<meta itemprop="image" content="{{ ['/assets/img/', image or meta.author.image] | join | url }}">
     	<link rel="dns-prefetch" href="https://ajax.googleapis.com"/>
-    	<link rel="preload" href="{{ '/assets/fonats/fontawesome-webfont.ttf' | url }}"/>
+    	<link rel="preload" href="{{ '/assets/fonts/fontawesome-webfont.ttf' | url }}" crossorigin as="font"/>
     	<meta property="og:url" content="{{ page.url | url }}">
     	<meta property="og:type" content="website">
-    	<meta property="og:title" content="{{ title or metadata.title }}">
-    	<meta property="og:description" content="{{ description or title or metadata.title }}">
-    	<meta property="og:image" content="{{ ['/assets/img/', image or metadata.author.image] | join | url }}">
+    	<meta property="og:title" content="{{ title or meta.title }}">
+    	<meta property="og:description" content="{{ description or title or meta.title }}">
+    	<meta property="og:image" content="{{ ['/assets/img/', image or meta.author.image] | join | url }}">
     	<meta name="twitter:card" content="summary_large_image">
-    	<meta name="twitter:title" content="{{ title or metadata.title }}">
-    	<meta name="twitter:description" content="{{ description or title or metadata.title }}">
-    	<meta name="twitter:image" content="{{ ['/assets/img/', image or metadata.author.image] | join | url }}">
-        <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}" type="text/css" media="all" />
-        <link rel="stylesheet" href="{{ '/assets/css/animate.css' | url }}" type="text/css" media="print" onload="this.media='all'" />
-        <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
-        <link rel="alternate" href="{{ metadata.jsonfeed.path | url }}" type="application/json" title="{{ metadata.title }}">
+    	<meta name="twitter:title" content="{{ title or meta.title }}">
+    	<meta name="twitter:description" content="{{ description or title or meta.title }}">
+    	<meta name="twitter:image" content="{{ ['/assets/img/', image or meta.author.image] | join | url }}">
+        <link rel="stylesheet" href="{{ '/assets/css/style.min.css' | url }}" type="text/css" media="all" />
+        <link rel="alternate" href="{{ meta.feed.path | url }}" type="application/atom+xml" title="{{ meta.title }}">
+        <link rel="alternate" href="{{ meta.jsonfeed.path | url }}" type="application/json" title="{{ meta.title }}">
     </head>
-    <body class="{% if templateClass %}{{ templateClass }} {% endif %}blog">
-    	<nav id="navigation">
-    		<div class="container">
-    			<div id="logo">
-    				<h1><a href="{{ '/' | url }}"> <i class="fa fa-cogs link"></i> elcharitas </a></h1>
-    			</div>
-    			<div class="mobile-pack">
-    			    <span class="search-icon"></span>
-    			    <span class="menu-icon"></span>
-    			</div>
-    		</div>
-    	</nav>
+    <body class="{% if templateClass %}{{ templateClass }} {% endif %}blog position-relative spybody" data-spy="scroll" data-target=".navbar-example2" data-offset="150">
+	    <div class="main-page active-dark">
+        <!-- Start Header Area  -->
+        <header class="header-area header-style-two color-black header--sticky">
+            <div class="header-wrapper justify-content-center justify-content-sm-around">
+                <div class="header-left d-none d-md-flex align-items-center">
+                    <nav class="mainmenunav d-lg-block ml--50">
+                        <div class="navbar-example2">
+                            <!-- Start Mainmanu Nav -->
+                            <ul class="mainmenu nav nav-pills">
+							    {% for entry in collections.all | eleventyNavigation %}
+								<li class="nav-item">
+                                    <a class="nav-link smoth-animation{% if entry.url == page.url %} active{% endif %}" href="{{ entry.url }}">{{ entry.title }}</a>
+                                </li>
+								{% endfor %}
+                            </ul>
+                            <!-- End Mainmanu Nav -->
+                        </div>
+                    </nav>
+                </div>
+                <div class="header-right">
+                    <div class="social-share-inner">
+                        <ul class="social-share social-style--2 color-black d-flex liststyle">
+                        {% for type, link in meta.author.links %}
+                            <li><a href="{{ link }}"><i class="fab fa-{{ type }}"></i></a></li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- End Header Area  -->
+        <!-- Start Page Wrapper  -->
+        <main class="page-wrapper">
     	{{ content | safe }}
-    	<footer id="footer-logo">
-    		<div class="container">
-    		    <p class="footer-menu">
-    		        {% for entry in collections.all | eleventyNavigation %}<a href="{{ entry.url }}">{{ entry.title }}</a> &middot; {% endfor %} <a href="{{ '/p/credits' | url }}">Website Credits</a>
-    		    </p>
-    			<p>
-    			    Designed by <a href="{{ '/p/about' | url }}"><i class="fa fa-cogs"></i> elcharitas</a> &copy; 2020
-    		    </p>
-    			<p class="to-top">
-    			    <a href="#">Back to Top <i class="fa fa-chevron-up"></i></a> 
-    			</p>
-    		</div>
-    	</footer>
-        <script type="text/javascript" src="{{ '/assets/js/app.js' | url }}"></script>
+        </main>
+        <!-- End Page Wrapper  -->
+
+        <div class="footer-style-2 ptb--30 bg_image bg_color--1" data-black-overlay="8">
+            <div class="wrapper plr--50 plr_sm--20">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                        <div class="inner">
+                            <div class="logo text-center text-sm-left text-white">
+                                Crafted by <a href="{{ '/p/about' | url }}">elcharitas</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                        <div class="inner text-center">
+                            <div class="links">
+							    {% for entry in collections.all | eleventyNavigation %}
+								<a href="{{ entry.url }}"> <i class="fa fa-{{ entry.icon or entry.title | lower }}"></i> &nbsp; {{ entry.title }}</a> &middot;
+								{% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-12">
+                        <div class="inner text-lg-right text-center">
+                            <div class="text small">
+                                <p> &copy; {{ undefined | date('Y') }}. All Rights Reserved</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Footer Style Two  -->
+        <!-- Modernizer JS -->
+        <script src="assets/js/modernizr.min.js"></script>
+        <!-- jQuery JS -->
+        <script src="assets/js/jquery.js"></script>
+        <!-- Bootstrap JS -->
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/stellar.js"></script>
+        <script src="assets/js/particles.js"></script>
+        <script src="assets/js/masonry.js"></script>
+        <script src="assets/js/stickysidebar.js"></script>
+        <script src="assets/js/plugins.min.js"></script>
+        <!-- Main JS -->
+        <script src="assets/js/main.js"></script>
+
+        <script type="text/javascript" src="{{ '/assets/js/app.min.js' | url }}"></script>
+
     </body>
 </html>

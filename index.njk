@@ -1,22 +1,177 @@
 ---
-layout: layouts/home.njk
+layout: layouts/base.njk
 eleventyNavigation:
   key: Home
   order: 1
 ---
-{% set maxPosts = metadata.archive.perpage %}
-        <header>
-    		<div class="promo-area">
-        		<div class="promo-item">
-            		<a href="#" class="promo-link"></a>
-            		<div class="promo-overlay" style="background-image:url(assets/img/noimage.jpg)">
-            			<h4>
-            			    I'm elcharitas!
-            		    </h4>
-            		</div>
-        	    </div>
+{% set maxPosts = meta.archive.perpage %}
+        <!-- Start Slider Area  -->
+        <div class="rn-slider-area  position-relative" id="home">
+            <!-- Start Single Slide  -->
+            <div class="slide personal-portfolio-slider slider-paralax slider-style-3 d-flex align-items-center justify-content-center bg_image bg_image--25">
+
+            <div id="particles-js"></div>
+            <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="inner text-center">
+                                <span>Freelance Fullstack Developer</span>
+                                <h1 id="introbun" class="title">Hello <span>There!</span></h1>
+                                <a class="rn-btn mt-5" href="#"><span>My Portfolio &nbsp; <i class="fa fa-arrow-circle-right"></i></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Slide  -->
             </div>
-        </header>
+        </div>
+        <!-- End Slider Area  -->
+
+        <!-- Start About Area  -->
+        <div class="about-area rn-section-gap bg_color--1" id="about">
+            <div class="about-wrapper">
+                <div class="container">
+                    <div class="row row--35 align-items-center">
+                        <div class="col-lg-4">
+                            <div class="team">
+                                <div class="thumbnail">
+                                    <img src="assets/img/jonathan.jpg" alt="Jonathan Irhodia" />
+                                </div>
+                                <div class="content">
+                                    <h4 class="title">Jonathan Irhodia</h4>
+                                    <p class="designation">Sr. Web Developer</p>
+                                </div>
+                                <ul class="social-icon">
+                                    <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-github"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="about-inner inner pt--100 pt_sm--40 pt_md--40">
+                                <div class="tab-wrapper">
+                                    <ul class="nav nav-tabs tab-style--1" id="myTab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="describo" data-toggle="tab" href="#rn-describo" role="tab" aria-controls="describo" aria-selected="true">About Me</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="mainskill" data-toggle="tab" href="#rn-mainskill" role="tab" aria-controls="mainskill" aria-selected="false">Main Stack/Skills</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="experience" data-toggle="tab" href="#rn-experience" role="tab" aria-controls="experience" aria-selected="false">Experience</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="education" data-toggle="tab" href="#rn-education" role="tab" aria-controls="education" aria-selected="false">Education & Certification</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="myTabContent">
+                                        <div class="tab-pane fade" id="rn-mainskill" role="tabpanel" aria-labelledby="mainskill">
+                                            <div class="single-tab-content">
+                                                <ul>
+                                                    <li><a href="service.html">User experience design <span> -
+                                                                UI/UX</span></a>Delight the user and make it
+                                                        work.</li>
+                                                    <li><a href="service.html">Web and user interface
+                                                            design<span> -
+                                                                Development</span></a>Websites, web experiences,
+                                                        ...</li>
+                                                    <li><a href="service.html">Interaction design <span> -
+                                                                Animation</span></a>I
+                                                        like to move it move it.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade show active" id="rn-describo" role="tabpanel" aria-labelledby="describo">
+                                            <div class="single-tab-content">
+                                                <ul>
+                                                    <li>
+                                                        I like to think of myself as an all round writer, writing codes, articles, books and much more
+                                                    </li>
+                                                    <li></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="rn-experience" role="tabpanel" aria-labelledby="experience">
+                                            <div class="single-tab-content">
+                                                <ul>
+                                                    <li><a href="/service">Sr. Front-end Engineer<span> -
+                                                                Google</span></a> 2018
+                                                        - Current</li>
+                                                    <li><a href="/service">Front-end Engineer<span> -
+                                                                Microsoft</span></a> 2017
+                                                        - 2018</li>
+                                                    <li><a href="/service">Software Engineer<span> - Alibaba
+                                                            </span></a> 2013-
+                                                        2014</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane fade" id="rn-education" role="tabpanel" aria-labelledby="education">
+                                            <div class="single-tab-content">
+                                                <ul>
+                                                    <li><a href="/service">BSc In CSE<span> - ABC University,
+                                                                Los Angeles,
+                                                                CA</span></a> 2010</li>
+                                                    <li><a href="/service">Diploma in Computer Science<span> -
+                                                                Gamma Technical
+                                                                Institute</span></a> 2009</li>
+                                                    <li><a href="/service">Graphic Designer<span> - ABC
+                                                                Institute, Los Angeles,
+                                                                CA</span></a> 2007</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End About Area  -->
+
+        <div class="rn-countreupup-area rn-section-gap bg_color--8">
+            <div class="container">
+                <div class="row">
+                    <!-- Start Single Counterup  -->
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-6">
+                        <div class="rn-counterup counterup_style--1">
+                            <h5 class="counter count text-success">44</h5>
+                            <p class="description">Built Applications</p>
+                        </div>
+                    </div>
+                    <!-- Start Single Counterup  -->
+
+                    <!-- Start Single Counterup  -->
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-6">
+                        <div class="rn-counterup counterup_style--1">
+                            <h5 class="counter count text-warning">80</h5>
+                            <p class="description">Satisfied Clients</p>
+                        </div>
+                    </div>
+                    <!-- Start Single Counterup  -->
+
+                    <!-- Start Single Counterup  -->
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-6">
+                        <div class="rn-counterup counterup_style--1">
+                            <h5 class="counter count text-danger">17</h5>
+                            <p class="description">Students Taught</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-6">
+                        <div class="rn-counterup counterup_style--1">
+                            <h5 class="counter count">120</h5>
+                            <p class="description">Written Artcles</p>
+                        </div>
+                    </div>
+                    <!-- Start Single Counterup  -->
+                </div>
+            </div>
+        </div>
 {% set archivelist = collections.archive | head(-3) %}
 {% set archivelistCounter = collections.archive | length %}
-{% include "archivelist.njk" %}

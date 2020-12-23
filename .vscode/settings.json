@@ -1,0 +1,18 @@
+{
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 100,
+    "editor.fontSize": 13,
+    "files.exclude": {
+        "**/_site": true,
+        "**/node_modules": true
+    },
+    "files.autoGuessEncoding": true,
+    "files.simpleDialog.enable": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "files.watcherExclude": {
+        "**/_site": true
+    },
+    "liveServer.settings.port": 8080,
+    "liveServer.settings.root": "./_site"
+}

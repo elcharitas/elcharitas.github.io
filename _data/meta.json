@@ -16,7 +16,13 @@
     "name": "elcharitas",
     "email": "jonathanirhodia@gmail.com",
     "url": "https://elcharitas.com.ng/about-me/",
-    "image": "noimage.jpg"
+    "image": "noimage.jpg",
+    "links": {
+      "facebook-square": "//fb.me/irhodia.jonathan",
+      "twitter": "//t.me/elcharitas",
+      "linkedin": "//lnkd.in/elcharitas",
+      "github": "//github.com/elcharitas"
+    }
   },
   "archive": {
     "title": "Latest Updates",

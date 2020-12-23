@@ -3,13 +3,13 @@
     		<div class="container">
     			<div class="widget-wrapper">
     				<div class="widget zminimal_latest_posts_widget">
-    				    <h4 class="widget-title">{{ listTitle or metadata.archive.title }}</h4>
+    				    <h4 class="widget-title">{{ listTitle or meta.archive.title }}</h4>
             			<ul class="latest-post">
 {% for post in archivelist | reverse %}
             				<li>
             					<div class="post-image">
             						<a href="{{ post.url | url }}" rel="bookmark">
-            							<img src="{{ ['/assets/img/', post.data.image or metadata.archive.image ] | join | url }}" class="side-item-thumb wp-post-image" width="150" height="60" alt="" loading="lazy" />
+            							<img src="{{ ['/assets/img/', post.data.image or meta.archive.image ] | join | url }}" class="side-item-thumb wp-post-image" width="150" height="60" alt="" loading="lazy" />
                                     </a>
             					</div>
 
