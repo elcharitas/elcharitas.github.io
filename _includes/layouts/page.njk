@@ -2,5 +2,12 @@
 layout: base
 templateClass: page
 ---
-{% include "./header/_crumbs.njk" %}
-{{ content | urlize | safe }}
+        {% include "./header/_crumbs.njk" %}
+        <div class="row  bg_color--7">
+            <div class="col-lg-8 col-md-9 col-12">
+            {{ content | urlize | safe }}
+            </div>
+            <div class="col-lg-4 col-md-3 col-12">
+
+            </div>
+        </div>

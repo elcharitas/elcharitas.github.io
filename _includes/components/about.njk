@@ -27,7 +27,7 @@
                                             <a class="nav-link active" id="describo" data-toggle="tab" href="#rn-describo" role="tab" aria-controls="describo" aria-selected="true">About Me</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="mainskill" data-toggle="tab" href="#rn-mainskill" role="tab" aria-controls="mainskill" aria-selected="false">Main Stack/Skills</a>
+                                            <a class="nav-link" id="mainskill" data-toggle="tab" href="#rn-mainskill" role="tab" aria-controls="mainskill" aria-selected="false">Main Skills</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" id="experience" data-toggle="tab" href="#rn-experience" role="tab" aria-controls="experience" aria-selected="false">Experience</a>
@@ -39,28 +39,28 @@
                                     <div class="tab-content" id="myTabContent">
                                         <div class="tab-pane fade" id="rn-mainskill" role="tabpanel" aria-labelledby="mainskill">
                                             <div class="single-tab-content">
-                                                <ul>
-                                                    <li><a href="service.html">User experience design <span> -
-                                                                UI/UX</span></a>Delight the user and make it
-                                                        work.</li>
-                                                    <li><a href="service.html">Web and user interface
-                                                            design<span> -
-                                                                Development</span></a>Websites, web experiences,
-                                                        ...</li>
-                                                    <li><a href="service.html">Interaction design <span> -
-                                                                Animation</span></a>I
-                                                        like to move it move it.</li>
-                                                </ul>
+                                            {% for skill, progress in author.skills %}
+                                                <div class="rn-progress-charts ptb--10">
+                                                    <h6 class="heading heading-h6 text-white">{{ skill }}</h6>
+                                                    <div class="progress">
+                                                        <div class="progress-bar wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay=".3s" role="progressbar" style="width: {{ progress }}%" aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100"><span
+                                                                class="percent-label  text-white">{{ progress }}%</span></div>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
                                             </div>
                                         </div>
                                         <div class="tab-pane fade show active" id="rn-describo" role="tabpanel" aria-labelledby="describo">
                                             <div class="single-tab-content">
                                                 <ul>
                                                     <li>
+                                                        Hello, I'm Jonathan Irhodia, An Edo state citizen of Nigeria, A lover of music and all good food :)
+                                                    </li>
+                                                    <li>
                                                         I like to think of myself as an all round writer, writing codes, articles, books and much more
                                                     </li>
-                                                    <li></li>
                                                 </ul>
+                                                <a class="rn-btn mt-5" href="#"><span>View Resume &nbsp; <i class="fa fa-download"></i></span></a>
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="rn-experience" role="tabpanel" aria-labelledby="experience">
@@ -69,12 +69,6 @@
                                                     <li><a href="/service">Sr. Front-end Engineer<span> -
                                                                 Google</span></a> 2018
                                                         - Current</li>
-                                                    <li><a href="/service">Front-end Engineer<span> -
-                                                                Microsoft</span></a> 2017
-                                                        - 2018</li>
-                                                    <li><a href="/service">Software Engineer<span> - Alibaba
-                                                            </span></a> 2013-
-                                                        2014</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -85,12 +79,6 @@
                                                     <li><a href="/service">BSc In CSE<span> - ABC University,
                                                                 Los Angeles,
                                                                 CA</span></a> 2010</li>
-                                                    <li><a href="/service">Diploma in Computer Science<span> -
-                                                                Gamma Technical
-                                                                Institute</span></a> 2009</li>
-                                                    <li><a href="/service">Graphic Designer<span> - ABC
-                                                                Institute, Los Angeles,
-                                                                CA</span></a> 2007</li>
                                                 </ul>
                                             </div>
                                         </div>

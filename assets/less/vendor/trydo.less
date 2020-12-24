@@ -10059,12 +10059,6 @@ img.react-parallax-bgimage {
   }
 }
 
-@media only screen and (max-width: 767px) {
-  .header-area.header-style-two .header-wrapper ul.social-share li {
-    margin: 0;
-  }
-}
-
 .humberger-menu span {
   cursor: pointer;
 }
@@ -10846,7 +10840,7 @@ ul.social-share li {
 }
 
 ul.social-share li a {
-  width: 40px;
+  width: auto;
   display: inline-block;
   height: 40px;
   border: 2px solid rgba(198, 201, 216, 0.75);
@@ -10892,7 +10886,6 @@ ul.social-share.rn-lg-size li a {
 
 ul.social-share.social-style--2 li a {
   border: 0 none;
-  width: 30px;
   height: auto;
   text-align: left;
   line-height: inherit;
@@ -12452,10 +12445,10 @@ a.item-portfolio-static {
   content: "";
   left: 0;
   top: 0;
-  background-image: -webkit-gradient(linear, left top, right top, from(#f61b10), to(#ef0963));
-  background-image: -webkit-linear-gradient(left, #f61b10, #ef0963);
-  background-image: -o-linear-gradient(left, #f61b10, #ef0963);
-  background-image: linear-gradient(to right, #f61b10, #ef0963);
+  background-image: -webkit-gradient(linear, left top, right top, from(@maskColor), to(@baseColor));
+  background-image: -webkit-linear-gradient(left, @maskColor, @baseColor);
+  background-image: -o-linear-gradient(left, @maskColor, @baseColor);
+  background-image: linear-gradient(to right, @maskColor, @baseColor);
   width: 100%;
   height: 100%;
   z-index: -1;
@@ -12698,10 +12691,10 @@ a.item-portfolio-static {
   content: "";
   left: 0;
   top: 0;
-  background-image: -webkit-gradient(linear, left top, right top, from(#f61b10), to(#ef0963));
-  background-image: -webkit-linear-gradient(left, #f61b10, #ef0963);
-  background-image: -o-linear-gradient(left, #f61b10, #ef0963);
-  background-image: linear-gradient(90deg, #f61b10, #ef0963);
+  background-image: -webkit-gradient(linear, left top, right top, from(@maskColor), to(@baseColor));
+  background-image: -webkit-linear-gradient(left, @maskColor, @baseColor);
+  background-image: -o-linear-gradient(left, @maskColor, @baseColor);
+  background-image: linear-gradient(90deg, @maskColor, @baseColor);
   width: 100%;
   height: 100%;
   z-index: -1;
@@ -13522,13 +13515,13 @@ Slider Styles
 =========================*/
 .slider-paralax,
 .rn-paralax {
-  height: 950px;
+  height: 1000px;
 }
 
 @media only screen and (max-width: 767px) {
   .slider-paralax,
   .rn-paralax {
-    height: auto;
+    height: 100vh;
   }
 }
 
@@ -16730,6 +16723,10 @@ BLog Details Styles
 .active-dark .bg_color--5,
 .active-dark .footer-right {
   background: #101010;
+}
+
+.active-dark .bg_color--7 {
+  background: #242323;
 }
 
 .active-dark .header-area.header--sticky.sticky {

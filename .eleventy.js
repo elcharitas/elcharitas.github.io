@@ -25,7 +25,11 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addFilter("tagUrl", path => {
-    return "/tag/" + path;
+    return "/tag/" + path.toLowerCase().replace(/\s+/g, '-');
+  });
+
+  eleventyConfig.addFilter("tagName", tag => {
+    return tag.replace(/\-+/g, ' ');
   });
 
   eleventyConfig.addFilter("readableDate", dateObj => {

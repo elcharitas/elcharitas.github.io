@@ -6,9 +6,11 @@ eleventyNavigation:
   order: 1
 ---
 {% include "components/sliders/home.njk" %}
-{% set maxPosts = meta.archive.perpage %}
-{% set listTitle = "Latest Projects" %}
-{% set archivelist = collections.archive | head(-3) %}
-{% set archivelistCounter = collections.archive | length %}
-{% include "archivelist.njk" %}
+{% set listCols = 4 %}
+{% set maxPosts = listCols %}
+{% set listTitle = "My Latest Projects" %}
+{% set archivelist = collections.portfolio | slide(-listCols) %}
+{% if listCols === archivelist | length %}
+  {% include "archivelist.njk" %}
+{% endif %}
 {% include "components/counter.njk" %}

@@ -1,10 +1,10 @@
 
-            <div class="rn-blog-area rn-section-gap bg_color--1">
+            <div class="rn-blog-area rn-section-gap">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="section-title section-title--2 text-center">
-                                <h2 class="title">{{ listTitle if listTitle }}</h2>
+                                <h3 class="title">{{ listTitle if listTitle }}</h3>
                             </div>
                         </div>
                     </div>
@@ -14,7 +14,7 @@
 						{% set tags = post.data.tags | slide(1) %}
 						{% for tag in tags | slide(1) | head(-1) %}
 							{% if collections.tagList.indexOf(tag) != -1 %}
-								{% set category = tag %}
+								{% set category = tag | tagName | capitalize %}
 							{% endif %}
 						{% endfor %}
                         {% include "layouts/compact/eachpost.njk" %}

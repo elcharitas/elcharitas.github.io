@@ -6,7 +6,7 @@
 							    {% for entry in collections.all | eleventyNavigation %}
 								<li class="nav-item">
                                     <a class="nav-link{% if entry.url == page.url %} active{% endif %}" href="{{ entry.url }}">
-                                        <i class="fa fa-{{ entry.icon or entry.title | lower }}"></i> &nbsp; {{ entry.title }}
+                                        {{ entry.title }}
                                     </a>
                                 </li>
 								{% endfor %}
