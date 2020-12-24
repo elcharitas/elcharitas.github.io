@@ -15,12 +15,12 @@ eleventyExcludeFromCollections: true
   },
   "items": [
     {%- for post in collections.archive | reverse %}
-    {%- set absolutePostUrl %}{{ post.url | url | absoluteUrl(meta.url) }}{% endset -%}
+    {%- set absolutePostUrl %}{{ post.url | url }}{% endset -%}
     {
       "id": "{{ absolutePostUrl }}",
       "url": "{{ absolutePostUrl }}",
       "title": "{{ post.data.title }}",
-      "content_html": {% if post.templateContent %}{{ post.templateContent | dump | safe }}{% else %}""{% endif %},
+      "content_html": "{% if post.templateContent %}{{ post.templateContent | striptags }}{% endif %}",
       "date_published": "{{ post.date | rssDate }}"
     }
     {%- if not loop.last -%}

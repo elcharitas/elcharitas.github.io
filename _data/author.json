@@ -2,7 +2,7 @@
     "name": "elcharitas",
     "fullname": "Jonathan Irhodia",
     "email": "jonathanirhodia@gmail.com",
-    "url": "https://elcharitas.com.ng/about-me/",
+    "url": "https://elcharitas.com.ng/p/about/",
     "image": "jonathan.jpg",
     "title": "Sr. Web Developer",
     "bio": "",
@@ -14,14 +14,14 @@
         "github": "//github.com/elcharitas"
     },
     "skills": {
-        "JavaScript Technologies: VanillaJS, VueJS, Angular, React": 98,
-        "Web Design Technologies: HTML/CSS, Bootstrap 4, UIkit, Sass": 90,
-        "Android Development: Cordorva, Android Studio": 80,
+        "JavaScript Technologies: VanillaJS, VueJS, Angular, React, KnuckJS": 98,
+        "Web Design Technologies: HTML/CSS, Bootstrap 4, Foundation, UIkit, Sass": 90,
+        "Android Development: Cordorva, Android Studio": 86,
         "Server-based Technologies: PHP, NodeJS, Laravel, CI, EmberJS, Express": 97,
-        "Serverless Technologies: AWS, Microsoft Azure": 69,
+        "Serverless Technologies: AWS, Azure": 69,
         "Test Suites: Travis/CI, Code Climate": 79
     },
     "experience": {
-
+        
     }
 }

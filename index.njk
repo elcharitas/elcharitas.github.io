@@ -9,7 +9,7 @@ eleventyNavigation:
 {% set listCols = 4 %}
 {% set maxPosts = listCols %}
 {% set listTitle = "My Latest Projects" %}
-{% set archivelist = collections.portfolio | slide(-listCols) %}
+{% set archivelist = collections.archive.portfolio | slide(-listCols) %}
 {% if listCols === archivelist | length %}
   {% include "archivelist.njk" %}
 {% endif %}

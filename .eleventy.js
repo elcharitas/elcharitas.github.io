@@ -5,6 +5,16 @@ const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginNavigation = require("@11ty/eleventy-navigation");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
+const meta = JSON.parse(fs.readFileSync("_data/meta.json", 'utf8'));
+
+function gen_url(path){
+  if (path.indexOf("//") === 0) {
+    return path
+  } else if (path.indexOf("/") === 0) {
+    path = path.replace("/", "")
+  }
+  return meta.url + path;
+}
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
@@ -17,15 +27,19 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addLayoutAlias("base", "layouts/base.njk");
 
   eleventyConfig.addFilter("page", path => {
-    return "/p/" + path.replace('.', '/');
+    return gen_url("/p/" + path.replace('.', '/'));
   });
 
   eleventyConfig.addFilter("image", path => {
-    return "/assets/img/" + path;
+    return gen_url("/assets/img/" + path);
   });
 
   eleventyConfig.addFilter("tagUrl", path => {
-    return "/tag/" + path.toLowerCase().replace(/\s+/g, '-');
+    return gen_url("/tag/" + path.toLowerCase().replace(/\s+/g, '-'));
+  });
+
+  eleventyConfig.addFilter("url", path => {
+    return gen_url(path);
   });
 
   eleventyConfig.addFilter("tagName", tag => {
