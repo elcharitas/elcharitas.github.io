@@ -7,7 +7,6 @@
     	<title>{{ ([title, " | ", meta.title] | join if title else meta.title) | title }}</title>
         {% include "components/metadata.njk" %}
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Langar&family=Montserrat:wght@200;300;400&family=Poppins:wght@200;300;400&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}" type="text/css" media="all" />
         <link rel="alternate" href="{{ meta.feed.path | url }}" type="application/atom+xml" title="{{ meta.title }}">
         <link rel="alternate" href="{{ meta.jsonfeed.path | url }}" type="application/json" title="{{ meta.title }}">

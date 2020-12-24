@@ -7,6 +7,10 @@
                             <h2 class="titl">{{ title }}</h2>
                             <ul class="page-list">
                                 <li><a href="{{ "/" | url }}">Home</a></li>
+                                {% set archiveUrl = "archive/" | url %}
+                                {% if page.url | starts("/archive") and (page.url | url) != archiveUrl %}
+                                <li><a href="{{ archiveUrl }}">Journal</a></li>
+                                {% endif %}
                                 <li class="current-page">{{ title }}</li>
                             </ul>
                         </div>

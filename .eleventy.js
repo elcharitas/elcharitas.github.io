@@ -46,6 +46,14 @@ module.exports = function (eleventyConfig) {
     return tag.replace(/\-+/g, ' ');
   });
 
+  eleventyConfig.addFilter("starts", (text, search) => {
+    return text.indexOf(search) === 0
+  });
+
+  eleventyConfig.addFilter("ends", (text, search) => {
+    return text.indexOf(search) === 0
+  });
+
   eleventyConfig.addFilter("readableDate", dateObj => {
     return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat("dd LLL yyyy");
   });
@@ -111,6 +119,7 @@ module.exports = function (eleventyConfig) {
   ]
 
   assetsDir.forEach(dir => eleventyConfig.addPassthroughCopy(`assets/${dir}`))
+  assetsDir.forEach(dir => eleventyConfig.addPassthroughCopy("uploads"))
 
   /* Markdown Overrides */
   let markdownLibrary = markdownIt({

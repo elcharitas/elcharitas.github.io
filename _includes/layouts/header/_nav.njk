@@ -1,11 +1,11 @@
 
-                    <nav class="mainmenunav d-lg-block ml--50">
+                    <nav class="{{ navClass or "mainmenunav" }} d-lg-block">
                         <div class="navbar-example2">
                             <!-- Start Mainmanu Nav -->
                             <ul class="mainmenu nav nav-pills">
 							    {% for entry in collections.all | eleventyNavigation %}
 								<li class="nav-item">
-                                    <a class="nav-link{% if entry.url == page.url %} active{% endif %}" href="{{ entry.url }}">
+                                    <a class="nav-link{% if entry.url == page.url %} {{ navClass or "active" }}{% endif %}" href="{{ entry.url }}">
                                         {{ entry.title }}
                                     </a>
                                 </li>

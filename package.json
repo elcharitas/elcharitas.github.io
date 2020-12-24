@@ -14,7 +14,7 @@
     "build:ts": "tsc -b assets/ts",
     "build:last": "echo \"Build Finished!\"",
     "minify:css": "uglifycss assets/less/style.css > assets/css/style.css",
-    "minify:js": "uglifyjs -c -m -o assets/js/app.min.js assets/ts/app.js",
+    "minify:js": "uglifyjs -c -m -o assets/js/app.js assets/ts/app.js",
     "all": "run-s -c -s build:** minify:** build"
   },
   "repository": {
