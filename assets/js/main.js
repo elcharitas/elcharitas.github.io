@@ -453,4 +453,8 @@ $(function() {
         }, 450)
     })
 
+    $(document).ready(function () {
+        $.fn.snow();
+    });
+
 })(jQuery)

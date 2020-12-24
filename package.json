@@ -8,6 +8,7 @@
     "serve": "eleventy --serve",
     "start": "eleventy --serve",
     "debug": "DEBUG=* eleventy",
+    "test": "node bin.js",
     "build:first": "rm -rf _site",
     "build:less": "lessc assets/less/style.less assets/less/style.css",
     "build:ts": "tsc -b assets/ts",

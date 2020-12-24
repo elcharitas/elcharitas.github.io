@@ -4,7 +4,7 @@
     	<meta charset="UTF-8">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
-    	<title>{{ ([title, " ~ ", meta.title] | join if title else meta.title) | title }}</title>
+    	<title>{{ ([title, " | ", meta.title] | join if title else meta.title) | title }}</title>
         {% include "components/metadata.njk" %}
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Langar&family=Montserrat:wght@200;300;400&family=Poppins:wght@200;300;400&display=swap" rel="stylesheet">
