@@ -1,7 +1,10 @@
 ---
-layout: layouts/base.njk
-templateClass: single single-post
+layout: base
+templateClass: single
 ---
+        {% include "./header/_crumbs.njk" %}
+        <div class="row  bg_color--7">
+            <div class="col-lg-8 col-md-9 col-12">
 {% set tagList = tags | slide(1) %}
 {% set author = tagList | first %}
 {% set category = tagList | slide(1) | first %}
@@ -93,4 +96,8 @@ templateClass: single single-post
                 {% include "vendor/hcb.njk" %}
             </div>
         </div>
-{% include "./compact/sidebar.njk" %}
+            </div>
+            <div class="col-lg-4 col-md-3 col-12">
+			{% include "./compact/sidebar.njk" %}
+            </div>
+        </div>

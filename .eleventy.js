@@ -7,7 +7,8 @@ const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const meta = JSON.parse(fs.readFileSync("_data/meta.json", 'utf8'));
 
-function gen_url(path){
+function gen_url(path = "") {
+  path = path.toString()
   if (path.indexOf("//") === 0) {
     return path
   } else if (path.indexOf("/") === 0) {
@@ -54,6 +55,14 @@ module.exports = function (eleventyConfig) {
     return text.indexOf(search) === 0
   });
 
+  eleventyConfig.addFilter("ceil", number => {
+    return Math.ceil(number)
+  });
+
+  eleventyConfig.addFilter("stringify", anyth => {
+    return JSON.stringify(anyth)
+  });
+
   eleventyConfig.addFilter("readableDate", dateObj => {
     return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat("dd LLL yyyy");
   });
@@ -85,6 +94,9 @@ module.exports = function (eleventyConfig) {
     return Math.min.apply(null, numbers);
   });
 
+  eleventyConfig.addCollection("archives", function (collection) {
+    return collection.getFilteredByTag('archive')
+  });
   eleventyConfig.addCollection("tagList", function (collection) {
     let tagSet = new Set();
     collection.getAll().forEach(function (item) {
