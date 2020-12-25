@@ -576,7 +576,7 @@ var hcb_user = {
     err_spam: 'Your reply was detected as spam.',
     err_blocked: 'Your reply was blocked by site policy.',
     MAX_CHARS: 8192,
-    PAGE: "https://wcodr.mybb.us/pages/gb",
+    PAGE: location.href,
     USER: {
         name: Store('user_name'),
         email: Store('user_email'),

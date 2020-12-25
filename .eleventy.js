@@ -64,7 +64,7 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addFilter("readableDate", dateObj => {
-    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat("dd LLL yyyy");
+    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat("dd LLL, yyyy");
   });
 
   eleventyConfig.addFilter("date", (dateObj = new Date, format = 'f J, Y') => {
@@ -97,6 +97,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("archives", function (collection) {
     return collection.getFilteredByTag('archive')
   });
+
   eleventyConfig.addCollection("tagList", function (collection) {
     let tagSet = new Set();
     collection.getAll().forEach(function (item) {
