@@ -4,7 +4,7 @@ templateClass: single
 ---
 {% set author = author.name %}
 {% set category = tags | slide(1) | first %}
-        <div class="rn-page-title-area pt--120 pb--190 bg_image bg_image--7"{% if image %} style="background-image:url({{ ['/assets/img/', image] | join | url }});"{% endif %} data-black-overlay="7">
+        <div class="rn-page-title-area pt--120 pb--190 bg_image bg_image--7"{% if image %} style="background-image:url({{ ['/uploads/posts/', image] | join | url }});"{% endif %} data-black-overlay="7">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
