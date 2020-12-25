@@ -32,7 +32,8 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addFilter("image", path => {
-    return gen_url("/assets/img/" + path);
+    if (fs.existsSync("assets/img/" + path)) return gen_url("/assets/img/" + path);
+    return gen_url("/uploads/posts/" + path);
   });
 
   eleventyConfig.addFilter("tagUrl", path => {
