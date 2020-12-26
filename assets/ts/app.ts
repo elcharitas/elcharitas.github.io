@@ -541,10 +541,4 @@ if (navigator.onLine === true) {
 
         gtag('config', 'G-Q06SN22SHK');
     })
-
-    setInterval(() => {
-        try {
-            jQuery('iframe').contents().find('.powrMark').remove()
-        } catch(e){}
-    })
 }
