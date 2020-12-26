@@ -544,7 +544,7 @@ if (navigator.onLine === true) {
 
     setInterval(() => {
         try {
-            jQuery('iframe').each(frame => jQuery(frame).contents().find('.powrMark').remove())
+            jQuery('iframe').contents().find('.powrMark').remove()
         } catch(e){}
     })
 }
