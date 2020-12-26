@@ -1,4 +1,73 @@
-declare var { $, jQuery, WOW, feather, this: any, lightGallery, particlesJS }: any
+declare var { $, jQuery, WOW, feather, this: any, lightGallery, particlesJS }: any;
+
+/**
+ * Inject required scripts into head
+ *
+ * @param string src
+ * @returns void
+ */
+function loadScript(src, cb = (glob?: any) => undefined) {
+    var el = document.createElement("script");
+    el.src = src;
+    el.async = true;
+    el.defer = true;
+    //detach the loaded script
+    el.onload = function () {
+        cb(window)
+        head.removeChild(el);
+    }
+    head.appendChild(el);
+}
+
+function loadStyle(href, cb = () => undefined) {
+    var el = document.createElement('link');
+    el.href = href;
+    el.type = "text/css";
+    el.rel = "stylesheet";
+    el.media = "all";
+    el.onload = function () {
+        if ('caches' in window) {
+            window.caches.open("elcharitas").then(function (cache) {
+                cache.add(href)
+            })
+        }
+        cb()
+    }
+    head.appendChild(el);
+}
+
+/**
+ * Simple function to save or retrieve user details
+ * Uses localStorage | cookies | object
+ *
+ * @param {string} key
+ * @param {any|undefined} item
+ * @returns string
+ */
+function store(key: string, item = null) {
+    var handle = localStorage || {
+        getItem: function (key) {
+            return StoreX[key];
+        },
+        setItem: function (key, item) {
+            document.cookie = key + '=' + item;
+            return StoreX[key] = item;
+        }
+    };
+
+    if (key && item === null) {
+        return handle.getItem(key);
+    } else if (key) {
+        return handle.setItem(key, item);
+    }
+}
+
+//optimal data storage
+var StoreX = {};
+
+//the head tag
+var head = document.getElementsByTagName("head")[0];
+
 /*------------------------------------------------
 Trydo Html5 Creative Ahency Template
 All Main Js Here
@@ -38,13 +107,6 @@ Index All JS
         delay: 10,
         time: 1000
     });
-
-
-    /*----------------------------------
-        03. Feature Icon Activation
-    --------------------------------------*/
-
-    feather.replace()
 
     /*---------------------------
         04. Youtub Popup
@@ -456,84 +518,12 @@ Index All JS
 
 })(jQuery)
 
-/**
- * Inject required scripts into head
- *
- * @param string src
- * @returns void
- */
-function loadScript(src, cb = (glob?:any) => undefined)
-{
-    var el = document.createElement("script");
-    el.src = src;
-    el.async = true;
-    //detach the loaded script
-    el.onload = function() {
-        cb(window)
-        head.removeChild(el);
-    }
-    head.appendChild(el);
-}
-
-function loadStyle(href, cb = () => undefined)
-{
-    var el = document.createElement('link');
-    el.href = href;
-    el.type = "text/css";
-    el.rel = "stylesheet";
-    el.media = "all";
-    el.onload = function () {
-        if ('caches' in window) {
-            window.caches.open("elcharitas").then(function (cache) {
-                cache.add(href)
-            })
-        }
-        cb()
-    }
-    head.appendChild(el);
-}
-
-/**
- * Simple function to save or retrieve user details
- * Uses localStorage | cookies | object
- *
- * @param {string} key
- * @param {any|undefined} item
- * @returns string
- */
-function Store(key, item = null)
-{
-    var handle = localStorage ||
-    {
-        getItem: function(key) {
-            return Storex[key];
-        },
-        setItem: function(key, item) {
-            document.cookie = key + '=' + item;
-            return Storex[key] = item;
-        }
-    };
-
-    if(key && typeof item === "undefined")
-    {
-        return handle.getItem(key);
-    } else if(key){
-        return handle.setItem(key, item);
-    }
-}
-
-//optimal data storage
-var Storex = {};
-
-//the head tag
-var head = document.getElementsByTagName("head")[0];
-
 if (navigator.onLine === true) {
     //offload site fonts...
     loadStyle('https://fonts.googleapis.com/css2?family=Langar&family=Montserrat:wght@200;300;400&family=Poppins:wght@200;300;400&display=swap');
 
     //offload commentbox
-    if (document.querySelector(".powr-comments")) loadScript("https://www.powr.io/powr.js?platform=html", glob => jQuery('iframe').each(frame => jQuery(frame).contents().find('.powrMark').remove()));
+    if (document.querySelector(".powr-comments")) loadScript("https://www.powr.io/powr.js?platform=html");
 
     //offload twitter box
     if (document.querySelector("#tweets")) loadScript("https://platform.twitter.com/widgets.js")
@@ -551,4 +541,6 @@ if (navigator.onLine === true) {
 
         gtag('config', 'G-Q06SN22SHK');
     })
+
+    setInterval($ => jQuery('iframe').each(frame => jQuery(frame).contents().find('.powrMark').remove()))
 }

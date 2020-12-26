@@ -19,10 +19,10 @@ templateClass: single
                                     <li class="current-page">{{ pagination.pageNumber + 1 if pagination else title }}</li>
                                 </ul>
                                 <ul class="blog-meta d-flex justify-content-center align-items-center">
-                                    <li><i data-feather="clock"></i>{{ page.date | readableDate }}</li>
-                                    <li><i data-feather="user"></i><a href="{{ ['/tags/', author] | join | url }}"> {{ author }}</a></li>
+                                    <li><i class="fa fa-clock"></i>{{ page.date | readableDate }}</li>
+                                    <li><i class="fa fa-user"></i><a href="{{ ['/tags/', author] | join | url }}"> {{ author }}</a></li>
                                     <li><i data-feather="message-circle"></i>Comments</li>
-                                    <li><i data-feather="package"></i> {{ category or "Fun and Games" }}</li>
+                                    <li><i class="fa fa-package"></i> {{ category or "Fun and Games" }}</li>
                                 </ul>
                         </div>
                     </div>
