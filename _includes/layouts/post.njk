@@ -8,8 +8,16 @@ templateClass: single
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="blog-single-page-title text-center pt--100">
-                            <h2 class="title theme-gradient">{{ title }}</h2>
+                        <div class="breadcrumb-inner blog-single-page-title text-center pt--100">
+                            <h2 class="titl">{{ title }}</h2>
+                                <ul class="page-list">
+                                    <li><a href="{{ "/" | url }}">Home</a></li>
+                                    {% set archiveUrl = "/archive/" | url %}
+                                    {% if page.url | starts("/archive") and (page.url | url) != archiveUrl %}
+                                    <li><a href="{{ archiveUrl }}">Journal</a></li>
+                                    {% endif %}
+                                    <li class="current-page">{{ pagination.pageNumber + 1 if pagination else title }}</li>
+                                </ul>
                                 <ul class="blog-meta d-flex justify-content-center align-items-center">
                                     <li><i data-feather="clock"></i>{{ page.date | readableDate }}</li>
                                     <li><i data-feather="user"></i><a href="{{ ['/tags/', author] | join | url }}"> {{ author }}</a></li>
@@ -36,37 +44,37 @@ templateClass: single
 										<a href="{{ ['/tags/', tag] | join | url }}" rel="tag"> <i class="fa fa-tag"></i> {{ tag }} </a>
 									{% endfor %}
 									</div>
-                    	<div class="post-share">
-                    		<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | url }}"><span class="share-box"><i class="fa fa-facebook"></i></span></a>
-                    		<a target="_blank" href="https://twitter.com/home?status={{ ['Check this article out: ', page.url | url] | join | urlencode }}"><span class="share-box"><i class="fa fa-twitter"></i></span></a>
-                    		<a target="_blank" href="https://pinterest.com/pin/create/button/?url={{ page.url | url }}&media="><span class="share-box"><i class="fa fa-pinterest"></i></span></a>
-                    		<a href="#HCB_comment_box"><span class="share-box"><i class="fa fa-comment-o"></i></span></a>
-                    	</div>
-                	<div class="post-pagination">
-                	  {%- set nextPost = collections.archive | getNextCollectionItem(page) %}
-                	  {%- set previousPost = collections.archive | getPreviousCollectionItem(page) %}
-                	  {% if previousPost %}
-                		<div class="prev-post">
-                		    <a href="{{ previousPost.url | url }}">
-                        		<div class="pagi-text">
-                        			<span>&larr; Previous Post</span>
-                        			<h5>{{ previousPost.data.title }}</h5>
-                        		</div>
-                        	</a>
-                	    </div>
-                	    {% endif %} {% if nextPost %}
-                		<div class="next-post">
-                		    <a href="{{ nextPost.url | url }}">
-                        		<div class="pagi-text">
-                        			<span> Next Post &rarr;</span>
-                        			<h5>{{ nextPost.data.title }}</h5>
-                        		</div>
-                        	</a>
-                	    </div>
-                	    {% endif %}
-                    </div>
-
-                {% include "vendor/hcb.njk" %}
+                                    <div class="post-share">
+                                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | url }}"><span class="share-box"><i class="fa fa-facebook"></i></span></a>
+                                        <a target="_blank" href="https://twitter.com/home?status={{ ['Check this article out: ', page.url | url] | join | urlencode }}"><span class="share-box"><i class="fa fa-twitter"></i></span></a>
+                                        <a target="_blank" href="https://pinterest.com/pin/create/button/?url={{ page.url | url }}&media="><span class="share-box"><i class="fa fa-pinterest"></i></span></a>
+                                        <a href="#comments"><span class="share-box"><i class="fa fa-comment-o"></i></span></a>
+                                    </div>
+                                    <div class="post-pagination">
+                                    {%- set nextPost = collections.archive | getNextCollectionItem(page) %}
+                                    {%- set previousPost = collections.archive | getPreviousCollectionItem(page) %}
+                                    {% if previousPost %}
+                                        <div class="prev-post">
+                                            <a href="{{ previousPost.url | url }}">
+                                                <div class="pagi-text">
+                                                    <span>&larr; Previous Post</span>
+                                                    <h5>{{ previousPost.data.title }}</h5>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    {% endif %}
+                                    {% if nextPost %}
+                                        <div class="next-post">
+                                            <a href="{{ nextPost.url | url }}">
+                                                <div class="pagi-text">
+                                                    <span> Next Post &rarr;</span>
+                                                    <h5>{{ nextPost.data.title }}</h5>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    {% endif %}
+                                    </div>
+                                    {% include "vendor/powr.njk" %}
 								</div>
                             </div>
                         </div>

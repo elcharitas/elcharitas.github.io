@@ -36,6 +36,10 @@ module.exports = function (eleventyConfig) {
     return gen_url("/uploads/posts/" + path);
   });
 
+  eleventyConfig.addFilter("asset", path => {
+    return gen_url("/assets/" + path);
+  });
+
   eleventyConfig.addFilter("tagUrl", path => {
     return gen_url("/tag/" + path.toLowerCase().replace(/\s+/g, '-'));
   });

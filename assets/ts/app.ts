@@ -248,7 +248,7 @@ Index All JS
 
 
     $(window).scroll(function (this: any) {
-        if ($(this).scrollTop() > 150) {
+        if ($(this).scrollTop() > 50) {
             $('.header--sticky').addClass('sticky')
         } else {
             $('.header--sticky').removeClass('sticky')
@@ -462,21 +462,20 @@ Index All JS
  * @param string src
  * @returns void
  */
-function loadScript(src, cb = () => true)
+function loadScript(src, cb = (glob?:any) => undefined)
 {
     var el = document.createElement("script");
     el.src = src;
     el.async = true;
     //detach the loaded script
-    el.onload = function()
-    {
-        cb()
+    el.onload = function() {
+        cb(window)
         head.removeChild(el);
     }
     head.appendChild(el);
 }
 
-function loadStyle(href, cb = () => true)
+function loadStyle(href, cb = () => undefined)
 {
     var el = document.createElement('link');
     el.href = href;
@@ -498,20 +497,18 @@ function loadStyle(href, cb = () => true)
  * Simple function to save or retrieve user details
  * Uses localStorage | cookies | object
  *
- * @param string key
- * @param any|undefined item
+ * @param {string} key
+ * @param {any|undefined} item
  * @returns string
  */
 function Store(key, item = null)
 {
     var handle = localStorage ||
     {
-        getItem: function(key)
-        {
+        getItem: function(key) {
             return Storex[key];
         },
-        setItem: function(key, item)
-        {
+        setItem: function(key, item) {
             document.cookie = key + '=' + item;
             return Storex[key] = item;
         }
@@ -531,71 +528,27 @@ var Storex = {};
 //the head tag
 var head = document.getElementsByTagName("head")[0];
 
-//current location without hash or query
-var currentLocation = location.href.split('#')[0].split('?')[0];
+if (navigator.onLine === true) {
+    //offload site fonts...
+    loadStyle('https://fonts.googleapis.com/css2?family=Langar&family=Montserrat:wght@200;300;400&family=Poppins:wght@200;300;400&display=swap');
 
-//htmlcommentbox variables
-var hcb_user = {
-    dom: '#HCB_comment_box',
-    comments_header: 'Leave a Reply.',
-    name_label: 'Your Name:',
-    content_label: 'Your reply...',
-    submit: 'Submit',
-    logout_link: 'Logout',
-    admin_link: '  ',
-    no_comments_msg: 'No replies yet!',
-    add: 'Reply Post',
-    again: 'New Reply',
-    rss: ' ',
-    said: 'said:',
-    prev_page: 'Older',
-    next_page: 'Newer',
-    showing: 'Showing',
-    to: 'to',
-    website_label: 'Your Website (optional)',
-    email_label: 'Email Address',
-    anonymous: 'Stay Anonymous?',
-    mod_label: 'Super User',
-    subscribe: 'Notifications?',
-    add_image: '+',
-    are_you_sure: 'Thanks for helping. Are you sure this is Spammy?',
-    reply: '<i class="fa fa-comment-o"></i>',
-    flag: '<i class="fa fa-flag"></i>',
-    like: '<i class="fa fa-thumbs-up"></i>',
-    days_ago: 'days ago',
-    hours_ago: 'hrs ago',
-    minutes_ago: 'mins ago',
-    within_the_last_minute: 'just now',
-    msg_thankyou: 'Thank you for replying!',
-    err_bad_html: 'Your reply contained bad html.',
-    err_bad_email: 'Please enter a valid email address.',
-    err_too_frequent: 'You must wait a few seconds before new replies.',
-    err_comment_empty: 'Your reply was not posted because it was empty!',
-    err_denied: 'Your reply was not accepted.',
-    err_unknown: 'Your reply was blocked for unknown reasons, please report this.',
-    err_spam: 'Your reply was detected as spam.',
-    err_blocked: 'Your reply was blocked by site policy.',
-    MAX_CHARS: 8192,
-    PAGE: location.href,
-    USER: {
-        name: Store('user_name'),
-        email: Store('user_email'),
-        website: Store('user_website')
-    },
-    ON_COMMENT: function() {
+    //offload commentbox
+    if (document.querySelector(".powr-comments")) loadScript("https://www.powr.io/powr.js?platform=html", glob => jQuery('iframe').each(frame => frame.contents().find('.powrMark').remove()));
 
-    },
-    onload: function() {
-        $(hcb_user.dom).find('img').each(function (this: any){
-            var src = $(this).attr('src');
-            $(this).attr('src', src.replace(/&d.+$/, ''));
-        });
-    },
-    RELATIVE_DATES: true
-};
+    //offload twitter box
+    if (document.querySelector("#tweets")) loadScript("https://platform.twitter.com/widgets.js")
 
-//offload site fonts...
-loadStyle('https://fonts.googleapis.com/css2?family=Langar&family=Montserrat:wght@200;300;400&family=Poppins:wght@200;300;400&display=swap');
+    //offload google analytics
+    loadScript("https://www.googletagmanager.com/gtag/js?id=G-Q06SN22SHK", () => {
 
-//offload htmlcommentbox
-if (document.querySelector(hcb_user.dom)) loadScript("https://www.htmlcommentbox.com/jread?opts=2045&page=" + hcb_user.PAGE);
+        let dataLayer = window["dataLayer"] || [];
+
+        function gtag(name: string, value: any) {
+            dataLayer.push(name, value);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-Q06SN22SHK');
+    })
+}

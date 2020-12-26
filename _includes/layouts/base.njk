@@ -7,7 +7,8 @@
     	<title>{{ ([title, " | ", meta.title] | join if title else meta.title) | title }}</title>
         {% include "components/metadata.njk" %}
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}" type="text/css" media="all" />
+        <link rel="preload" href="{{ 'fonts/fontawesome-webfont.ttf' | asset }}" as="font" />
+        <link rel="stylesheet" href="{{ 'css/style.css' | asset }}" type="text/css" media="all" />
         <link rel="alternate" href="{{ meta.feed.path | url }}" type="application/atom+xml" title="{{ meta.title }}">
         <link rel="alternate" href="{{ meta.jsonfeed.path | url }}" type="application/json" title="{{ meta.title }}">
     </head>
