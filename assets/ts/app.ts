@@ -533,7 +533,7 @@ if (navigator.onLine === true) {
     loadStyle('https://fonts.googleapis.com/css2?family=Langar&family=Montserrat:wght@200;300;400&family=Poppins:wght@200;300;400&display=swap');
 
     //offload commentbox
-    if (document.querySelector(".powr-comments")) loadScript("https://www.powr.io/powr.js?platform=html", glob => jQuery('iframe').each(frame => frame.contents().find('.powrMark').remove()));
+    if (document.querySelector(".powr-comments")) loadScript("https://www.powr.io/powr.js?platform=html", glob => jQuery('iframe').each(frame => jQuery(frame).contents().find('.powrMark').remove()));
 
     //offload twitter box
     if (document.querySelector("#tweets")) loadScript("https://platform.twitter.com/widgets.js")
