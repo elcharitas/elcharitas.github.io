@@ -1,16 +1,16 @@
-
-    	<meta name="description" content="{{ description or title or meta.title }}"/>
+		{% set description = description or page.templateContent | truncate(65) or meta.description %}
+    	<meta name="description" content="{{ description }}"/>
     	<meta itemprop="name" content="{{ title or meta.title }}">
-    	<meta itemprop="description" content="{{ description or title or meta.title }}">
-    	<meta itemprop="image" content="{{ ['/assets/img/', image or meta.archive.image] | join | url }}">
+    	<meta itemprop="description" content="{{ description }}">
+    	<meta itemprop="image" content="{{ (image or meta.archive.image) | image }}">
     	<link rel="dns-prefetch" href="https://ajax.googleapis.com"/>
-    	<link rel="preload" href="{{ '/assets/fonts/fontawesome-webfont.ttf' | url }}" crossorigin as="font"/>
+    	<link rel="preload" href="{{ 'fonts/fontawesome-webfont.ttf' | asset }}" crossorigin as="font"/>
     	<meta property="og:url" content="{{ page.url | url }}">
     	<meta property="og:type" content="website">
     	<meta property="og:title" content="{{ title or meta.title }}">
-    	<meta property="og:description" content="{{ description or title or meta.title }}">
-    	<meta property="og:image" content="{{ ['/assets/img/', image or meta.archive.image] | join | url }}">
+    	<meta property="og:description" content="{{ description }}">
+    	<meta property="og:image" content="{{ (image or meta.archive.image) | image }}">
     	<meta name="twitter:card" content="summary_large_image">
     	<meta name="twitter:title" content="{{ title or meta.title }}">
-    	<meta name="twitter:description" content="{{ description or title or meta.title }}">
-    	<meta name="twitter:image" content="{{ ['/assets/img/', image or meta.archive.image] | join | url }}">
+    	<meta name="twitter:description" content="{{ description }}">
+    	<meta name="twitter:image" content="{{ (image or meta.archive.image) | image }}">

@@ -18,153 +18,155 @@ function gen_url(path = "") {
 }
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPlugin(pluginRss);
-  eleventyConfig.addPlugin(pluginNavigation);
+  if (typeof eleventyConfig === "object") {
+    eleventyConfig.addPlugin(pluginRss);
+    eleventyConfig.addPlugin(pluginNavigation);
+    eleventyConfig.addPlugin(pluginSyntaxHighlight);
 
-  eleventyConfig.setDataDeepMerge(true);
+    eleventyConfig.setDataDeepMerge(true);
 
-  eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
-  eleventyConfig.addLayoutAlias("page", "layouts/page.njk");
-  eleventyConfig.addLayoutAlias("base", "layouts/base.njk");
+    eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
+    eleventyConfig.addLayoutAlias("page", "layouts/page.njk");
+    eleventyConfig.addLayoutAlias("base", "layouts/base.njk");
 
-  eleventyConfig.addFilter("page", path => {
-    return gen_url("/p/" + path.replace('.', '/'));
-  });
-
-  eleventyConfig.addFilter("image", path => {
-    if (fs.existsSync("assets/img/" + path)) return gen_url("/assets/img/" + path);
-    return gen_url("/uploads/posts/" + path);
-  });
-
-  eleventyConfig.addFilter("asset", path => {
-    return gen_url("/assets/" + path);
-  });
-
-  eleventyConfig.addFilter("tagUrl", path => {
-    return gen_url("/tag/" + path.toLowerCase().replace(/\s+/g, '-'));
-  });
-
-  eleventyConfig.addFilter("url", path => {
-    return gen_url(path);
-  });
-
-  eleventyConfig.addFilter("tagName", tag => {
-    return tag.replace(/\-+/g, ' ');
-  });
-
-  eleventyConfig.addFilter("starts", (text, search) => {
-    return text.indexOf(search) === 0
-  });
-
-  eleventyConfig.addFilter("ends", (text, search) => {
-    return text.indexOf(search) === 0
-  });
-
-  eleventyConfig.addFilter("ceil", number => {
-    return Math.ceil(number)
-  });
-
-  eleventyConfig.addFilter("stringify", anyth => {
-    return JSON.stringify(anyth)
-  });
-
-  eleventyConfig.addFilter("readableDate", dateObj => {
-    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat("dd LLL, yyyy");
-  });
-
-  eleventyConfig.addFilter("date", (dateObj = new Date, format = 'f J, Y') => {
-    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat(typeof format == "string" ? format.toLowerCase(): "dd LLL yyyy");
-  });
-
-  // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
-  eleventyConfig.addFilter('htmlDateString', (dateObj) => {
-    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('yyyy-LL-dd');
-  });
-
-  // Get the first `n` elements of a collection.
-  eleventyConfig.addFilter("head", (array, n) => {
-    if (n < 0) {
-      return array.slice(n);
-    }
-
-    return array.slice(0, n);
-  });
-
-  // Get the first `n` elements of a collection.
-  eleventyConfig.addFilter("slide", (array, n) => {
-    return array && array.constructor === Array ? array.slice(n) : [];
-  });
-
-  eleventyConfig.addFilter("min", (...numbers) => {
-    return Math.min.apply(null, numbers);
-  });
-
-  eleventyConfig.addCollection("archives", function (collection) {
-    return collection.getFilteredByTag('archive')
-  });
-
-  eleventyConfig.addCollection("tagList", function (collection) {
-    let tagSet = new Set();
-    collection.getAll().forEach(function (item) {
-      if ("tags" in item.data) {
-        let tags = item.data.tags;
-
-        tags = tags.filter(function (item) {
-          switch (item) {
-            // this list should match the `filter` list in tags.njk
-            case "all":
-            case "nav":
-            case "post":
-            case "archive":
-              return false;
-          }
-
-          return true;
-        });
-
-        for (const tag of tags) {
-          tagSet.add(tag);
-        }
-      }
+    eleventyConfig.addFilter("page", path => {
+      return gen_url("/p/" + path.replace('.', '/'));
     });
 
-    // returning an array in addCollection works in Eleventy 0.5.3
-    return [...tagSet];
-  });
+    eleventyConfig.addFilter("image", path => {
+      if (fs.existsSync("assets/img/" + path)) return gen_url("/assets/img/" + path);
+      return gen_url("/uploads/posts/" + path);
+    });
 
-  let assetsDir = [
-    "css", "fonts", "img", "js"
-  ]
+    eleventyConfig.addFilter("asset", path => {
+      return gen_url("/assets/" + path);
+    });
 
-  assetsDir.forEach(dir => eleventyConfig.addPassthroughCopy(`assets/${dir}`))
-  assetsDir.forEach(dir => eleventyConfig.addPassthroughCopy("uploads"))
+    eleventyConfig.addFilter("tagUrl", path => {
+      return gen_url("/tag/" + path.toLowerCase().replace(/\s+/g, '-'));
+    });
 
-  /* Markdown Overrides */
-  let markdownLibrary = markdownIt({
-    html: true,
-    breaks: true,
-    linkify: true
-  });
+    eleventyConfig.addFilter("url", path => {
+      return gen_url(path);
+    });
 
-  eleventyConfig.setLibrary("md", markdownLibrary);
+    eleventyConfig.addFilter("tagName", tag => {
+      return tag.replace(/\-+/g, ' ');
+    });
 
-  // Browsersync Overrides
-  eleventyConfig.setBrowserSyncConfig({
-    callbacks: {
-      ready: function (err, browserSync) {
-        const content_404 = fs.readFileSync('_site/404.html');
+    eleventyConfig.addFilter("starts", (text, search) => {
+      return text.indexOf(search) === 0
+    });
 
-        browserSync.addMiddleware("*", (req, res) => {
-          // Provides the 404 content without redirect.
-          res.write(content_404);
-          res.end();
-        });
+    eleventyConfig.addFilter("ends", (text, search) => {
+      return text.indexOf(search) === 0
+    });
+
+    eleventyConfig.addFilter("ceil", number => {
+      return Math.ceil(number)
+    });
+
+    eleventyConfig.addFilter("stringify", anyth => {
+      return JSON.stringify(anyth)
+    });
+
+    eleventyConfig.addFilter("readableDate", dateObj => {
+      return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat("dd LLL, yyyy");
+    });
+
+    eleventyConfig.addFilter("date", (dateObj = new Date, format = 'f J, Y') => {
+      return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat(typeof format == "string" ? format.toLowerCase() : "dd LLL yyyy");
+    });
+
+    // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
+    eleventyConfig.addFilter('htmlDateString', (dateObj) => {
+      return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('yyyy-LL-dd');
+    });
+
+    // Get the first `n` elements of a collection.
+    eleventyConfig.addFilter("head", (array, n) => {
+      if (n < 0) {
+        return array.slice(n);
+      }
+
+      return array.slice(0, n);
+    });
+
+    // Get the first `n` elements of a collection.
+    eleventyConfig.addFilter("slide", (array, n) => {
+      return array && array.constructor === Array ? array.slice(n) : [];
+    });
+
+    eleventyConfig.addFilter("min", (...numbers) => {
+      return Math.min.apply(null, numbers);
+    });
+
+    eleventyConfig.addCollection("archives", function (collection) {
+      return collection.getFilteredByTag('archive')
+    });
+
+    eleventyConfig.addCollection("tagList", function (collection) {
+      let tagSet = new Set();
+      collection.getAll().forEach(function (item) {
+        if ("tags" in item.data) {
+          let tags = item.data.tags;
+
+          tags = tags.filter(function (item) {
+            switch (item) {
+              // this list should match the `filter` list in tags.njk
+              case "all":
+              case "nav":
+              case "post":
+              case "archive":
+                return false;
+            }
+
+            return true;
+          });
+
+          for (const tag of tags) {
+            tagSet.add(tag);
+          }
+        }
+      });
+
+      // returning an array in addCollection works in Eleventy 0.5.3
+      return [...tagSet];
+    });
+
+    let assetsDir = [
+      "css", "fonts", "img", "js"
+    ]
+
+    assetsDir.forEach(dir => eleventyConfig.addPassthroughCopy(`assets/${dir}`))
+    assetsDir.forEach(dir => eleventyConfig.addPassthroughCopy("uploads"))
+
+    /* Markdown Overrides */
+    let markdownLibrary = markdownIt({
+      html: true,
+      breaks: true,
+      linkify: true
+    });
+
+    eleventyConfig.setLibrary("md", markdownLibrary);
+
+    // Browsersync Overrides
+    eleventyConfig.setBrowserSyncConfig({
+      callbacks: {
+        ready: function (err, browserSync) {
+          const content_404 = fs.readFileSync('_site/404.html');
+
+          browserSync.addMiddleware("*", (req, res) => {
+            // Provides the 404 content without redirect.
+            res.write(content_404);
+            res.end();
+          });
+        },
       },
-    },
-    ui: false,
-    ghostMode: false
-  });
-
+      ui: false,
+      ghostMode: false
+    });
+  }
   return {
     templateFormats: [
       "md",

@@ -8,7 +8,7 @@
     "serve": "eleventy --serve",
     "start": "eleventy --serve",
     "debug": "DEBUG=* eleventy",
-    "test": "node bin.js",
+    "test": "node repo.js",
     "build:first": "rm -rf _site",
     "build:less": "lessc assets/less/style.less assets/less/style.css",
     "build:ts": "tsc -b assets/ts",
@@ -16,7 +16,8 @@
     "minify:css": "uglifycss assets/less/style.css > assets/css/style.css",
     "minify:js": "uglifyjs -c -m -o assets/js/app.js assets/ts/app.js",
     "minify:plugins": "uglifyjs -c -m -o assets/js/plugins.min.js assets/js/plugins.js",
-    "all": "run-s -c -s build:** minify:** build"
+    "all": "run-s -c -s build:** minify:** build",
+    "repl": "node repo.js"
   },
   "repository": {
     "type": "git",

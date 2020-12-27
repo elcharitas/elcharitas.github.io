@@ -2,28 +2,7 @@
         <div class="footer-style-2 ptb--30 bg_image bg_color--6" data-black-overlay="8">
             <div class="wrapper plr--50 plr_sm--20">
                 <div class="row align-items-center justify-content-between">
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                        <div class="inner">
-                            <div class="logo text-center text-sm-left text-white">
-                                Crafted with <span class="text-danger h3">&hearts;</span> by <a href="{{ 'about' | page }}">elcharitas</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                        <div class="inner text-center">
-                            <div class="links mtb--0 ptb--0">
-                                {% set navClass = "footnav" %}
-                                {% include "../header/_nav.njk" %}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12 col-sm-12 col-12">
-                        <div class="inner text-lg-right text-center">
-                            <div class="text small">
-                                <p> &copy; {{ undefined | date('Y') }}. All Rights Reserved</p>
-                            </div>
-                        </div>
-                    </div>
+                {% include "./_copy.njk" %}
                 </div>
             </div>
         </div>
