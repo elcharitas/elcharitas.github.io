@@ -18,6 +18,15 @@ function gen_url(path = "") {
 }
 
 module.exports = function (eleventyConfig) {
+  const repo = {
+    "page": "p/",
+    "post": "archive/",
+    "asset": "asset/",
+    "image": "asset/img/",
+    "tag": "tag/",
+    "upload": "uploads/contents/"
+  }
+
   if (typeof eleventyConfig === "object") {
     eleventyConfig.addPlugin(pluginRss);
     eleventyConfig.addPlugin(pluginNavigation);
@@ -30,20 +39,20 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addLayoutAlias("base", "layouts/base.njk");
 
     eleventyConfig.addFilter("page", path => {
-      return gen_url("/p/" + path.replace('.', '/'));
+      return gen_url(repo.page + path.replace('.', '/'));
     });
 
     eleventyConfig.addFilter("image", path => {
-      if (fs.existsSync("assets/img/" + path)) return gen_url("/assets/img/" + path);
-      return gen_url("/uploads/posts/" + path);
+      if (fs.existsSync(repo.image + path)) return gen_url("/assets/img/" + path);
+      return gen_url(repo.upload + path);
     });
 
     eleventyConfig.addFilter("asset", path => {
-      return gen_url("/assets/" + path);
+      return gen_url(repo.asset + path);
     });
 
     eleventyConfig.addFilter("tagUrl", path => {
-      return gen_url("/tag/" + path.toLowerCase().replace(/\s+/g, '-'));
+      return gen_url(repo.tag + path.toLowerCase().replace(/\s+/g, '-'));
     });
 
     eleventyConfig.addFilter("url", path => {
@@ -168,6 +177,7 @@ module.exports = function (eleventyConfig) {
     });
   }
   return {
+    repo,
     templateFormats: [
       "md",
       "njk",
