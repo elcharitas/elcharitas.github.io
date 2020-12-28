@@ -1,4 +1,4 @@
-		{% set description = description or page.templateContent | truncate(65) or meta.description %}
+		{% set description = description or page.templateContent | striptags | trim | truncate(65) or meta.description %}
     	<meta name="description" content="{{ description }}"/>
     	<meta itemprop="name" content="{{ title or meta.title }}">
     	<meta itemprop="description" content="{{ description }}">
