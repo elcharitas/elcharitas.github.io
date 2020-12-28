@@ -1,17 +1,22 @@
 const { resolve } = require("path")
 const { Command } = require("commander")
 const { readFileSync, writeFileSync, existsSync } = require("fs")
-const { snakeCase, kebabCase } = require('lodash')
+const { snakeCase, kebabCase } = require("lodash")
+const { question, keyInYN } = require("readline-sync")
+const { ensureDirSync } = require("fs-extra")
 const eleventyOpts = require("./.eleventy")()
 const inputDir = resolve(process.cwd(), eleventyOpts.dir.input)
 const includeDir = resolve(inputDir, eleventyOpts.dir.includes)
 const dataDir = resolve(inputDir, eleventyOpts.dir.data)
 const pageDir = resolve(inputDir, eleventyOpts.repo.page)
+const postDir = resolve(inputDir, eleventyOpts.repo.post)
 const repo = new Command("repo")
 
+/** Basic file options for layouts, templates, pages and posts */
 const fileOpts = {
     "layout": "page",
     "title": null,
+    "category": null,
     "description": null,
     "eleventyNavigation": {
         "key": null,
@@ -19,10 +24,22 @@ const fileOpts = {
     }
 }
 
+/** Shorthand method for optional variables */
 const anyOf = (main, opt) => typeof main !== "undefined" ? main : opt
 
+/**
+ * Converts a text to slug format
+ *
+ * @param {string} slug
+ */
 const slugit = slug => kebabCase(slug).toLowerCase()
 
+/**
+ * Executes a function safely and log it errors
+ *
+ * @param {function} handle
+ * @param {function} logger
+ */
 const safeHaven = (handle, logger = err => false) => {
     try {
         return handle()
@@ -32,15 +49,21 @@ const safeHaven = (handle, logger = err => false) => {
     }
 }
 
+/**
+ * Generates eleventy options for files
+ *
+ * @param {object} opts - defaults to `fileOpts`
+ * @param {number} depth
+ */
 const genOpts = (opts = fileOpts, depth = 0) => {
     let result = "", tab = ""
     while (tab.length < depth) tab += "\t"
     for (let name in opts) {
         var opt = opts[name]
-        if (typeof opt === "object") {
+        if (typeof opt === "object" && opt !== null) {
             opt = genOpts(opt, depth + 1)
             result += `\n${tab + name}: ${opt}`
-        } else if (opt !== "null") {
+        } else if (opt !== null) {
             opt = opts[name]
             result += `\n${tab + name}: ${opt}`
         }
@@ -48,6 +71,11 @@ const genOpts = (opts = fileOpts, depth = 0) => {
     return result
 }
 
+/**
+ * Reads a data file safely and parses it
+ *
+ * @param {string} name
+ */
 const readData = function (name) {
     let path = resolve(dataDir, `${name}.json`), contents = null
     if (existsSync(path) && (contents = readFileSync(path).toString())) {
@@ -56,21 +84,51 @@ const readData = function (name) {
     return {}
 }
 
-const meta = readData("meta")
+/**
+ * Ask for inputs
+ *
+ * @param {string} message
+ * @param {any} _default
+ */
+const prompt = (message, _default = null) => question(message) || _default
 
-repo.command("create:page <title> [slug] [description]")
+/**
+ * Confim an action
+ *
+ * @param {string} message
+ */
+const confirm = message => keyInYN(message)
+
+/** Create page using its title and optional slug */
+repo.command("create:page <title> [slug]")
     .description("Creates a new page")
-    .action(function (title, slug, description) {
+    .action(function (title, slug) {
         fileOpts.title = title
-        fileOpts.description = anyOf(description, title)
+        fileOpts.description = prompt("Describe your page: ")
+        if (!confirm("Add to Navigation")) {
+            fileOpts.eleventyNavigation = null
+        }
         slug = slugit(slug || title)
-        writeFileSync(resolve(pageDir, `${slug}.njk`), `---${genOpts()}\n---`)
+        let path = resolve(pageDir, `${slug}.njk`)
+        writeFileSync(path, `---${genOpts()}\n---\n# ${title}`)
+        console.log("Created new page here: " + path)
     })
 
-repo.command("create:post <title> [slug] [description]")
+/** Create post using its title, optional slug and or category */
+repo.command("create:post <title> [slug] [category]")
     .description("Creates a new post")
-    .action(function (title, slug, description) {
+    .action(function (title, slug, category) {
+        fileOpts.title = title
+        fileOpts.layout = "post"
+        fileOpts.description = prompt("Describe your post: ")
+        fileOpts.category = anyOf(category, prompt("Give your post a Category: ", "Fun and Games"))
+        fileOpts.eleventyNavigation = null
         slug = slugit(slug || title)
+        category = slugit(fileOpts.category)
+        let path = resolve(postDir, `${category}/${slug}.njk`)
+        ensureDirSync(resolve(postDir, category))
+        writeFileSync(path, `---${genOpts()}\n---\n# ${title}`)
+        console.log("Created new post here: "+path)
     })
 
 repo.command("create:layout <name> [parent]")
