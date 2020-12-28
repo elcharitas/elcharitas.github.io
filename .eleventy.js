@@ -23,8 +23,8 @@ module.exports = function (eleventyConfig) {
   const repo = {
     "page": "p/",
     "post": "archive/",
-    "asset": "asset/",
-    "image": "asset/img/",
+    "asset": "assets/",
+    "image": "assets/img/",
     "tag": "tag/",
     "upload": "uploads/contents/"
   }

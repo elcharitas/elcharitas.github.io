@@ -4,6 +4,7 @@ const { readFileSync, writeFileSync, existsSync } = require("fs")
 const { kebabCase } = require("lodash")
 const { question, questionPath, keyInSelect, keyInYN } = require("readline-sync")
 const { ensureDirSync, copyFileSync } = require("fs-extra")
+const { DateTime } = require("luxon")
 const jsDot = require("js-dot")
 const eleventyOpts = require("./.eleventy")()
 const inputDir = resolve(process.cwd(), eleventyOpts.dir.input)
@@ -152,6 +153,7 @@ repo.command("create:post <title> [slug] [categoryID]")
         writeOpts(filePath = pathDir(postDir, slugit(archive.category[categoryId])) + `/${slug}.njk`, `\n# ${title}`, {
             title, categoryId,
             description: prompt("Describe your post: "),
+            date: DateTime.fromJSDate(new Date, { zone: 'utc' }).toFormat("y-L-d"),
             layout: "post",
         })
         console.log("Created new post here: " + filePath)
@@ -181,16 +183,17 @@ repo.command("create:tpl <name> [type]")
         console.log("Created new template here: " + filePath)
     })
 
-repo.command("set:data <path> <datastr>")
+repo.command("add:data <path> <datastr>")
     .description("Creates a new data file for use")
     .action(function (path, dataset) {
         let data = readData(path)
         dataset = require("querystring").parse(dataset)
         for (let key in dataset) jsDot.set(data, key, dataset[key])
         writeData(path, data)
+        console.log("Data modified succesfully")
     })
 
-repo.command("set:file [path] [name]")
+repo.command("add:file [path] [name]")
     .description("Sets up a file for use in posts/pages. You can use ~, . or cwd, pwd")
     .action(function (path = questionPath("Path to image: "), name = Date.now()) {
         let dest = `${name}.jpg`
