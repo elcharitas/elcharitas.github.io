@@ -3,11 +3,11 @@
                             <div class="blog blog-style--1">
                                 <div class="thumbnail">
                                     <a href="{{ post.url | url }}">
-                                        <img class="w-100" src="{{ (post.data.image or meta.archive.image) | image }}" alt="{{ postTitle }}" />
+                                        <img class="w-100" src="{{ (post.data.image or archive.image) | image }}" alt="{{ postTitle }}" />
                                     </a>
                                 </div>
                                 <div class="content">
-                                    <p class="blogtype"><a href="{{ category or meta.archive.category | tagUrl }}">{{ category or meta.archive.category }}</a></p>
+                                    <p class="blogtype"><a href="{{ category or archive.category | first | tagUrl }}">{{ category or archive.category | first }}</a></p>
                                     <h4 class="title"><a href="{{ post.url | url }}">{{ postTitle }}</a>
                                     </h4>
                                     <div class="blog-btn">

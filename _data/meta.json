@@ -9,12 +9,6 @@
 	"jsonfeed": {
 		"path": "/feed/feed.json"
 	},
-	"archive": {
-		"title": "Latest Updates",
-		"image": "noimage.jpg",
-		"category": "Fun and Games",
-		"perpage": 12
-	},
 	"metagen": {
 		"generator": "Jonathan Irhodia"
 	}

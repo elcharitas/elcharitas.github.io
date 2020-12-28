@@ -2,7 +2,7 @@ const { resolve } = require("path")
 const { Command } = require("commander")
 const { readFileSync, writeFileSync, existsSync } = require("fs")
 const { snakeCase, kebabCase } = require("lodash")
-const { question, keyInYN } = require("readline-sync")
+const { question, questionPath, keyInSelect, keyInYN } = require("readline-sync")
 const { ensureDirSync } = require("fs-extra")
 const eleventyOpts = require("./.eleventy")()
 const inputDir = resolve(process.cwd(), eleventyOpts.dir.input)
@@ -72,6 +72,15 @@ const genOpts = (opts = fileOpts, depth = 0) => {
 }
 
 /**
+ * Writes options to a path
+ *
+ * @param {string} path
+ * @param {string} extra
+ * @param {object|null} opts
+ */
+const writeOpts = (path, extra, opts) => writeFileSync(path, `---${genOpts(opts)}\n---` + extra)
+
+/**
  * Reads a data file safely and parses it
  *
  * @param {string} name
@@ -82,6 +91,18 @@ const readData = function (name) {
         return safeHaven(_n => JSON.parse(contents, "utf8"))
     }
     return {}
+}
+
+/**
+ * Writes a data object into its file
+ *
+ * @param {string} name
+ * @param {object} data
+ */
+const writeData = function (name, data) {
+    let path = resolve(dataDir, `${name}.json`);
+    let contents = safeHaven(_n => JSON.stringify(data))
+    writeFileSync(path, contents)
 }
 
 /**
@@ -107,10 +128,13 @@ repo.command("create:page <title> [slug]")
         fileOpts.description = prompt("Describe your page: ")
         if (!confirm("Add to Navigation")) {
             fileOpts.eleventyNavigation = null
+        } else {
+            fileOpts.eleventyNavigation.key = title
+            fileOpts.eleventyNavigation.order = prompt("Order in Navigation: ")
         }
         slug = slugit(slug || title)
         let path = resolve(pageDir, `${slug}.njk`)
-        writeFileSync(path, `---${genOpts()}\n---\n# ${title}`)
+        writeOpts(path, `\n# ${title}`)
         console.log("Created new page here: " + path)
     })
 
@@ -121,26 +145,36 @@ repo.command("create:post <title> [slug] [category]")
         fileOpts.title = title
         fileOpts.layout = "post"
         fileOpts.description = prompt("Describe your post: ")
-        fileOpts.category = anyOf(category, prompt("Give your post a Category: ", "Fun and Games"))
+        fileOpts.category = anyOf(category, prompt("Give your post a Category: ", readData("archive").category[0]))
         fileOpts.eleventyNavigation = null
         slug = slugit(slug || title)
         category = slugit(fileOpts.category)
         let path = resolve(postDir, `${category}/${slug}.njk`)
         ensureDirSync(resolve(postDir, category))
-        writeFileSync(path, `---${genOpts()}\n---\n# ${title}`)
+        writeOpts(path, `\n# ${title}`)
         console.log("Created new post here: "+path)
     })
 
+/** create layouts using a name and optional parent */
 repo.command("create:layout <name> [parent]")
     .description("Creates layouts for inheritance")
-    .action(function (name, parent) {
-
+    .action(function (name, parent = prompt("Inherit template: ", "base")) {
+        writeOpts(resolve(includeDir, "layouts", slugit(name)+".njk"), "\n", {
+            name: slugit(name),
+            layout: parent,
+            templateClass: prompt("Template class: "),
+        })
     })
 
+/** create templates using a name and optional type */
 repo.command("create:tpl <name> [type]")
     .description("Creates template parts")
-    .action(function (name, type) {
-
+    .action(function (name, type = prompt("Add template to group: ", ".")) {
+        writeOpts(resolve(includeDir, slugit(type), slugit(name) + ".njk"), "\n", {
+            name: slugit(name),
+            group: type,
+            templateClass: prompt("Template class: "),
+        })
     })
 
 repo.command("set:data <path> [datastr]")
