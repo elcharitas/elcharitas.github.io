@@ -5,7 +5,9 @@ const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginNavigation = require("@11ty/eleventy-navigation");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
+const jsDot = require("js-dot")
 const meta = JSON.parse(fs.readFileSync("_data/meta.json", 'utf8'));
+const { uploads } = JSON.parse(fs.readFileSync("_data/archive.json", 'utf8'));
 
 function gen_url(path = "") {
   path = path.toString()
@@ -49,6 +51,12 @@ module.exports = function (eleventyConfig) {
 
     eleventyConfig.addFilter("asset", path => {
       return gen_url(repo.asset + path);
+    });
+
+    eleventyConfig.addFilter("upload", id => {
+      if (jsDot.get(uploads, id)) {
+        return gen_url(repo.upload + jsDot.get(uploads, id))
+      }
     });
 
     eleventyConfig.addFilter("tagUrl", path => {

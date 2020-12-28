@@ -3,14 +3,15 @@ const { Command } = require("commander")
 const { readFileSync, writeFileSync, existsSync } = require("fs")
 const { snakeCase, kebabCase } = require("lodash")
 const { question, questionPath, keyInSelect, keyInYN } = require("readline-sync")
-const { ensureDirSync, ensureDir } = require("fs-extra")
-const { set } = require("js-dot")
+const { ensureDirSync, copyFileSync } = require("fs-extra")
+const jsDot = require("js-dot")
 const eleventyOpts = require("./.eleventy")()
 const inputDir = resolve(process.cwd(), eleventyOpts.dir.input)
 const includeDir = resolve(inputDir, eleventyOpts.dir.includes)
 const dataDir = resolve(inputDir, eleventyOpts.dir.data)
 const pageDir = resolve(inputDir, eleventyOpts.repo.page)
 const postDir = resolve(inputDir, eleventyOpts.repo.post)
+const uploadDir = resolve(inputDir, eleventyOpts.repo.upload)
 const repo = new Command("repo")
 
 /** Basic file options for layouts, templates, pages and posts */
@@ -188,14 +189,22 @@ repo.command("set:data <path> <datastr>")
     .action(function (path, dataset) {
         let data = readData(path)
         dataset = require("querystring").parse(dataset)
-        for (let key in dataset) data.dot(key, dataset[key])
+        for (let key in dataset) jsDot.set(data, key, dataset[key])
         writeData(path, data)
     })
 
-repo.command("set:file <path> [name]")
-    .description("Sets up a file for use in posts/pages")
-    .action(function (path, name) {
+repo.command("set:file [path] [name]")
+    .description("Sets up a file for use in posts/pages. You can use ~, . or cwd, pwd")
+    .action(function (path = questionPath("Path to image: "), name = Date.now()) {
+        let dest = `${name}.jpg`
+        if (!jsDot.get(archive.uploads, name)) {
+            jsDot.set(archive.uploads, name, dest)
+            copyFileSync(path, resolve(uploadDir, dest))
+            writeData("archive", archive)
+            console.log(`File added succesfully. Use \`${name} | upload\` to add to posts/pages `)
+        } else {
 
+        }
     })
 
 repo.version("1.0.0")
