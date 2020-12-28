@@ -1,7 +1,7 @@
 const { resolve } = require("path")
 const { Command } = require("commander")
 const { readFileSync, writeFileSync, existsSync } = require("fs")
-const { snakeCase, kebabCase } = require("lodash")
+const { kebabCase } = require("lodash")
 const { question, questionPath, keyInSelect, keyInYN } = require("readline-sync")
 const { ensureDirSync, copyFileSync } = require("fs-extra")
 const jsDot = require("js-dot")
@@ -26,9 +26,6 @@ const fileOpts = {
     }
 }
 
-/** Shorthand method for optional variables */
-const anyOf = (main, opt) => typeof main !== "undefined" ? main : opt
-
 /**
  * Converts a text to slug format
  *
@@ -42,7 +39,7 @@ const slugit = slug => kebabCase(slug).toLowerCase()
  * @param {function} handle
  * @param {function} logger
  */
-const safeHaven = (handle, logger = err => false) => {
+const safeHaven = (handle, logger = () => false) => {
     try {
         return handle()
     }
