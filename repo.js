@@ -4,6 +4,7 @@ const { readFileSync, writeFileSync, existsSync } = require("fs")
 const { snakeCase, kebabCase } = require("lodash")
 const { question, questionPath, keyInSelect, keyInYN } = require("readline-sync")
 const { ensureDirSync, ensureDir } = require("fs-extra")
+const { set } = require("js-dot")
 const eleventyOpts = require("./.eleventy")()
 const inputDir = resolve(process.cwd(), eleventyOpts.dir.input)
 const includeDir = resolve(inputDir, eleventyOpts.dir.includes)
@@ -103,7 +104,7 @@ const readData = function (name) {
  */
 const writeData = function (name, data) {
     let path = resolve(dataDir, `${name}.json`);
-    let contents = safeHaven(_n => JSON.stringify(data))
+    let contents = safeHaven(_n => JSON.stringify(data, null, 2))
     writeFileSync(path, contents)
 }
 
@@ -182,10 +183,13 @@ repo.command("create:tpl <name> [type]")
         console.log("Created new template here: " + filePath)
     })
 
-repo.command("set:data <path> [datastr]")
+repo.command("set:data <path> <datastr>")
     .description("Creates a new data file for use")
-    .action(function (path, data) {
-
+    .action(function (path, dataset) {
+        let data = readData(path)
+        dataset = require("querystring").parse(dataset)
+        for (let key in dataset) data.dot(key, dataset[key])
+        writeData(path, data)
     })
 
 repo.command("set:file <path> [name]")
