@@ -145,6 +145,30 @@ repo.command("create:page <title> [slug]")
         console.log("Created new post here: " + filePath)
     })
 
+repo.command("add:data <path> <datastr>")
+    .description("Creates a new data file for use")
+    .action(function (path, dataset) {
+        let data = readData(path)
+        dataset = require("querystring").parse(dataset)
+        for (let key in dataset) jsDot.set(data, key, dataset[key])
+        writeData(path, data)
+        console.log("Data modified succesfully")
+    })
+
+repo.command("add:file [path] [name]")
+    .description("Sets up a file for use in posts/pages. You can use ~, . or cwd, pwd")
+    .action(function (path = questionPath("Path to image: "), name = Date.now()) {
+        let dest = `${name}.jpg`
+        if (!jsDot.get(archive.uploads, name)) {
+            jsDot.set(archive.uploads, name, dest)
+            copyFileSync(path, resolve(uploadDir, dest))
+            writeData("archive", archive)
+            console.log(`File added succesfully. Use \`${name} | upload\` to add to posts/pages `)
+        } else {
+
+        }
+    })
+
 /** Create post using its title, optional slug and or category id */
 repo.command("create:post <title> [slug] [categoryID]")
     .description("Creates a new post")
@@ -181,30 +205,6 @@ repo.command("create:tpl <name> [type]")
             templateClass: prompt("Template class: "),
         })
         console.log("Created new template here: " + filePath)
-    })
-
-repo.command("add:data <path> <datastr>")
-    .description("Creates a new data file for use")
-    .action(function (path, dataset) {
-        let data = readData(path)
-        dataset = require("querystring").parse(dataset)
-        for (let key in dataset) jsDot.set(data, key, dataset[key])
-        writeData(path, data)
-        console.log("Data modified succesfully")
-    })
-
-repo.command("add:file [path] [name]")
-    .description("Sets up a file for use in posts/pages. You can use ~, . or cwd, pwd")
-    .action(function (path = questionPath("Path to image: "), name = Date.now()) {
-        let dest = `${name}.jpg`
-        if (!jsDot.get(archive.uploads, name)) {
-            jsDot.set(archive.uploads, name, dest)
-            copyFileSync(path, resolve(uploadDir, dest))
-            writeData("archive", archive)
-            console.log(`File added succesfully. Use \`${name} | upload\` to add to posts/pages `)
-        } else {
-
-        }
     })
 
 repo.version("1.0.0")

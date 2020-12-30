@@ -2,6 +2,9 @@
   "name": "elcharitas-blog",
   "version": "1.0.2",
   "description": "A static blog built on 11ty",
+  "bin": {
+    "repo": "./repo.js"
+  },
   "scripts": {
     "build": "eleventy",
     "watch": "eleventy --watch",
@@ -51,7 +54,8 @@
   "optionalDependencies": {
     "commander": "^5.1.0",
     "lodash": "^4.17.20",
-    "readline-sync": "^",
-    "fs-extra": "^"
+    "readline-sync": "^1.4.10",
+    "fs-extra": "^9.0.1",
+    "tiny-cli-editor": "^0.1.0"
   }
 }
