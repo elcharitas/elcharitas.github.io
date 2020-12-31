@@ -1,4 +1,5 @@
 ---
+id: 1
 layout: post
 title: A Techy Christmas?
 image: techy-christmas.jpg

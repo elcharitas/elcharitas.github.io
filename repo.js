@@ -1,10 +1,12 @@
 const { resolve } = require("path")
 const { Command } = require("commander")
-const { readFileSync, writeFileSync, existsSync } = require("fs")
+commaconst { readFileSync, writeFileSync, existsSync, rmdirSync } = require("fs")
 const { kebabCase } = require("lodash")
 const { question, questionPath, keyInSelect, keyInYN } = require("readline-sync")
 const { ensureDirSync, copyFileSync } = require("fs-extra")
 const { DateTime } = require("luxon")
+const editor = require("tiny-cli-editor")
+const { log } = console
 const jsDot = require("js-dot")
 const eleventyOpts = require("./.eleventy")()
 const inputDir = resolve(process.cwd(), eleventyOpts.dir.input)
@@ -13,19 +15,7 @@ const dataDir = resolve(inputDir, eleventyOpts.dir.data)
 const pageDir = resolve(inputDir, eleventyOpts.repo.page)
 const postDir = resolve(inputDir, eleventyOpts.repo.post)
 const uploadDir = resolve(inputDir, eleventyOpts.repo.upload)
-const repo = new Command("repo")
-
-/** Basic file options for layouts, templates, pages and posts */
-const fileOpts = {
-    "layout": "page",
-    "title": null,
-    "category": null,
-    "description": null,
-    "eleventyNavigation": {
-        "key": null,
-        "order": "1"
-    }
-}
+const repo = new Command
 
 /**
  * Converts a text to slug format
@@ -52,10 +42,10 @@ const safeHaven = (handle, logger = () => false) => {
 /**
  * Generates eleventy options for files
  *
- * @param {object} opts - defaults to `fileOpts`
+ * @param {object} opts
  * @param {number} depth
  */
-const genOpts = (opts = fileOpts, depth = 0) => {
+const genOpts = (opts, depth = 0) => {
     let result = "", tab = ""
     while (tab.length < depth) tab += "\t"
     for (let name in opts) {
@@ -78,8 +68,9 @@ const genOpts = (opts = fileOpts, depth = 0) => {
  * @param {string} extra
  * @param {object|null} opts
  */
-const writeOpts = (path, extra, opts) => writeFileSync(path, `---${genOpts(opts)}\n---` + extra)
+const writeOpts = (path, extra, opts) => editor(extra).on("submit", data => writeFileSync(path, `---${genOpts(opts)}\n---\n` + data))
 
+/** generates path and returns it */
 const pathDir = (path, ...args) => ((path = resolve(path, ...args)) && !ensureDirSync(path)) ? path: null
 
 /**
@@ -113,7 +104,7 @@ const writeData = function (name, data) {
  * @param {string} message
  * @param {any} _default
  */
-const prompt = (message, _default = null) => question(message) || _default
+const prompt = (message, _default = null) => question(message+" ") || _default
 
 /**
  * Confim an action
@@ -125,86 +116,129 @@ const confirm = message => keyInYN(message)
 /** The archive data object */
 const archive = readData("archive");
 
+/** Category names */
+const categories = []
+
+/** Category slug */
+const categoryKeys = []
+
 /** global for holding paths */
 let filePath = null;
 
-/** Create page using its title and optional slug */
-repo.command("create:page <title> [slug]")
-    .description("Creates a new page")
-    .action(function (title, slug) {
-        slug = slugit(slug || title)
-        writeOpts(filePath = resolve(pageDir, `${slug}.njk`), `\n# ${title}`, {
-            title,
-            description: prompt("Describe your page: "),
-            layout: "page",
-            eleventyNavigation: confirm("Add to Navigation") ? {
-                key: title,
-                order: prompt("Order in Navigation: ")
-            }: null
-        })
-        console.log("Created new post here: " + filePath)
-    })
+archive.category?.forEach(cat => {
+    categoryKeys.push(cat?.slug)
+    categories.push(cat?.name)
+})
 
-repo.command("add:data <path> <datastr>")
+/** Add a data file */
+repo.command("add:data [path] [dataset]")
     .description("Creates a new data file for use")
     .action(function (path, dataset) {
         let data = readData(path)
         dataset = require("querystring").parse(dataset)
         for (let key in dataset) jsDot.set(data, key, dataset[key])
         writeData(path, data)
-        console.log("Data modified succesfully")
+        log("Data modified succesfully")
     })
 
+/** Add a file for upload */
 repo.command("add:file [path] [name]")
     .description("Sets up a file for use in posts/pages. You can use ~, . or cwd, pwd")
-    .action(function (path = questionPath("Path to image: "), name = Date.now()) {
+    .action(function (path = questionPath("Path to image/file:"), name = Date.now()) {
         let dest = `${name}.jpg`
         if (!jsDot.get(archive.uploads, name)) {
             jsDot.set(archive.uploads, name, dest)
             copyFileSync(path, resolve(uploadDir, dest))
             writeData("archive", archive)
-            console.log(`File added succesfully. Use \`${name} | upload\` to add to posts/pages `)
+            log(`File added succesfully. Use \`{{${name} | upload}}\` to add to posts/pages `)
         } else {
 
         }
     })
 
-/** Create post using its title, optional slug and or category id */
-repo.command("create:post <title> [slug] [categoryID]")
-    .description("Creates a new post")
-    .action(function (title, slug, categoryId = keyInSelect(archive.category, "Select a Category: ") || 0) {
+/** Create or edit a category */
+repo.command("make:category [name]")
+    .description("Creates/Edit a category")
+    .action(function (name = prompt("Category Name:")) {
+        var slug = slugit(name), id = archive.category?.length || 0
+        if (name.match(/^\d+$/)) {
+            id = name - 1
+            let cat = archive.category[id]
+            if(!cat) return log("Category not exist!")
+            slug = cat.slug
+            if (!confirm("Delete Category?")) {
+                name = prompt("Category Name(Overwrite?):", cat.name)
+            } else {
+                delete archive.category[id]
+                rmdirSync(pathDir(postDir, slug), { recursive: true, force: true })
+                slug = null
+            }
+        }
+        if (!name.match(/^\d+$/)) {
+            (slug = prompt("Category Slug(optional):", slug)) && pathDir(postDir, slug)
+            archive.category[id] = { name, slug }
+        }
+        writeData("archive", archive)
+        log("Data modified succesfully")
+    })
+
+/** Create page using its title and optional slug */
+repo.command("make:page [title] [slug]")
+    .description("Creates a new page")
+    .action(function (title = prompt("Page title:"), slug) {
         slug = slugit(slug || title)
-        writeOpts(filePath = pathDir(postDir, slugit(archive.category[categoryId])) + `/${slug}.njk`, `\n# ${title}`, {
-            title, categoryId,
-            description: prompt("Describe your post: "),
-            date: DateTime.fromJSDate(new Date, { zone: 'utc' }).toFormat("y-L-d"),
-            layout: "post",
+        writeOpts(filePath = resolve(pageDir, `${slug}.md`), `# ${title}`, {
+            layout:"page",
+            title,
+            description: prompt("Page Excerpt:"),
+            eleventyNavigation: confirm("Add to Navigation?") ? {
+                key: title,
+                order: prompt("Order in Navigation:")
+            } : null
         })
-        console.log("Created new post here: " + filePath)
+        log("Created new page here:" + filePath)
+    })
+
+/** Create post using its title, optional slug and or category id */
+repo.command("make:post [title] [slug] [category]")
+    .description("Creates a new post")
+    .action(function (title = prompt("Post title:"), slug = null, category = keyInSelect(categories, "Post Category:") || 1) {
+        slug = slugit(categoryKeys[category]) + `/${slugit(slug || title)}.md`
+        archive.posts.push(slug)
+        writeOpts(filePath = pathDir(postDir, slug), `# ${title}`, {
+            id: archive.posts.length,
+            layout:"post",
+            title,
+            description: prompt("Post Excerpt:"),
+            category,
+            date: DateTime.fromJSDate(new Date, { zone: 'utc' }).toFormat("y-L-d"),
+        })
+        writeData("archive", archive)
+        log("Created new post here:" + filePath)
     })
 
 /** create layouts using a name and optional parent */
-repo.command("create:layout <name> [parent]")
-    .description("Creates layouts for inheritance")
-    .action(function (name, parent = prompt("Inherit template: ", "base")) {
-        writeOpts(filePath = resolve(includeDir, "layouts", slugit(name)+".njk"), "\n", {
+repo.command("make:layout [name] [parent]")
+    .description("Creates layout templates for inheritance")
+    .action(function (name = prompt("Layout Name:"), parent = prompt("Inherit template:", "base")) {
+        writeOpts(filePath = resolve(includeDir, "layouts", slugit(name)+".njk"), "", {
             name: slugit(name),
             layout: parent,
-            templateClass: prompt("Template class: "),
+            templateClass: prompt("Layout class:"),
         })
-        console.log("Created new layout here: " + filePath)
+        log("Created new layout here:" + filePath)
     })
 
 /** create templates using a name and optional type */
-repo.command("create:tpl <name> [type]")
+repo.command("make:tpl [name] [type]")
     .description("Creates template parts")
-    .action(function (name, type = prompt("Add template to group: ")) {
-        writeOpts(filePath = resolve(includeDir, slugit(type), slugit(name) + ".njk"), "\n", {
+    .action(function (name=prompt("Template Name:"), type = prompt("Template Group(optional):")) {
+        writeOpts(filePath = resolve(includeDir, slugit(type), slugit(name) + ".njk"), "", {
             name: slugit(name),
             group: type,
-            templateClass: prompt("Template class: "),
+            templateClass: prompt("Template Class(optional):"),
         })
-        console.log("Created new template here: " + filePath)
+        log("Created new template here:" + filePath)
     })
 
 repo.version("1.0.0")

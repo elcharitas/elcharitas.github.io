@@ -1,11 +1,31 @@
 {
-    "title": "Latest Updates",
-    "image": "noimage.jpg",
-    "perpage": 12,
-    "category": [
-        "Fun and Games"
-    ],
-    "uploads": {
-        
+  "title": "Latest Updates",
+  "image": "noimage.jpg",
+  "perpage": 12,
+  "category": [
+    {
+      "name": "Fun and Games",
+      "slug": "fun-and-games"
+    },
+    {
+      "name": "Broadviews",
+      "slug": "broadview"
+    },
+    {
+      "name": "JavaScript",
+      "slug": "javascript"
+    },
+    {
+      "name": "Recent Works",
+      "slug": "portfolio"
+    },
+    {
+      "name": "Web Designs",
+      "slug": "designs"
     }
+  ],
+  "posts": [
+    "broadview/a-techy-christmas.md"
+  ],
+  "uploads": {}
 }

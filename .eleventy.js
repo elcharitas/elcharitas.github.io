@@ -45,7 +45,7 @@ module.exports = function (eleventyConfig) {
     });
 
     eleventyConfig.addFilter("image", path => {
-      if (fs.existsSync(repo.image + path)) return gen_url("/assets/img/" + path);
+      if (fs.existsSync(repo.image + path)) return gen_url(repo.image + path)
       return gen_url(repo.upload + path);
     });
 
@@ -57,6 +57,7 @@ module.exports = function (eleventyConfig) {
       if (jsDot.get(uploads, id)) {
         return gen_url(repo.upload + jsDot.get(uploads, id))
       }
+      else if (fs.existsSync(repo.upload + path)) return gen_url(repo.upload + path)
     });
 
     eleventyConfig.addFilter("tagUrl", path => {
