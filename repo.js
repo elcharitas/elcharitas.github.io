@@ -1,6 +1,6 @@
 const { resolve } = require("path")
 const { Command } = require("commander")
-commaconst { readFileSync, writeFileSync, existsSync, rmdirSync } = require("fs")
+const { readFileSync, writeFileSync, existsSync, rmdirSync } = require("fs")
 const { kebabCase } = require("lodash")
 const { question, questionPath, keyInSelect, keyInYN } = require("readline-sync")
 const { ensureDirSync, copyFileSync } = require("fs-extra")
